@@ -1,8 +1,10 @@
-package com.dev.crm.services.users;
+package com.dev.crm.services.user;
 
 import java.util.List;
 import java.util.Optional;
 
+import com.dev.crm.dto.command.user.CreateUserCommand;
+import com.dev.crm.dto.command.user.UpdateUserCommand;
 import com.dev.crm.entities.User;
 
 public interface IUserService {
@@ -28,17 +30,17 @@ public interface IUserService {
 
     /**
      * Обновляет данные пользователя в БД
-     * @param user - модель пользователя
+     * @param updateUserCommand - record с данными пользователя
      * @return - ID обновления
      */
-    public Long update(User user);
+    public Long update(UpdateUserCommand updateUserCommand);
 
     /**
      * Создает пользователя в БД
-     * @param user - модель пользователя
+     * @param createUserCommand - record с данными пользователя
      * @return - ID созданного пользователя
      */
-    public Long create(User user);
+    public Long create(CreateUserCommand createUserCommand);
 
     /**
      * Удаляет пользователя
