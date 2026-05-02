@@ -1,10 +1,10 @@
-package com.dev.crm.services.dialog.employee;
+package com.dev.crm.contracts.services.dialog.employee;
 
 import java.util.List;
 
 import com.dev.crm.entities.PersonalEmployeeDialog;
 
-public interface IEmployeeDialogService {
+public interface EmployeeDialogServiceContract {
     /**
      * Возвращает все личные диалоги с сотрудниками
      * @return - Список диалогов

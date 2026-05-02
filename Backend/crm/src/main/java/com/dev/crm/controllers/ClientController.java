@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dev.crm.contracts.services.ClientServiceContract;
 import com.dev.crm.entities.Client;
 import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
-import com.dev.crm.services.client.IClientService;
 
 @RestController
 @RequestMapping("/api/clients")
 public class ClientController {
-    private final IClientService clientService;
+    private final ClientServiceContract clientService;
 
-    public ClientController(IClientService clientService) {
+    public ClientController(ClientServiceContract clientService) {
         this.clientService = clientService;
     }
 

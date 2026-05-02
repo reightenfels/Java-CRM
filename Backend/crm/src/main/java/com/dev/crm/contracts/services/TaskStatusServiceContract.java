@@ -1,10 +1,10 @@
-package com.dev.crm.services.taskstatus;
+package com.dev.crm.contracts.services;
 
 import java.util.List;
 
 import com.dev.crm.entities.TaskStatus;
 
-public interface ITaskStatusService {
+public interface TaskStatusServiceContract {
     /**
      * Возвращает список всех статусов
      * @return - список статусов

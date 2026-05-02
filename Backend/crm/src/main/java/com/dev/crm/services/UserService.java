@@ -1,13 +1,16 @@
-package com.dev.crm.services.user;
+package com.dev.crm.services;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.dev.crm.contracts.services.UserServiceContract;
 import com.dev.crm.dto.command.user.CreateUserCommand;
 import com.dev.crm.dto.command.user.UpdateUserCommand;
 import com.dev.crm.entities.Role;
@@ -19,7 +22,7 @@ import com.dev.crm.repositories.UserRepository;
 import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
 
 @Service
-public class UserService implements IUserService {
+public class UserService implements UserServiceContract {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
@@ -132,5 +135,23 @@ public class UserService implements IUserService {
         userRepository.deleteById(userId);
 
         return userId;
+    }
+
+    @Override
+    public Boolean existsByLogin(String login) {
+        User user = userRepository.findByLogin(login).orElse(null);
+
+        return user != null;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByLogin(username).orElseThrow(
+            () -> {
+                throw new UsernameNotFoundException("Не найден пользователь с логином: " + username);
+            }
+        );
+
+        return user;
     }
 }

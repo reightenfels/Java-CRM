@@ -1,15 +1,16 @@
-package com.dev.crm.services.client;
+package com.dev.crm.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.dev.crm.contracts.services.ClientServiceContract;
 import com.dev.crm.entities.Client;
 import com.dev.crm.repositories.ClientRepository;
 
 @Service
-public class ClientService implements IClientService {
+public class ClientService implements ClientServiceContract {
     private final ClientRepository clientRepository;
 
     public ClientService(ClientRepository clientRepository) {

@@ -28,7 +28,7 @@ import com.dev.crm.dto.request.user.CreateUserRequest;
 import com.dev.crm.dto.request.user.SearchUsersRequest;
 import com.dev.crm.entities.Role;
 import com.dev.crm.entities.User;
-import com.dev.crm.services.user.UserService;
+import com.dev.crm.services.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest(UserController.class)

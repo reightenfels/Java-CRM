@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dev.crm.contracts.services.TaskServiceContract;
 import com.dev.crm.entities.Task;
 import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
-import com.dev.crm.services.task.ITaskService;
 
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
-    private final ITaskService taskService;
+    private final TaskServiceContract taskService;
 
-    public TaskController(ITaskService taskService) {
+    public TaskController(TaskServiceContract taskService) {
         this.taskService = taskService;
     }
 

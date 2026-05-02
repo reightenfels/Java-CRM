@@ -1,11 +1,11 @@
-package com.dev.crm.services.task;
+package com.dev.crm.contracts.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.dev.crm.entities.Task;
 
-public interface ITaskService {
+public interface TaskServiceContract {
     /**
      * Возвращает задачу по ID
      * @param Long taskId

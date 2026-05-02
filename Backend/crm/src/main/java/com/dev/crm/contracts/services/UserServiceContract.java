@@ -1,13 +1,16 @@
-package com.dev.crm.services.user;
+package com.dev.crm.contracts.services;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.dev.crm.dto.command.user.CreateUserCommand;
 import com.dev.crm.dto.command.user.UpdateUserCommand;
 import com.dev.crm.entities.User;
 
-public interface IUserService {
+public interface UserServiceContract {
     /**
      * Возвращает список всех пользователей
      * @return - список пользователей
@@ -48,4 +51,18 @@ public interface IUserService {
      * @return - ID удаленного пользователя
      */
     public Long delete(Long userId);
+
+    /**
+     * Проверяет существует ли пользователь с данным логином
+     * @param login - логин пользователя
+     * @return - Да\нет
+     */
+    public Boolean existsByLogin(String login);
+
+    /**
+     * Возвращает пользователя по логину
+     * @param username - логин пользователя
+     * @return - Сущность авторизуемого пользователя
+     */
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 }

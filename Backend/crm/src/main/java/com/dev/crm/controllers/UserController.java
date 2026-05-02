@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dev.crm.contracts.services.UserServiceContract;
 import com.dev.crm.dto.command.user.CreateUserCommand;
 import com.dev.crm.dto.command.user.UpdateUserCommand;
 import com.dev.crm.dto.request.user.CreateUserRequest;
@@ -21,7 +22,6 @@ import com.dev.crm.dto.request.user.UpdateUserRequest;
 import com.dev.crm.dto.response.ApiResponse;
 import com.dev.crm.entities.User;
 import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
-import com.dev.crm.services.user.IUserService;
 
 import jakarta.validation.Valid;
 
@@ -29,9 +29,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/users")
 @Validated
 public class UserController {
-    private final IUserService userSerivice;
+    private final UserServiceContract userSerivice;
 
-    public UserController(IUserService userSerivice) {
+    public UserController(UserServiceContract userSerivice) {
         this.userSerivice = userSerivice;
     }
 

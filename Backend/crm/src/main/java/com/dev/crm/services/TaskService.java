@@ -1,15 +1,16 @@
-package com.dev.crm.services.task;
+package com.dev.crm.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.dev.crm.contracts.services.TaskServiceContract;
 import com.dev.crm.entities.Task;
 import com.dev.crm.repositories.TaskRepository;
 
 @Service
-public class TaskService implements ITaskService {
+public class TaskService implements TaskServiceContract {
     private final TaskRepository taskRepository;
 
     public TaskService(TaskRepository taskRepository) {

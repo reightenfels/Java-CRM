@@ -18,6 +18,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -62,6 +63,9 @@ public class User implements UserDetails {
     )
     private Set<Task> tasks = new HashSet<>();
 
+    @OneToMany(mappedBy="user")
+    private List<Token> tokens;
+
     @Override
     public String getUsername() {
         return login;
@@ -69,7 +73,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(role);
     }
 
     @Override

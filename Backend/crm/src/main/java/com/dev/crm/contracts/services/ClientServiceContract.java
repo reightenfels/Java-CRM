@@ -1,11 +1,11 @@
-package com.dev.crm.services.client;
+package com.dev.crm.contracts.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.dev.crm.entities.Client;
 
-public interface IClientService {
+public interface ClientServiceContract {
     /**
      * Возвращает список всех клиентов
      * @return - список клиентов
