@@ -1,0 +1,18 @@
+@startuml Обработка события удаления клиента
+
+queue "Очередь" as Queue
+participant "Слушатель \n удаления клиента" as Listener
+participant "Web Socket" as WebSocket
+actor Сотрудники
+
+Queue -> Listener: Отдать событие \n удаления клиента
+Listener -> WebSocket: Уведомить сотрудников
+WebSocket -> Сотрудники: Уведомить сотрудников
+Сотрудники -> WebSocket: Результат доставки
+WebSocket -> Listener: Результат доставки
+
+alt Открыт список клиентов
+    Сотрудники -> Сотрудники: Удалить клиента \n из отображения
+end alt
+
+@enduml

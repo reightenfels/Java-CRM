@@ -1,0 +1,26 @@
+@startuml Открыть диалог с сотрудником
+
+actor Сотрудник
+participant "Use Case" as GetMessagesUsecase
+database "Таблица \n диалогов" as DialogsTable
+database "Таблица \n сообщений" as MessagesTable
+
+Сотрудник -> GetMessagesUsecase: Открыть диалог
+
+alt Диалога нет
+    GetMessagesUsecase -> DialogsTable: Получить диалог двух собеседников
+    DialogsTable -> GetMessagesUsecase: Диалога нет
+    GetMessagesUsecase -> Сотрудник: Пустой список
+
+else Диалог есть
+    GetMessagesUsecase -> DialogsTable: Получить диалог двух собеседников
+    DialogsTable -> GetMessagesUsecase: ID диалога
+
+    GetMessagesUsecase -> MessagesTable: Получить сообщения по диалогу
+    MessagesTable -> GetMessagesUsecase: Список сообщений
+
+    GetMessagesUsecase -> Сотрудник: Список сообщений
+
+end alt
+
+@enduml

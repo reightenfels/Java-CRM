@@ -1,0 +1,58 @@
+@startuml Менеджер
+
+actor Менеджер
+
+' Менеджер
+rectangle "Модуль задач" {
+    usecase "Создать задачу" as CreateTask
+    usecase "Обновить \n данные задачи" as UpdateTask
+    usecase "Удалить задачу" as DeleteTask
+    usecase "Изменить \n статус задачи" as ChangeTaskStatus
+    usecase "Сгенерировать ссылку \n на оплату задачи" as CreatePaymentLink
+    usecase "Прикрепить клиента \n к задаче" as AddClientToTask
+    usecase "Открыть задачу" as OpenTask
+    usecase "Закрыть задачу" as CloseTask
+
+    DeleteTask -up[hidden]- CreateTask
+    UpdateTask -up[hidden]- ChangeTaskStatus
+    AddClientToTask -up[hidden]- CreatePaymentLink
+    OpenTask -up[hidden]- UpdateTask
+    CloseTask -up[hidden]- UpdateTask
+}
+
+Менеджер --> CreateTask
+Менеджер --> UpdateTask
+Менеджер --> DeleteTask
+Менеджер --> ChangeTaskStatus
+Менеджер --> CreatePaymentLink
+Менеджер --> AddClientToTask
+Менеджер --> OpenTask
+Менеджер --> CloseTask
+
+rectangle "Модуль сообщений" {
+    usecase "Отправить сообщение \n в чат с клиентом" as SendMessageToClient
+    usecase "Прикрепить вложение" as AddAttachmentToMessage
+}
+
+Менеджер --> SendMessageToClient
+AddAttachmentToMessage ..> SendMessageToClient <<extend>>
+
+rectangle "Модуль диалогов" {
+    usecase "Открыть диалог с клиентом" as OpenClientDialog
+}
+
+Менеджер --> OpenClientDialog
+
+rectangle "Модуль клиентов" {
+    usecase "Создать клиента" as CreateClient
+    usecase "Удалить клиента" as DeleteClient
+    usecase "Открыть карточку клиента" as OpenClient
+
+    OpenClient -[hidden]- CreateClient
+}
+
+Менеджер --> CreateClient
+Менеджер --> DeleteClient
+Менеджер --> OpenClient
+
+@enduml

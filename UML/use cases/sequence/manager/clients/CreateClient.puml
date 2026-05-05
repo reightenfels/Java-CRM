@@ -1,0 +1,29 @@
+@startuml Создание клиента
+
+actor Менеджер
+participant "Use Case" as CreateClientUseCase
+database "Таблица \n клиентов" as ClientsTable
+queue "Очередь" as Queue
+
+Менеджер -> CreateClientUseCase: Создать клиента
+
+CreateClientUseCase -> ClientsTable: Проверить уникальность \n логина, email, телефона
+
+alt Данные уникальны
+    ClientsTable -> CreateClientUseCase: Данные уникальны
+    CreateClientUseCase -> ClientsTable: Вставить данные клиента
+    ClientsTable -> CreateClientUseCase: ID нового клиента
+    CreateClientUseCase -> Queue: Добавить событие \n создания клиента
+    CreateClientUseCase -> Менеджер: Успех создания
+
+else
+    ClientsTable -> CreateClientUseCase: Данные не уникальны
+    CreateClientUseCase -> Менеджер: Сообщить о неуникальности
+
+end alt
+
+alt Успех создания
+    Менеджер -> Менеджер: Отобразить нового клиента
+end alt
+
+@enduml

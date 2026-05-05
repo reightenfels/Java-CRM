@@ -1,0 +1,26 @@
+@startuml Отправка сообщений в диалог с сотрудником
+
+actor Отправитель
+participant "Send Usecase" as SendUsecase
+database "Таблица \n диалогов" as DialogsTalbe
+database "Таблица \n сообщений" as MessagesTable
+queue "Очередь" as Queue
+
+Отправитель -> SendUsecase: Отправить сообщение
+
+alt Нет диалога
+    SendUsecase -> DialogsTalbe: Наличие диалога
+    DialogsTalbe -> SendUsecase: Диалога нет
+    SendUsecase -> DialogsTalbe: Создать диалог
+end alt
+
+SendUsecase -> MessagesTable: Вставить сообщение в БД
+MessagesTable -> SendUsecase: ID нового сообщения
+SendUsecase -> Queue: Добавить событие отправки \n сообщения сотруднику
+SendUsecase -> Отправитель: Результат отправки сообщения
+
+alt Успех отправки
+    Отправитель -> Отправитель: Отобразить новое сообщение
+end alt
+
+@enduml

@@ -1,0 +1,45 @@
+@startuml Удалить задачу
+
+actor Менеджер
+participant "Use Case" as ChangeStatusUseCase
+database "Таблица \n задач" as TasksTable
+database "Таблица \n редакторов \n задач" as TaskEditorsTable
+participant "Open Task \n Use Case" as OpenTaskUseCase
+queue "Очередь" as Queue
+
+Менеджер -> ChangeStatusUseCase: ID задачи
+
+ChangeStatusUseCase -> TaskEditorsTable: Есть ли редакторы \n в данный момент?
+
+alt Редакторы есть
+    TaskEditorsTable -> ChangeStatusUseCase: Редакторы есть
+    ChangeStatusUseCase -> Менеджер: В данный момент \n задача редактируется
+
+else Редакторов нет
+    TaskEditorsTable -> ChangeStatusUseCase: Редакторов нет
+    ChangeStatusUseCase -> TasksTable: Удалить задачу \n согласно переданной \n версии
+    
+    alt Удалено 0 строк
+        TasksTable -> ChangeStatusUseCase: Удалено 0 строк
+        ChangeStatusUseCase -> Менеджер: Есть более новая \n версия этой задачи
+        Менеджер -> OpenTaskUseCase: Открыть актуальную \n версию задачи \n автоматически
+        OpenTaskUseCase -> Менеджер: Данные задачи
+
+        Менеджер -> Менеджер: Отобразить актуальные данные
+
+    else Удалена 1 строка
+        TasksTable -> ChangeStatusUseCase: Удалена 1 строка
+        ChangeStatusUseCase -> Менеджер: Успех обновления
+        ChangeStatusUseCase -> Queue: Добавить событие \n удаления задачи
+
+        Менеджер -> Менеджер: Закрыть карточку \n удаленной задачи
+
+        alt Открыто окно списка задач
+            Менеджер -> Менеджер: Удалить карточку \n из отображения
+        end alt
+
+    end alt
+
+end alt;
+
+@enduml

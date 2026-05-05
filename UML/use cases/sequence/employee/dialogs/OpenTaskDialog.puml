@@ -1,0 +1,12 @@
+@startuml Открыть диалог по задаче
+
+actor Сотрудник
+participant "Use Case" as OpenTaskDialogUseCase
+database "Таблица \n сообщений" as MessagesTable
+
+Сотрудник -> OpenTaskDialogUseCase: Открыть диалог
+OpenTaskDialogUseCase -> MessagesTable: Получить сообщения диалога
+MessagesTable -> OpenTaskDialogUseCase: Список сообщений
+OpenTaskDialogUseCase -> Сотрудник: Список сообщений
+
+@enduml

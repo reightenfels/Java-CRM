@@ -1,0 +1,18 @@
+@startuml Отправить сообщение в чат с клиентом
+
+actor Сотрудник
+participant "Use Case" as SendMessageUseCase
+database "Таблица \n сообщений" as MessagesTable
+queue "Очередь" as Queue
+
+Сотрудник -> SendMessageUseCase: Отправить сообщение
+SendMessageUseCase -> MessagesTable: Создать сообщение
+MessagesTable -> SendMessageUseCase: ID нового сообщения
+SendMessageUseCase -> Queue: Добавить событие отправки \n сообщения в чат с клиентом
+SendMessageUseCase -> Сотрудник: Результат отправки
+
+alt Успех отправки
+    Сотрудник -> Сотрудник: Отобразить новое сообщение
+end alt
+
+@enduml

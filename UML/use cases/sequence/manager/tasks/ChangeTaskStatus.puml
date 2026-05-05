@@ -1,0 +1,27 @@
+@startuml Изменить статус задачи
+
+actor Менеджер
+participant "Use Case" as ChangeStatusUseCase
+database "Таблица \n задач" as TasksTable
+participant "Open Task \n Use Case" as OpenTaskUseCase
+queue "Очередь" as Queue
+
+Менеджер -> ChangeStatusUseCase: Изменить статус
+
+ChangeStatusUseCase -> TasksTable: Обновить задачу \n согласно переданной версии
+    
+alt Обновлено 0 строк
+    TasksTable -> ChangeStatusUseCase: Обновлено 0 строк
+    ChangeStatusUseCase -> Менеджер: Есть более новая \n версия этой задачи
+    Менеджер -> OpenTaskUseCase: Открыть актуальную \n версию задачи \n автоматически
+    OpenTaskUseCase -> Менеджер: Данные задачи
+
+    Менеджер -> Менеджер: Отобразить актуальные данные
+
+else Обновлена 1 строка
+    TasksTable -> ChangeStatusUseCase: Обновлена 1 строка
+    ChangeStatusUseCase -> Queue: Добавить событие \n изменения статуса задачи
+    ChangeStatusUseCase -> Менеджер: Успех обновления
+end alt
+
+@enduml

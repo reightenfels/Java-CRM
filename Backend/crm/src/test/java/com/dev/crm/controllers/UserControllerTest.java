@@ -24,7 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.dev.crm.dto.command.user.CreateUserCommand;
-import com.dev.crm.dto.request.user.CreateUserRequest;
 import com.dev.crm.dto.request.user.SearchUsersRequest;
 import com.dev.crm.entities.Role;
 import com.dev.crm.entities.User;
@@ -66,18 +65,6 @@ public class UserControllerTest {
             new Role(1L, "system name", "display name", new HashSet<>()), 
             "", 
             new HashSet<>()
-        );
-    }
-
-    private static CreateUserRequest createUserRequestBuilder() {
-        return new CreateUserRequest(
-            "Login",
-            "Password",
-            "First Name",
-            "Last Name",
-            1L,
-            "+7 971 057 89 01",
-            List.of()
         );
     }
 
@@ -217,26 +204,6 @@ public class UserControllerTest {
                 .andExpect(status().isNotFound());
 
         Mockito.verify(userService, Mockito.times(1)).findById(1L);
-    }
-
-    @Test
-    @WithMockUser(username = "John", roles={"ADMIN"})
-    @DisplayName("POST /api/users/create возвращает 201 и ID созданного пользователя")
-    void shouldReturnAddedUserId_WhenSuccess() throws Exception {
-        CreateUserRequest request = createUserRequestBuilder();
-        
-        Mockito.when(userService.create(Mockito.any(CreateUserCommand.class))).thenReturn(1L);
-
-        mockMvc.perform(
-                    post("/api/users/create")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(objectMapper.writeValueAsString(request))
-                )
-                .andExpect(status().isCreated())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string("1"));
-
-        Mockito.verify(userService, Mockito.times(1)).create(Mockito.any(CreateUserCommand.class));
     }
 
     // @Test

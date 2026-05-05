@@ -6,12 +6,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.dev.crm.contracts.services.UserServiceContract;
-import com.dev.crm.dto.command.user.CreateUserCommand;
 import com.dev.crm.dto.command.user.UpdateUserCommand;
 import com.dev.crm.entities.Role;
 import com.dev.crm.entities.Task;
@@ -22,7 +22,7 @@ import com.dev.crm.repositories.UserRepository;
 import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
 
 @Service
-public class UserService implements UserServiceContract {
+public class UserService implements UserDetailsService, UserServiceContract {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
@@ -100,34 +100,6 @@ public class UserService implements UserServiceContract {
         userRepository.save(user);
 
         return user.getId();
-    }
-
-    @Override
-    public Long create(CreateUserCommand createUserCommand) {
-        User user = new User();
-        user.setLogin(createUserCommand.login());
-        user.setPassword(passwordEncoder.encode(createUserCommand.password()));
-        user.setFirstName(createUserCommand.firstName());
-        user.setLastName(createUserCommand.lastName());
-
-        Role role = roleRepository.findById(createUserCommand.roleId()).orElseThrow(
-            () -> {
-                throw new ResourceNotFoundException("Не найдена роль с ID: " + createUserCommand.roleId());
-            }
-        );
-
-        user.setRole(role);
-        user.setPhone(createUserCommand.phone());
-
-        if (createUserCommand.taskIds() != null && !createUserCommand.taskIds().isEmpty()) {
-            Set<Task> tasks = taskRepository.findAllById(createUserCommand.taskIds()).stream().collect(Collectors.toSet());
-            user.setTasks(tasks);
-        }
-
-        Long insertId = userRepository.save(user).getId();
-        user.setId(insertId);
-
-        return insertId;
     }
 
     @Override

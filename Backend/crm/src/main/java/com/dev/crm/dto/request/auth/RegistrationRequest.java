@@ -1,15 +1,15 @@
-package com.dev.crm.dto.request.user;
-
-import java.util.List;
+package com.dev.crm.dto.request.auth;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
-public class CreateUserRequest {
+public class RegistrationRequest {
     @NotBlank(message = "Логин обязателен")
     @Size(min = 2, max= 255, message = "Логин от 2 до 255 символов")
     private String login;
@@ -26,11 +26,6 @@ public class CreateUserRequest {
     @Size(min = 2, max = 255, message = "Фамилия от 2 до 255 символов")
     private String lastName;
 
-    @NotBlank(message = "Роль обязательна")
-    private Long roleId;
-
     @NotBlank(message = "Телефон обязателен")
     private String phone;
-
-    private List<Long> taskIds;
 }

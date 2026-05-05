@@ -1,0 +1,18 @@
+@startuml Обработка события изменения статуса задачи
+
+queue "Очередь" as Queue
+participant "Слушать события изменения \n статуса задачи" as Listener
+participant "Web Socket" as WebSocket
+actor Сотрудники
+
+Queue -> Listener: Отдать событие изменения \n статуса задачи
+Listener -> WebSocket: Уведомить сотрудников
+WebSocket -> Сотрудники: Уведомить сотрудников
+Сотрудники -> WebSocket: Результат уведомления
+WebSocket -> Listener: Результат уведомления
+
+alt Открыт список задач
+    Сотрудники -> Сотрудники: Обновить поле со статусом \n в обновленной задаче
+end alt
+
+@enduml

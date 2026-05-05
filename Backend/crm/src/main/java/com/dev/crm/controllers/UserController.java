@@ -2,7 +2,6 @@ package com.dev.crm.controllers;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dev.crm.contracts.services.UserServiceContract;
-import com.dev.crm.dto.command.user.CreateUserCommand;
 import com.dev.crm.dto.command.user.UpdateUserCommand;
-import com.dev.crm.dto.request.user.CreateUserRequest;
 import com.dev.crm.dto.request.user.SearchUsersRequest;
 import com.dev.crm.dto.request.user.UpdateUserRequest;
 import com.dev.crm.dto.response.ApiResponse;
@@ -58,24 +54,6 @@ public class UserController {
         );
 
         return ApiResponse.ok(user);
-    }
-
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/create")
-    public ApiResponse<Long> create(@RequestBody @Valid CreateUserRequest request) {
-        CreateUserCommand command = new CreateUserCommand(
-            request.getLogin(),
-            request.getPassword(),
-            request.getFirstName(),
-            request.getLastName(),
-            request.getRoleId(),
-            request.getPhone(),
-            request.getTaskIds()
-        );
-
-        Long userId = this.userSerivice.create(command);
-
-        return ApiResponse.ok(userId);
     }
 
     @PostMapping("/update")

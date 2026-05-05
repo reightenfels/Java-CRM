@@ -1,0 +1,18 @@
+@startuml Обработка события открытия карточки задачи
+
+queue "Очередь" as Queue
+participant "Обработчик открытия \n карточки задачи" as Listener
+participant "Web Socket" as WebSocket
+actor Сотрудники
+
+Queue -> Listener: Отдать событие \n открытия карточки задачи
+Listener -> WebSocket: Уведомить сотрудников \n о редактировании
+WebSocket -> Сотрудники: Уведомить о редактировании
+Сотрудники -> WebSocket: Результат уведомления
+WebSocket -> Listener: Результат уведомления
+
+alt Открыта эта же задача
+    Сотрудники -> Сотрудники: Отобразить надпись \n о редактировании
+end alt
+
+@enduml

@@ -1,0 +1,27 @@
+@startuml Обновить данные задачи
+
+actor Менеджер
+participant "Use Case" as UpdateTaskUseCase
+database "Таблица \n задач" as TasksTable
+participant "Open Task \n Use Case" as OpenTaskUseCase
+queue "Очередь" as Queue
+
+Менеджер -> UpdateTaskUseCase: Обновить задачу
+
+UpdateTaskUseCase -> TasksTable: Обновить задачу \n согласно переданной версии
+    
+alt Обновлено 0 строк
+    TasksTable -> UpdateTaskUseCase: Обновлено 0 строк
+    UpdateTaskUseCase -> Менеджер: Есть более новая \n версия этой задачи
+    Менеджер -> OpenTaskUseCase: Открыть актуальную \n версию задачи \n автоматически
+    OpenTaskUseCase -> Менеджер: Данные задачи
+
+    Менеджер -> Менеджер: Отобразить актуальные данные
+
+else Обновлена 1 строка
+    TasksTable -> UpdateTaskUseCase: Обновлена 1 строка
+    UpdateTaskUseCase -> Queue: Добавить событие \n обновления задачи
+    UpdateTaskUseCase -> Менеджер: Успех обновления
+end alt
+
+@enduml

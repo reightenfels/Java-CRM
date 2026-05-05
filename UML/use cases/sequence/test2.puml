@@ -1,0 +1,33 @@
+@startuml
+actor Покупатель as cus
+participant "Бариста" as bar
+participant "Кассовый аппарат" as cash
+database "Холодильник" as ref
+
+cus -> bar++: сделать заказ
+bar -> ref++: проверить наличие продуктов
+ref --> bar--: продукты в наличии
+bar -> cash++: выставить оплату
+cash -> cash: сформировать оплату
+cash --> bar--: оплата готова
+
+loop пока не будет оплачен заказ
+  cus -> bar: оплата
+  bar -> cash++: оплата
+  cash --> bar--: принято
+end loop
+
+group приготовление кофе
+  alt заказали кофе на альтернативном молоке
+    bar -> ref++: нужно альтернативное молоко
+    ref --> bar: вот молоко
+  else заказали кофе на обычном молоке
+    bar -> ref: нужно обычное молоко
+    ref --> bar: вот молоко
+  end alt
+  bar -> work: приготовление кофе
+  work --> bar: кофе готов
+end group
+
+cus <-- bar: вот ваш кофе
+@enduml

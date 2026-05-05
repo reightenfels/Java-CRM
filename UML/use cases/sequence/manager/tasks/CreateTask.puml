@@ -1,0 +1,25 @@
+@startuml Создать задачу
+
+actor Менеджер
+participant "Use Case" as CreateTaskUseCase
+database "Таблица \n задач" as TasksTable
+database "Таблица \n чатов" as TasksDialogsTable
+queue "Очередь" as Queue
+
+Менеджер -> CreateTaskUseCase: Создать задачу
+
+CreateTaskUseCase -> TasksTable: Вставить задачу
+TasksTable -> CreateTaskUseCase: ID новой задачи
+CreateTaskUseCase -> TasksDialogsTable: Вставить диалог \n по задаче
+TasksDialogsTable -> CreateTaskUseCase: ID диалога
+
+CreateTaskUseCase -> Queue: Добавить событие \n создания задачи
+CreateTaskUseCase -> Queue: Добавить событие \n создания чата задачи
+
+CreateTaskUseCase -> Менеджер: Результат создания
+
+alt Успех создания
+    Менеджер -> Менеджер: Отобразить новую задачу
+end alt
+
+@enduml

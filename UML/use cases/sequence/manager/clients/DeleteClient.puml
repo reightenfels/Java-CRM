@@ -1,0 +1,14 @@
+@startuml Удалить клиента
+
+actor Менеджер
+participant "Use Case" as DeleteClientUseCase
+database "Таблица \n клиентов" as ClientsTable
+queue "Очередь" as Queue
+
+Менеджер -> DeleteClientUseCase: Удалить клиента
+DeleteClientUseCase -> ClientsTable: Удалить клиента
+ClientsTable -> DeleteClientUseCase: Результат удаления
+DeleteClientUseCase -> Queue: Добавить событие \n удаления клиента
+DeleteClientUseCase -> Менеджер: Результат удаления
+
+@enduml

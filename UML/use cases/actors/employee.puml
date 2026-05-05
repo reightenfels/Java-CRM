@@ -1,0 +1,45 @@
+@startuml Сотрудник
+
+actor Сотрудник
+
+' Сотрудник
+rectangle "Авторизация" {
+    usecase "Войти в систему" as Auth
+    usecase "Зарегистрироваться \n в системе" as Registration
+}
+
+Сотрудник --> Auth
+Сотрудник --> Registration
+
+rectangle "Модуль сообщений" {
+    usecase "Отправить сообщение" as SendMessage
+    usecase "В чат с сотрудником" as SendMessageToEmpl
+    usecase "В чат задачи" as SendMessageToTask
+    usecase "Прикрепить вложение \n к сообщению" as AddAttachmentToMessage
+}
+
+Сотрудник --> SendMessage
+
+SendMessageToEmpl --> SendMessage
+SendMessageToTask --> SendMessage
+
+AddAttachmentToMessage ..> SendMessage <<extend>>
+
+rectangle "Модуль диалогов" {
+    usecase "Открыть диалог" as OpenDialog
+    usecase "С сотрудником" as OpenEmployeeDialog
+    usecase "По задаче" as OpenTaskDialog
+
+    usecase "Удалить диалог" as DeleteDialog
+    usecase "С сотрудинком" as DeleteEmployeeDialog
+}
+
+Сотрудник --> OpenDialog
+Сотрудник --> DeleteDialog
+
+OpenEmployeeDialog --> OpenDialog
+OpenTaskDialog --> OpenDialog
+
+DeleteEmployeeDialog --> DeleteDialog
+
+@enduml

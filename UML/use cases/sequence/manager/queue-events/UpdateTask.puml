@@ -1,0 +1,18 @@
+@startuml Обработка события обновления задачи
+
+queue "Очередь" as Queue
+participant "Обработчик события \n обновления задачи" as Listener
+participant "Web Socket" as WebSocket
+actor Сотрудники
+
+Queue -> Listener: Отдать событие \n обновления задачи
+Listener -> WebSocket: Уведомить сотрудников
+WebSocket -> Сотрудники: Уведомить сотрудников
+Сотрудники -> WebSocket: Результат уведомления
+WebSocket -> Listener: Результат уведомления
+
+alt Открыт список задач
+    Сотрудники -> Сотрудники: Обновить карточку задачи \n новыми данными
+end alt
+
+@enduml

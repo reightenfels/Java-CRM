@@ -1,0 +1,26 @@
+@startuml Прикрепить клиента к задаче
+
+actor Менеджер
+participant "Use Case" as AddClientToTaskUseCase
+database "Таблица \n задач" as TasksTable
+participant "Open Task Use Case" as OpenTaskUseCase
+queue "Очередь" as Queue
+
+Менеджер -> AddClientToTaskUseCase: Прикрепить клиента
+AddClientToTaskUseCase -> TasksTable: Обновить задачу \n согласно переданной версии
+    
+alt Обновлено 0 строк
+    TasksTable -> AddClientToTaskUseCase: Обновлено 0 строк
+    AddClientToTaskUseCase -> Менеджер: Есть более новая \n версия этой задачи
+    Менеджер -> OpenTaskUseCase: Открыть актуальную \n версию задачи \n автоматически
+    OpenTaskUseCase -> Менеджер: Данные задачи
+
+    Менеджер -> Менеджер: Отобразить актуальные данные
+
+else Обновлена 1 строка
+    TasksTable -> AddClientToTaskUseCase: Обновлена 1 строка
+    AddClientToTaskUseCase -> Queue: Добавить событие прикрепления \n клиента к задаче
+    AddClientToTaskUseCase -> Менеджер: Успех обновления
+end alt
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml Обработка события создания новой задачи
+
+queue "Очередь" as Queue
+participant "Обработчик события \n создания новой задачи" as Listener
+participant "Web Socket" as WebSocket
+actor Сотрудники
+
+Queue -> Listener: Отдать событие \n создания новой задачи
+Listener -> WebSocket: Уведомить сотрудников
+WebSocket -> Сотрудники: Уведомить сотрудников
+Сотрудники -> WebSocket: Результат получения
+WebSocket -> Listener: Результат доставки
+
+alt Открыто окно задач
+    Сотрудники -> Сотрудники: Отобразить новую задачу
+end alt
+
+@enduml

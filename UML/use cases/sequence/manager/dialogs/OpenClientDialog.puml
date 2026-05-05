@@ -1,0 +1,26 @@
+@startuml Открыть диалог с клиентом
+
+actor Менеджер
+participant "Use Case" as OpenClientDialogUseCase
+database "Таблица \n диалогов" as DialogsTable
+database "Таблица \n сообщений" as MessagesTable
+
+Менеджер -> OpenClientDialogUseCase: Открыть диалог
+
+alt Диалога нет
+    OpenClientDialogUseCase -> DialogsTable: Получить диалог \n по ID клиента
+    DialogsTable -> OpenClientDialogUseCase: Диалога нет
+    OpenClientDialogUseCase -> Менеджер: Пустой список
+
+else Диалог есть:
+    OpenClientDialogUseCase -> DialogsTable: Получить диалог
+    DialogsTable -> OpenClientDialogUseCase: ID диалога
+
+    OpenClientDialogUseCase -> MessagesTable: Получить сообщения диалога
+    MessagesTable -> OpenClientDialogUseCase: Сообщения диалога
+
+    OpenClientDialogUseCase -> Менеджер: Сообщения диалога
+
+end alt
+
+@enduml

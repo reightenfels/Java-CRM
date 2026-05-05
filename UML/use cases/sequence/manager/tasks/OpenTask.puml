@@ -1,0 +1,18 @@
+@startuml Открыть карточку задачу
+
+actor Менеджер
+participant "Use Case" as OpenTaskUseCase
+database "Таблица \n задач" as TasksTable
+database "Таблица \n редакторов \n задач" as TaskEditorsTable
+queue "Очередь" as Queue
+
+Менеджер -> OpenTaskUseCase: Открыть задачу
+OpenTaskUseCase -> TasksTable: Получить задачу
+TasksTable -> OpenTaskUseCase: Данные задачи
+OpenTaskUseCase -> TaskEditorsTable: Добавить задачу и редактора
+OpenTaskUseCase -> Queue: Добавит событие \n открытия карточки задачу
+OpenTaskUseCase -> Менеджер: Данные задачи
+
+Менеджер -> Менеджер: Отобразить карточку задачи
+
+@enduml

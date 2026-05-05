@@ -1,0 +1,25 @@
+@startuml Удалить диалог с сотрудником
+
+actor Сотрудник
+participant "Use Case" as DeleteEmployeeDialogUseCase
+database "Таблица \n сообщений" as MessagesTable
+database "Таблица \n диалогов" as DialogsTable
+queue "Очередь" as Queue
+
+Сотрудник -> DeleteEmployeeDialogUseCase: Удалить диалог
+
+DeleteEmployeeDialogUseCase -> MessagesTable: Удалить \n сообщения диалога
+MessagesTable -> DeleteEmployeeDialogUseCase: Результат удаления
+
+DeleteEmployeeDialogUseCase -> DialogsTable: Удалить диалог
+DialogsTable -> DeleteEmployeeDialogUseCase: Результат удаления
+
+DeleteEmployeeDialogUseCase -> Queue: Добавить событие \n удаления диалога
+
+DeleteEmployeeDialogUseCase -> Сотрудник: Результат удаления
+
+alt Успех удаления
+    Сотрудник -> Сотрудник: Очистить \n сообщения диалога
+end alt
+
+@enduml

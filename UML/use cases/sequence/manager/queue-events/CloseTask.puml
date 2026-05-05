@@ -1,0 +1,18 @@
+@startuml Обработка события закрытия карточки задачи
+
+queue "Очередь" as Queue
+participant "Слушатель события закрытия \n карточки задачи" as Listener
+participant "Web Socket" as WebSocket
+actor Сотрудники
+
+Queue -> Listener: Отдать событие закрытия \n карточки задачи
+Listener -> WebSocket: Уведомить сотрудников
+WebSocket -> Сотрудники: Уведомить сотрудников
+Сотрудники -> WebSocket: Результат уведомления
+WebSocket -> Listener: Результат уведомления
+
+alt Открыта карточка \n этой же задачи
+    Сотрудники -> Сотрудники: Обновить имена \n текущих редакторов задачи
+end alt
+
+@enduml

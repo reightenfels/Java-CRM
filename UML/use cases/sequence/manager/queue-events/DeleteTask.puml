@@ -1,0 +1,18 @@
+@startuml Обработка события удаления задачи
+
+queue "Очередь" as Queue
+participant "Обработчик события \n удаления задачи" as Listener
+participant "Web Socket" as WebSocket
+actor Сотрудники
+
+Queue -> Listener: Отдать событие \n удаления задачи
+Listener -> WebSocket: Уведомить сотрудников
+WebSocket -> Сотрудники: Уведомить сотрудников
+Сотрудники -> WebSocket: Результат уведомления
+WebSocket -> Listener: Результат уведомления
+
+alt Открыто окно задач
+    Сотрудники -> Сотрудники: Удалить карточку \n из отображения
+end alt
+
+@enduml

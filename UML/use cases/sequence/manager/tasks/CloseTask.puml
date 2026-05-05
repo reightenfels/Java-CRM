@@ -1,0 +1,14 @@
+@startuml Закрыть карточку задачу
+
+actor Менеджер
+participant "Use Case" as CloseTaskUseCase
+database "Таблица \n задач" as TasksTable
+database "Таблица \n редакторов \n задач" as TaskEditorsTable
+queue "Очередь" as Queue
+
+Менеджер -> CloseTaskUseCase: Закрыть карточку задачи
+CloseTaskUseCase -> TaskEditorsTable: Удалить запись о редактировании
+CloseTaskUseCase -> Queue: Добавить событие закрытия \n карточки задачи
+CloseTaskUseCase -> Менеджер: Результат закрытия
+
+@enduml

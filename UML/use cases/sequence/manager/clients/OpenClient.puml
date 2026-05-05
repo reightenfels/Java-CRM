@@ -1,0 +1,12 @@
+@startuml Открыть карточку клиента
+
+actor Менеджер
+participant "Use Case" as OpenClientUseCase
+database "Таблица \n клиентов" as ClientsTable
+
+Менеджер -> OpenClientUseCase: Открыть карточку клиента
+OpenClientUseCase -> ClientsTable: Получить клиента
+ClientsTable -> OpenClientUseCase: Данные клиента
+OpenClientUseCase -> Менеджер: Данные клиента
+
+@enduml

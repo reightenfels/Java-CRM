@@ -1,0 +1,18 @@
+@startuml Событие удаления диалога
+
+queue "Очередь" as Queue
+participant "Слушатель удаления \n диалога с сотрудником" as Listener
+participant "Web Socket" as WebSocket
+
+Queue -> Listener: Отдать событие \n удаления диалога
+
+Listener -> WebSocket: Доставить \n удаленный диалог
+WebSocket -> Собеседник: ID удаленного \n диалога
+Собеседник -> WebSocket: Результат получения
+WebSocket -> Listener: Результат доставки
+
+alt Диалог открыт
+    Собеседник -> Собеседник: Очистить \n сообщения диалога
+end alt
+
+@enduml

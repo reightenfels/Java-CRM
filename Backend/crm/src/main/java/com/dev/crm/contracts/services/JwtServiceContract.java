@@ -78,10 +78,18 @@ public interface JwtServiceContract {
     public boolean isAccessTokenExpired(String token);
 
     /**
-     * Проверяет валидность токена
-     * @param token - токен
+     * Проверяет валидность access токена
+     * @param token - access токен
      * @param user - сущность авторизуемого пользователя
      * @return - Да\нет
      */
     public boolean isValid(String token, UserDetails user);
+
+    /**
+     * Проверяет валидность refresh токена
+     * @param token - refresh токена
+     * @param user - сущность авторизуемого пользователя
+     * @return - Да\нет
+     */
+    public boolean isValidRefresh(String token, User user);
 }

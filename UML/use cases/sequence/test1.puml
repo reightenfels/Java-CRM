@@ -1,0 +1,23 @@
+@startuml
+skinparam participantPadding 15
+skinparam sequenceMessageAlign center
+
+participant "Order Service" as Producer
+participant "Kafka" as K <<Queue>>
+participant "Payment Service" as Consumer
+
+Producer ->> K : publish(OrderCreatedEvent)
+note right K
+  Topic: `orders`
+  Partition: 1
+  Key: order_id=1042
+end note
+
+K ->> Consumer : consume(OrderCreatedEvent)
+note left K
+  Consumer Group: `payment-workers`
+  Offset: 15892
+end note
+
+Consumer --> Producer : (опц. async ack via callback)
+@enduml

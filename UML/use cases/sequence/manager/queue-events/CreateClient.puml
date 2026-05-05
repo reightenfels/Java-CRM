@@ -1,0 +1,18 @@
+@startuml Обработка события создания клиента
+
+queue "Очередь" as Queue
+participant "Обработчик события \n создания клиента" as Listener
+participant "Web Socket" as WebSocket
+actor Сотрудники
+
+Queue -> Listener: Отдать событие \n создания клиента
+Listener -> WebSocket: Уведомить сотрудников
+WebSocket -> Сотрудники: Уведомить сотрудников
+Сотрудники -> WebSocket: Результат уведомления
+WebSocket -> Listener: Результат уведомления
+
+alt Открыто окно клиентов
+    Сотрудники -> Сотрудники: Отобразить нового клиента
+end alt
+
+@enduml

@@ -1,0 +1,13 @@
+@startuml Админ
+
+actor Админ
+
+rectangle "Управление персоналом" {
+    usecase "Изменить роль сотрудника" as ChangeEmployeeRole
+    usecase "Добавить сотрудника" as AddEmployee
+    usecase "Удалить сотрудника" as DeleteEmployee
+}
+
+Админ --> ChangeEmployeeRole
+Админ --> AddEmployee
+Админ --> DeleteEmployee

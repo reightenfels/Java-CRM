@@ -34,6 +34,9 @@ public class Role implements GrantedAuthority {
     @Column(name="display_name", nullable=false, length=255)
     private String displayName;
 
+    @Column(name="level", nullable=false)
+    private int level;
+
     @ManyToMany
     @JoinTable(
         name="role_privilegy_map",

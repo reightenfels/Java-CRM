@@ -1,0 +1,18 @@
+@startuml Отправка сообщений в чат по задаче
+
+actor Отправитель
+participant "Send Usecase" as SendUsecase
+database "Таблица \n сообщений" as MessagesTable
+queue "Очередь" as Queue
+
+Отправитель -> SendUsecase: Отправить сообщение
+SendUsecase -> MessagesTable: Вставить в БД
+MessagesTable -> SendUsecase: ID нового сообщения
+SendUsecase -> Queue: Добавить событие отправки \n сообщение в диалог задачи
+SendUsecase -> Отправитель: Результат отправки
+
+alt Успех отправки
+    Отправитель -> Отправитель: Отобразить новое сообщение
+end alt
+
+@enduml

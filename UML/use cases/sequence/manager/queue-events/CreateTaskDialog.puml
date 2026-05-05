@@ -1,0 +1,18 @@
+@startuml Обработка события создания чата задачи
+
+queue "Очередь" as Queue
+participant "Обработчик события \n создания чата задачи" as Listener
+participant "Web Socket" as WebSocket
+actor Сотрудники
+
+Queue -> Listener: Отдать событие \n создания чата задачи
+Listener -> WebSocket: Уведомить сотрудников
+WebSocket -> Сотрудники: Уведомить сотрудников
+Сотрудники -> WebSocket: Результат получения
+WebSocket -> Listener: Результат доставки
+
+alt Открыто окно \n чатов по задачам
+    Сотрудники -> Сотрудники: Отобразить новый чат
+end alt
+
+@enduml

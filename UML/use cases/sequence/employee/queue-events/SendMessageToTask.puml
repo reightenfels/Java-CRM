@@ -1,0 +1,18 @@
+@startuml Обработка события отправки сообщения в чат задачи
+
+queue "Очередь" as Queue
+participant "Слушатель события отправки \n сообщения в чат задачи" as Listener
+participant "WebSocket" as WebSocket
+actor Получатели
+
+Queue -> Listener: Отдать событие отправки \n сообщения в чат задачи
+Listener -> WebSocket: Доставить новое сообщение получателям
+WebSocket -> Получатели: Доставить новое сообщение
+Получатели -> WebSocket: Результат доставки
+WebSocket -> Listener: Результат доставки
+
+alt Диалог открыт
+    Получатели -> Получатели: Отобразить новое сообщение
+end alt
+
+@enduml
