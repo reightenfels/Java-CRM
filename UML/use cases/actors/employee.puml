@@ -16,30 +16,39 @@ rectangle "Модуль сообщений" {
     usecase "В чат с сотрудником" as SendMessageToEmpl
     usecase "В чат задачи" as SendMessageToTask
     usecase "Прикрепить вложение \n к сообщению" as AddAttachmentToMessage
+
+    SendMessageToEmpl --> SendMessage
+    SendMessageToTask --> SendMessage
+
+    AddAttachmentToMessage ..> SendMessage <<extend>>
 }
 
 Сотрудник --> SendMessage
-
-SendMessageToEmpl --> SendMessage
-SendMessageToTask --> SendMessage
-
-AddAttachmentToMessage ..> SendMessage <<extend>>
 
 rectangle "Модуль диалогов" {
     usecase "Открыть диалог" as OpenDialog
     usecase "С сотрудником" as OpenEmployeeDialog
     usecase "По задаче" as OpenTaskDialog
 
+    usecase "Открыть список \n диалогов" as OpenDialogsList
+    usecase "По задачам" as OpenTasksDialogsList
+    usecase "С сотрудникаи" as OpenEmployeesDialogsList
+
     usecase "Удалить диалог" as DeleteDialog
     usecase "С сотрудинком" as DeleteEmployeeDialog
+
+    OpenEmployeeDialog --> OpenDialog
+    OpenTaskDialog --> OpenDialog
+
+    DeleteEmployeeDialog --> DeleteDialog
+
+    OpenTasksDialogsList --> OpenDialogsList
+    OpenEmployeesDialogsList --> OpenDialogsList
 }
 
 Сотрудник --> OpenDialog
 Сотрудник --> DeleteDialog
+Сотрудник --> OpenDialogsList
 
-OpenEmployeeDialog --> OpenDialog
-OpenTaskDialog --> OpenDialog
-
-DeleteEmployeeDialog --> DeleteDialog
 
 @enduml

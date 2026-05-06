@@ -1,0 +1,14 @@
+@startuml Открытие списка диалогов с сотрудниками
+
+actor Сотрудник
+participant "Use Case" as OpenEmployeeDialogsListUseCase
+database "Таблица \n диалогов" as DialogsTable
+
+Сотрудник -> OpenEmployeeDialogsListUseCase: Открыть диалоги с сотрудниками
+OpenEmployeeDialogsListUseCase -> DialogsTable: Получить диалоги, \n в которых участвует сотрудник
+DialogsTable -> OpenEmployeeDialogsListUseCase: Список диалогов
+OpenEmployeeDialogsListUseCase -> Сотрудник: Список диалогов
+
+Сотрудник -> Сотрудник: Отобразить полученные диалоги
+
+@enduml

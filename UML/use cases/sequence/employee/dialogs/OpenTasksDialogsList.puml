@@ -1,0 +1,14 @@
+@startuml Открытие списка диалогов по задачам
+
+actor Сотрудник
+participant "Use Case" as OpenTasksDialogsUseCase
+database "Таблица \n диалогов" as DialogsTable
+
+Сотрудник -> OpenTasksDialogsUseCase: Открыть список диалогов
+OpenTasksDialogsUseCase -> DialogsTable: Получить диалоги всех задач, \n к которым прикреплен сотрудник
+DialogsTable -> OpenTasksDialogsUseCase: Список диалогов
+OpenTasksDialogsUseCase -> Сотрудник: Список диалогов
+
+Сотрудник -> Сотрудник: Отобразить полученные диалоги
+
+@enduml

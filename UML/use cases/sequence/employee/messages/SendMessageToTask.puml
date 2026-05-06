@@ -8,7 +8,7 @@ queue "Очередь" as Queue
 Отправитель -> SendUsecase: Отправить сообщение
 SendUsecase -> MessagesTable: Вставить в БД
 MessagesTable -> SendUsecase: ID нового сообщения
-SendUsecase -> Queue: Добавить событие отправки \n сообщение в диалог задачи
+SendUsecase -> Queue: Добавить событие отправки \n сообщения в диалог задачи
 SendUsecase -> Отправитель: Результат отправки
 
 alt Успех отправки
