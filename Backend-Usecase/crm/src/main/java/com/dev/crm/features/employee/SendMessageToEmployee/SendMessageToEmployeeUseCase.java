@@ -2,12 +2,15 @@ package com.dev.crm.features.employee.SendMessageToEmployee;
 
 import java.time.LocalDateTime;
 
+import org.springframework.stereotype.Service;
+
 import com.dev.crm.features.employee.SendMessageToEmployee.contracts.SendMessageToEmployeeContract;
 import com.dev.crm.features.employee.SendMessageToEmployee.dto.SendMessageToEmployeeRequest;
 import com.dev.crm.features.employee.SendMessageToEmployee.dto.SendMessageToEmployeeResponse;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class SendMessageToEmployeeUseCase {
     private final SendMessageToEmployeeContract sendMessageService;
 

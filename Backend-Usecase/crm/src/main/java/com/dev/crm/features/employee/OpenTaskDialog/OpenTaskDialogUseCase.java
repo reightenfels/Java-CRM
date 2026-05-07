@@ -2,14 +2,17 @@ package com.dev.crm.features.employee.OpenTaskDialog;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.dev.crm.features.employee.OpenTaskDialog.dto.OpenTaskDialogResponse;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dev.crm.features.employee.OpenTaskDialog.contracts.OpenTaskDialogContract;
 
 import com.dev.crm.entities.TaskDialogMessage;
 
+@Service
 public class OpenTaskDialogUseCase {
     private final OpenTaskDialogContract openTaskDialogService;
 

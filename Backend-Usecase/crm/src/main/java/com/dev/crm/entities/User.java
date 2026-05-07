@@ -55,7 +55,10 @@ public class User implements UserDetails {
     @Column(name="phone", nullable=false, length=45)
     private String phone;
 
-    @ManyToMany
+    @Column(name="email", nullable=false, length=255)
+    private String email;
+
+    @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
         name="users_tasks_map",
         joinColumns=@JoinColumn(name="user_id", nullable=false),
@@ -63,7 +66,7 @@ public class User implements UserDetails {
     )
     private Set<Task> tasks = new HashSet<>();
 
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy="user", fetch=FetchType.LAZY)
     private List<Token> tokens;
 
     @Override

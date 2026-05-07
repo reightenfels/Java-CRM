@@ -2,12 +2,15 @@ package com.dev.crm.features.employee.OpenEmployeeDialogsList;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.dev.crm.entities.PersonalEmployeeDialog;
 import com.dev.crm.features.employee.OpenEmployeeDialogsList.contracts.OpenEmployeeDialogsListContract;
 import com.dev.crm.features.employee.OpenEmployeeDialogsList.dto.OpenEmployeeDialogsListResponse;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class OpenEmployeeDialogsListUseCase {
     private final OpenEmployeeDialogsListContract employeeDialogsService;
 

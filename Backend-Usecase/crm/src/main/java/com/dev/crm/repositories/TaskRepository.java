@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.dev.crm.entities.Task;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
     @Modifying
@@ -27,4 +28,22 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Transactional
     @Query(value = "UPDATE task SET is_editing = 0 WHERE id = ?1")
     public int makeEditingOff(Long taskId);
+
+    @Modifying
+    @Transactional
+    @Query(value="UPDATE task SET client = :clientId, version = version + 1 WHERE id = :taskId AND version = :version", nativeQuery=true)
+    public Long updateClientId(
+        @Param("taskId") Long taskId, 
+        @Param("clientId") Long clientId,
+        @Param("version") int version
+    );
+
+    @Modifying
+    @Transactional
+    @Query(value="UPDATE task SET status = :statusId, version = version + 1 WHERE id = :taskId AND version = :version", nativeQuery=true)
+    public Long updateStatusId(
+        @Param("taskId") Long taskId, 
+        @Param("statusId") Long statusId,
+        @Param("version") int version
+    );
 }

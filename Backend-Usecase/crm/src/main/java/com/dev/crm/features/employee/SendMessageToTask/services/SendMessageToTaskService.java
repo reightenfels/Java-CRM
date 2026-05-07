@@ -9,6 +9,7 @@ import com.dev.crm.entities.TaskDialogMessage;
 import com.dev.crm.entities.User;
 import com.dev.crm.features.employee.SendMessageToTask.contracts.SendMessageToTaskContract;
 import com.dev.crm.repositories.TaskDialogMessagesRepository;
+import com.dev.crm.resterrorconfig.exceptions.SaveEntityException;
 
 @Service
 public class SendMessageToTaskService implements SendMessageToTaskContract {
@@ -37,7 +38,12 @@ public class SendMessageToTaskService implements SendMessageToTaskContract {
         message.setDialog(dialog);
         message.setCreatedAt(createdAt);
 
-        messagesRepository.save(message);
+        try {
+            messagesRepository.save(message);
+        }
+        catch (Exception e) {
+            throw new SaveEntityException("Ошибка при создании сообщения в диалоге по задаче: " + e.getMessage());
+        }        
 
         return message.getId();
     }

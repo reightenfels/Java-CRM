@@ -11,6 +11,7 @@ import com.dev.crm.entities.User;
 import com.dev.crm.features.employee.SendMessageToEmployee.contracts.SendMessageToEmployeeContract;
 import com.dev.crm.repositories.EmployeeDialogMessagesRepository;
 import com.dev.crm.repositories.EmployeeDialogRepository;
+import com.dev.crm.resterrorconfig.exceptions.SaveEntityException;
 
 @Service
 public class SendMessageToEmployeeService implements SendMessageToEmployeeContract {
@@ -48,7 +49,12 @@ public class SendMessageToEmployeeService implements SendMessageToEmployeeContra
             dialog.setAvatar(avatar);
         }
         
-        dialogRepository.save(dialog);
+        try {
+            dialogRepository.save(dialog);
+        }
+        catch (Exception e) {
+            throw new SaveEntityException("Ошибка при создании диалога с сотрудником: " + e.getMessage());
+        }
 
         return dialog.getId();
     }
@@ -79,7 +85,13 @@ public class SendMessageToEmployeeService implements SendMessageToEmployeeContra
         message.setDialog(dialog);
         message.setCreatedAt(createdAt);
 
-        messagesRepository.save(message);
+        try {
+            messagesRepository.save(message);
+        }
+        catch (Exception e) {
+            throw new SaveEntityException("Ошибка при создании сообщения в диалоге с сотрудником: " + e.getMessage());
+        }
+        
 
         return message.getId();
     }

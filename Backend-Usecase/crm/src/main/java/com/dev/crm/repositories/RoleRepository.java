@@ -18,4 +18,6 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
             LIMIT 1
             """, nativeQuery=true)
     public Optional<Role> findByMinLevel();
+
+    public Optional<Role> findBySystemName(String systemName);
 }

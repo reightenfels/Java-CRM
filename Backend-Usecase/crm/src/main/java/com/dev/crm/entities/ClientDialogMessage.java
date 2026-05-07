@@ -17,10 +17,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name="client_dialog_message")
 @Getter
 @Setter
@@ -34,7 +36,7 @@ public class ClientDialogMessage {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="sender_id", nullable=false)
-    private User senderId;
+    private User sender;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="dialog_id", nullable=false)

@@ -2,12 +2,15 @@ package com.dev.crm.features.employee.SendMessageToTask;
 
 import java.time.LocalDateTime;
 
+import org.springframework.stereotype.Service;
+
 import com.dev.crm.features.employee.SendMessageToTask.contracts.SendMessageToTaskContract;
 import com.dev.crm.features.employee.SendMessageToTask.dto.SendMessageToTaskRequest;
 import com.dev.crm.features.employee.SendMessageToTask.dto.SendMessageToTaskResponse;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class SendMessageToTaskUseCase {
     private final SendMessageToTaskContract sendMessageService;
 

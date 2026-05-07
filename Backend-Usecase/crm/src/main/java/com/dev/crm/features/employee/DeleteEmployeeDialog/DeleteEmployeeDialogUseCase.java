@@ -1,11 +1,14 @@
 package com.dev.crm.features.employee.DeleteEmployeeDialog;
 
+import org.springframework.stereotype.Service;
+
 import com.dev.crm.features.employee.DeleteEmployeeDialog.contracts.DeleteEmployeeContract;
 import com.dev.crm.features.employee.DeleteEmployeeDialog.dto.DeleteEmployeeDialogRequest;
 import com.dev.crm.features.employee.DeleteEmployeeDialog.dto.DeleteEmployeeDialogResponse;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class DeleteEmployeeDialogUseCase {
     private final DeleteEmployeeContract deleteEmployeeService;
 

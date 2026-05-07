@@ -2,12 +2,15 @@ package com.dev.crm.features.employee.OpenTasksDialogsList;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.dev.crm.entities.TaskDialog;
 import com.dev.crm.features.employee.OpenTasksDialogsList.contracts.OpenTasksDialogsListContract;
 import com.dev.crm.features.employee.OpenTasksDialogsList.dto.OpenTasksDialogsListResponse;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class OpenTasksDialogsListUseCase {
     private final OpenTasksDialogsListContract openTasksDialogsListService;
 

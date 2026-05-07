@@ -17,10 +17,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name="task")
 @Getter
 @Setter
@@ -47,13 +49,13 @@ public class Task {
     private User responsible;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="client", nullable=false)
-    private Client client;
+    @JoinColumn(name="client", nullable=true)
+    private User client;
 
     @Column(name="is_editing", nullable=false, columnDefinition="TINYINT(1)")
     private Boolean isEditing;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
         name="tasks_attachments",
         joinColumns=@JoinColumn(name="task_id", nullable=false),
@@ -61,7 +63,7 @@ public class Task {
     )
     private Set<Attachment> attachments = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
         name="users_tasks_map",
         joinColumns=@JoinColumn(name="task_id", nullable=false),

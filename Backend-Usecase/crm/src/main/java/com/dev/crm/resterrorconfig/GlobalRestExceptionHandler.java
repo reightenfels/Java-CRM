@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.dev.crm.resterrorconfig.errorresponses.ErrorResponse;
 import com.dev.crm.resterrorconfig.errorresponses.NotValidArgsErrorResponse;
+import com.dev.crm.resterrorconfig.exceptions.ClientCreditionalsAlreadyTaken;
 import com.dev.crm.resterrorconfig.exceptions.LoginIsAlreadyTakenException;
+import com.dev.crm.resterrorconfig.exceptions.OldEntityVersionException;
 import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
+import com.dev.crm.resterrorconfig.exceptions.SaveEntityException;
 
 @RestControllerAdvice
 public class GlobalRestExceptionHandler {
@@ -84,8 +87,41 @@ public class GlobalRestExceptionHandler {
      * @return
      */
     @ExceptionHandler(LoginIsAlreadyTakenException.class)
-    public ResponseEntity<ErrorResponse> handleLoginIsAlreadyTakenResponse(LoginIsAlreadyTakenException exception) {
-        ErrorResponse errorResponse = new ErrorResponse("Логин уже занят");
+    public ResponseEntity<ErrorResponse> handleLoginIsAlreadyTakenError(LoginIsAlreadyTakenException exception) {
+        ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+
+    /**
+     * Обрабатывает ситуацию когда пытаются создать клиента с уже занятыми данными
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(ClientCreditionalsAlreadyTaken.class)
+    public ResponseEntity<ErrorResponse> handleClientCreditionalsAlreadyTakenError(ClientCreditionalsAlreadyTaken exception) {
+        ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+
+    /**
+     * Обрабатывает ситуацию когда пытаются обновить сущность, у которой есть более поздняя версия
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(OldEntityVersionException.class)
+    public ResponseEntity<ErrorResponse> handleOldEntityVersionError(OldEntityVersionException exception) {
+        ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+
+    /**
+     * Обрабатывает ситуацию когда возникла ошибка сохранения сущности в БД
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(SaveEntityException.class)
+    public ResponseEntity<ErrorResponse> handleSaveEntityError(SaveEntityException exception) {
+        ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }
 }
