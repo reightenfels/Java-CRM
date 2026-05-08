@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.dev.crm.resterrorconfig.errorresponses.ErrorResponse;
 import com.dev.crm.resterrorconfig.errorresponses.NotValidArgsErrorResponse;
 import com.dev.crm.resterrorconfig.exceptions.ClientCreditionalsAlreadyTaken;
+import com.dev.crm.resterrorconfig.exceptions.DeleteEditingEntityException;
 import com.dev.crm.resterrorconfig.exceptions.LoginIsAlreadyTakenException;
 import com.dev.crm.resterrorconfig.exceptions.OldEntityVersionException;
 import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
@@ -121,6 +122,17 @@ public class GlobalRestExceptionHandler {
      */
     @ExceptionHandler(SaveEntityException.class)
     public ResponseEntity<ErrorResponse> handleSaveEntityError(SaveEntityException exception) {
+        ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+    }
+
+    /**
+     * Обрабатывает ситуацию когда пытаются удалить редактируемую сущность
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(DeleteEditingEntityException.class)
+    public ResponseEntity<ErrorResponse> handleSaveEntityError(DeleteEditingEntityException exception) {
         ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }

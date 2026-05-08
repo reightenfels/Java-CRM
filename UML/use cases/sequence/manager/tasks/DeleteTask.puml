@@ -5,6 +5,7 @@ participant "Use Case" as ChangeStatusUseCase
 database "Таблица \n задач" as TasksTable
 database "Таблица \n редакторов \n задач" as TaskEditorsTable
 participant "Open Task \n Use Case" as OpenTaskUseCase
+database "Таблица \n диалогов" as DialogsTable
 queue "Очередь" as Queue
 
 Менеджер -> ChangeStatusUseCase: ID задачи
@@ -29,8 +30,12 @@ else Редакторов нет
 
     else Удалена 1 строка
         TasksTable -> ChangeStatusUseCase: Удалена 1 строка
-        ChangeStatusUseCase -> Менеджер: Успех обновления
+        ChangeStatusUseCase -> DialogsTable: Удалить диалог \n по задаче
+
         ChangeStatusUseCase -> Queue: Добавить событие \n удаления задачи
+        ChangeStatusUseCase -> Queue: Добавить событие \n удаления диалога
+
+        ChangeStatusUseCase -> Менеджер: Успех обновления
 
         Менеджер -> Менеджер: Закрыть карточку \n удаленной задачи
 

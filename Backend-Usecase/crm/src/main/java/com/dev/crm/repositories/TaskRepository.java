@@ -6,10 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dev.crm.entities.Task;
-
-import org.springframework.transaction.annotation.Transactional;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
     @Modifying
@@ -45,5 +44,13 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
         @Param("taskId") Long taskId, 
         @Param("statusId") Long statusId,
         @Param("version") int version
+    );
+
+    @Modifying
+    @Transactional
+    @Query(value="DELETE FROM task WHERE id = :taskId AND version = :version", nativeQuery=true)
+    public Long deleteByIdWithVersion(
+        @Param("taskId") Long taskId, 
+        @Param("version") int  version
     );
 }
