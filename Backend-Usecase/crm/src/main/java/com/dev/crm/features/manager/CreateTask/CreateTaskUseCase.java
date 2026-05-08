@@ -6,13 +6,19 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dev.crm.features.manager.CreateTask.contracts.CreateTaskContract;
 import com.dev.crm.features.manager.CreateTask.dto.CreateTaskRequest;
 import com.dev.crm.features.manager.CreateTask.dto.CreateTaskResponse;
+import com.dev.crm.features.manager.CreateTask.services.CreateTaskNotificationService;
 
 @Service
 public class CreateTaskUseCase {
     private final CreateTaskContract createTaskService;
+    private final CreateTaskNotificationService notificationService;
 
-    public CreateTaskUseCase(CreateTaskContract createTaskService) {
+    public CreateTaskUseCase(
+        CreateTaskContract createTaskService,
+        CreateTaskNotificationService notificationService
+    ) {
         this.createTaskService = createTaskService;
+        this.notificationService = notificationService;
     }
 
     @Transactional
@@ -28,8 +34,7 @@ public class CreateTaskUseCase {
 
         Long newDialogId = createTaskService.createTaskDialog(newTaskId, null);
 
-        // TODO: Добавить событие создания задачи
-        // TODO: Добавить событие создания диалога
+        notificationService.send(newTaskId, newDialogId);
 
         return new CreateTaskResponse(
             newTaskId,

@@ -6,13 +6,19 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dev.crm.features.manager.CloseTask.contracts.CloseTaskContract;
 import com.dev.crm.features.manager.CloseTask.dto.CloseTaskRequest;
 import com.dev.crm.features.manager.CloseTask.dto.CloseTaskResponse;
+import com.dev.crm.features.manager.CloseTask.services.CloseTaskNotificationService;
 
 @Service
 public class CloseTaskUseCase {
     private final CloseTaskContract closeTaskService;
+    private final CloseTaskNotificationService notificationService;
 
-    public CloseTaskUseCase(CloseTaskContract closeTaskService) {
+    public CloseTaskUseCase(
+        CloseTaskContract closeTaskService,
+        CloseTaskNotificationService notificationService
+    ) {
         this.closeTaskService = closeTaskService;
+        this.notificationService = notificationService;
     }
 
     @Transactional
@@ -22,7 +28,7 @@ public class CloseTaskUseCase {
             request.getTaskId()
         );
 
-        // TODO: Добавить задачу в очередь
+        notificationService.send(request.getTaskId());
 
         return new CloseTaskResponse(
             request.getTaskId()

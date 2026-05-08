@@ -1,6 +1,7 @@
 package com.dev.crm.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +21,6 @@ public interface TaskDialogRepository extends JpaRepository<TaskDialog, Long> {
     public List<TaskDialog> findAllUseActiveDialogs(Long userId);
 
     public Long deleteByTaskId(Long taskId);
+
+    public Optional<TaskDialog> findByTaskId(Long taskId);
 }

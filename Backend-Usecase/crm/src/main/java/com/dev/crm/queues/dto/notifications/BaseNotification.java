@@ -15,7 +15,18 @@ import lombok.experimental.SuperBuilder;
 @JsonSubTypes({
     @JsonSubTypes.Type(value = DeleteEmployeeDialog.class, name = "DeleteEmployeeDialog"),
     @JsonSubTypes.Type(value = SendMessageToEmployee.class, name = "SendMessageToEmployee"),
-    @JsonSubTypes.Type(value = SendMessageToTask.class, name = "SendMessageToTask")
+    @JsonSubTypes.Type(value = SendMessageToTask.class, name = "SendMessageToTask"),
+    @JsonSubTypes.Type(value = AddClientToTask.class, name = "AddClientToTask"),
+    @JsonSubTypes.Type(value = ChangeTaskStatus.class, name = "ChangeTaskStatus"),
+    @JsonSubTypes.Type(value = CloseTask.class, name = "CloseTask"),
+    @JsonSubTypes.Type(value = CreateClient.class, name = "CreateClient"),
+    @JsonSubTypes.Type(value = CreateTask.class, name = "CreateTask"),
+    @JsonSubTypes.Type(value = CreateTaskDialog.class, name = "CreateTaskDialog"),
+    @JsonSubTypes.Type(value = DeleteClient.class, name = "DeleteClient"),
+    @JsonSubTypes.Type(value = DeleteTask.class, name = "DeleteTask"),
+    @JsonSubTypes.Type(value = DeleteTaskDialog.class, name = "DeleteTaskDialog"),
+    @JsonSubTypes.Type(value = OpenTask.class, name = "OpenTask"),
+    @JsonSubTypes.Type(value = SendMessageToClient.class, name = "SendMessageToClient"),
 })
 @Data
 @SuperBuilder

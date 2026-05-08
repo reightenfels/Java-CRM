@@ -6,15 +6,21 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dev.crm.features.manager.DeleteTask.contracts.DeleteTaskContract;
 import com.dev.crm.features.manager.DeleteTask.dto.DeleteTaskRequest;
 import com.dev.crm.features.manager.DeleteTask.dto.DeleteTaskResponse;
+import com.dev.crm.features.manager.DeleteTask.services.DeleteTaskNotificationService;
 import com.dev.crm.resterrorconfig.exceptions.DeleteEditingEntityException;
 import com.dev.crm.resterrorconfig.exceptions.OldEntityVersionException;
 
 @Service
 public class DeleteTaskUseCase {
     private final DeleteTaskContract deleteTaskService;
+    private final DeleteTaskNotificationService notificationService;
 
-    public DeleteTaskUseCase(DeleteTaskContract deleteTaskService) {
+    public DeleteTaskUseCase(
+        DeleteTaskContract deleteTaskService,
+        DeleteTaskNotificationService notificationService
+    ) {
         this.deleteTaskService = deleteTaskService;
+        this.notificationService = notificationService;
     }
 
     @Transactional
@@ -30,10 +36,9 @@ public class DeleteTaskUseCase {
         }
 
         deleteTaskService.deleteTaskDialogMessages(request.getTaskId());
-        deleteTaskService.deleteTaskDialog(request.getTaskId());
+        Long deletedDialogId = deleteTaskService.deleteTaskDialog(request.getTaskId());
 
-        // TODO: Добавить событие удаления задачи
-        // TODO: Добавить событие удаления диалога
+        notificationService.send(request.getTaskId(), deletedDialogId);
 
         return new DeleteTaskResponse(
             request.getTaskId()

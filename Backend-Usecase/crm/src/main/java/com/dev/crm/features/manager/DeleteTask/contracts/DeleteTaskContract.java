@@ -19,7 +19,7 @@ public interface DeleteTaskContract {
     /**
      * Удаляет диалог по задаче
      * @param Long taskId - ID задачи
-     * @return Кол-во удаленных строк
+     * @return ID удаленного диалога
      */
     public Long deleteTaskDialog(Long taskId);
 

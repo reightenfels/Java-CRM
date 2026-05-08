@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.dev.crm.entities.TaskDialog;
 import com.dev.crm.entities.TaskEditors;
 import com.dev.crm.features.manager.DeleteTask.contracts.DeleteTaskContract;
 import com.dev.crm.repositories.TaskDialogMessagesRepository;
 import com.dev.crm.repositories.TaskDialogRepository;
 import com.dev.crm.repositories.TaskEditorsRepository;
 import com.dev.crm.repositories.TaskRepository;
+import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
 
 @Service
 public class DeleteTaskService implements DeleteTaskContract {
@@ -44,7 +46,15 @@ public class DeleteTaskService implements DeleteTaskContract {
 
     @Override
     public Long deleteTaskDialog(Long taskId) {
-        return dialogRepository.deleteByTaskId(taskId);
+        TaskDialog dialog = dialogRepository.findByTaskId(taskId).orElseThrow(
+            () -> new ResourceNotFoundException("Не найден диалог по задаче для задачи с ID: " + taskId)
+        );
+
+        Long deletedDialogId = dialog.getId();
+
+        dialogRepository.delete(dialog);
+
+        return deletedDialogId;
     }
 
     @Override

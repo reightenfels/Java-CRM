@@ -1,6 +1,7 @@
 package com.dev.crm.features.manager.OpenTaskCard.services;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dev.crm.entities.Task;
 import com.dev.crm.entities.TaskEditors;
@@ -36,6 +37,7 @@ public class OpenTaskService implements OpenTaskContract {
     }
 
     @Override
+    @Transactional
     public Long createTaskEditor(Long taskId, Long userId) {
         Task task = taskRepository.findById(taskId).orElseThrow(
             () -> new ResourceNotFoundException("Не найдена задача с ID: " + taskId)

@@ -15,6 +15,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -55,6 +56,9 @@ public class Task {
     @Column(name="is_editing", nullable=false, columnDefinition="TINYINT(1)")
     private Boolean isEditing;
 
+    @Version
+    private int version;
+
     @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
         name="tasks_attachments",
@@ -69,5 +73,5 @@ public class Task {
         joinColumns=@JoinColumn(name="task_id", nullable=false),
         inverseJoinColumns=@JoinColumn(name="user_id", nullable=false)
     )
-    private Set<User> assignees;
+    private Set<User> performers;
 }
