@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="loginRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #3D3030;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.LoginController">
+   <children>
+      <VBox alignment="CENTER" maxWidth="310.0" prefHeight="200.0" prefWidth="310.0" StackPane.alignment="CENTER">
+         <children>
+            <Label style="-fx-text-fill: #fff;" text="Авторизация">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="55.0" />
+               </VBox.margin>
+            </Label>
+            <VBox prefWidth="100.0" spacing="26.0">
+               <children>
+                  <TextField fx:id="login" promptText="Логин" styleClass="formTextInput" />
+                  <PasswordField fx:id="password" promptText="Пароль" styleClass="formTextInput" />
+                  <Button fx:id="loginBtn" minHeight="50.0" minWidth="310.0" mnemonicParsing="false" onAction="#loginClick" style="-fx-background-color: #fff; -fx-background-radius: 0;" styleClass="btn-registration" text="Авторизоваться">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="60.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

@@ -6,7 +6,8 @@ public record RegisterUserCommand (
     String firstName,
     String lastName,
     String phone,
-    Long roleId
+    Long roleId,
+    String email
 ) {
     
 }

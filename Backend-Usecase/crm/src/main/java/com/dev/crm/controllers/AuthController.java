@@ -15,6 +15,7 @@ import com.dev.crm.dto.request.auth.RegistrationRequest;
 import com.dev.crm.dto.response.ApiResponse;
 import com.dev.crm.dto.response.auth.AuthResponse;
 import com.dev.crm.entities.Role;
+import com.dev.crm.resterrorconfig.exceptions.LoginIsAlreadyTakenException;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -40,7 +41,7 @@ public class AuthController {
     @PostMapping("/registration")
     public ApiResponse<AuthResponse> registration(@RequestBody @Valid RegistrationRequest request) {
         if(userService.existsByLogin(request.getLogin())) {
-            return ApiResponse.error("Логин уже занят");
+            throw new LoginIsAlreadyTakenException("Логин уже занят");
         }
 
         Role role = roleService.findByMinLevel();
@@ -51,7 +52,8 @@ public class AuthController {
             request.getFirstName(),
             request.getLastName(),
             request.getPhone(),
-            role.getId()
+            role.getId(),
+            request.getEmail()
         );
 
         authService.register(registrationCommand);

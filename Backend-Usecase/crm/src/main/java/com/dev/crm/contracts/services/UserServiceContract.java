@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.dev.crm.dto.command.user.UpdateUserCommand;
 import com.dev.crm.entities.User;
 
 public interface UserServiceContract {
@@ -29,14 +28,7 @@ public interface UserServiceContract {
      * @return - список пользователей
      */
     public List<User> search(String search);
-
-    /**
-     * Обновляет данные пользователя в БД
-     * @param updateUserCommand - record с данными пользователя
-     * @return - ID обновления
-     */
-    public Long update(UpdateUserCommand updateUserCommand);
-
+    
     /**
      * Удаляет пользователя
      * @param userId - ID модели пользователя

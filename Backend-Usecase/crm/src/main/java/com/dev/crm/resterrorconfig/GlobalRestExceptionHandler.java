@@ -6,10 +6,12 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.support.MethodArgumentNotValidException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -21,8 +23,10 @@ import com.dev.crm.resterrorconfig.exceptions.LoginIsAlreadyTakenException;
 import com.dev.crm.resterrorconfig.exceptions.OldEntityVersionException;
 import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
 import com.dev.crm.resterrorconfig.exceptions.SaveEntityException;
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
 @RestControllerAdvice
+@Component
 public class GlobalRestExceptionHandler {
     /**
      * Обрабатывает ситуацию когда сущность не найдена
@@ -50,7 +54,7 @@ public class GlobalRestExceptionHandler {
                 String errorMessage = error.getDefaultMessage();
                 errors.put(fieldName, errorMessage);
             });
-        });    
+        });
 
         NotValidArgsErrorResponse errorResponse = new NotValidArgsErrorResponse(
             "Ошибка в содержимом параметров",
@@ -61,13 +65,13 @@ public class GlobalRestExceptionHandler {
     }
 
     /**
-     * Обрабатывает ситуацию когда пользователь не аутентифицировать
+     * Обрабатывает ситуацию когда пользователь не аутентифицирован
      * @param exception
      * @return
      */
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<ErrorResponse> handleAuthenticationError(AuthenticationException exception) {
-        ErrorResponse errorResponse = new ErrorResponse("Необходима аутентификация");
+        ErrorResponse errorResponse = new ErrorResponse("Ошибка аутентификации");
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
     }
 
@@ -135,5 +139,21 @@ public class GlobalRestExceptionHandler {
     public ResponseEntity<ErrorResponse> handleSaveEntityError(DeleteEditingEntityException exception) {
         ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+    }
+
+    /**
+     * Обрабатывает ситуацию когда тело запроса неудалось распознать
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> handleHttpMessageNotReadable(HttpMessageNotReadableException exception) {
+        String message = "Некорректный формат запроса";
+        
+        if (exception.getCause() instanceof MismatchedInputException) {
+            message = "Тело запроса не может быть пустым";
+        }
+        
+        return ResponseEntity.badRequest().body(new ErrorResponse(message));
     }
 }

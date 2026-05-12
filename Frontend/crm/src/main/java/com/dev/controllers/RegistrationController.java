@@ -1,10 +1,32 @@
 package com.dev.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import com.dev.dto.requests.RegistrationRequest;
+import com.dev.dto.responses.ApiResponse;
+import com.dev.dto.responses.errors.RegistrationErrorResponse;
+import com.dev.dto.responses.success.RegistrationResponse;
+import com.dev.services.Http;
+import com.dev.services.JsonEncoder;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+
+import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 public class RegistrationController {
+    @FXML
+    private StackPane root;
+
     @FXML
     private TextField login;
 
@@ -20,7 +42,112 @@ public class RegistrationController {
     @FXML
     private TextField phone;
 
+    @FXML
+    private TextField email;
+
+    @FXML
+    private VBox errorPanel;
+
+    @FXML
+    private VBox errorsList;
+
+    private TranslateTransition slideIn;
+    private TranslateTransition slideOut;
+
+    @FXML
+    public void initialize() {
+        double panelWidth = root.getPrefWidth();
+
+        errorPanel.setTranslateX(panelWidth);
+
+        // Анимация появления (справа → влево)
+        slideIn = new TranslateTransition(Duration.millis(450), errorPanel);
+        slideIn.setFromX(panelWidth);
+        slideIn.setToX(0);
+        slideIn.setInterpolator(javafx.animation.Interpolator.EASE_OUT);
+
+        // Анимация скрытия (слева → вправо)
+        slideOut = new TranslateTransition(Duration.millis(450), errorPanel);
+        slideOut.setFromX(0);
+        slideOut.setToX(panelWidth);
+        slideOut.setInterpolator(javafx.animation.Interpolator.EASE_IN);
+    }
+
+    private RegistrationRequest getRegisterRequest() {
+        return new RegistrationRequest(
+            login.getText(),
+            password.getText(),
+            firstName.getText(),
+            lastName.getText(),
+            phone.getText(),
+            email.getText()
+        );
+    }
+
+    /**
+     * Отрисовывает ошибки регистрации
+     * @param errors - Ошибки регистрации
+     */
+    private void displayRegisterErrors(Map<String, String> errors) {
+        Platform.runLater(
+            () -> {
+                errorsList.getChildren().clear();
+
+                List<Label> errorsLabelsList = new ArrayList<>();
+
+                for (String error : errors.values()) {
+                    Label errorLabel = new Label(error);
+                    errorLabel.getStyleClass().add("errorRegisterFormLable");
+                    errorsLabelsList.add(errorLabel);
+                }
+                errorsList.getChildren().setAll(errorsLabelsList);
+
+                slideOut.stop();
+                errorPanel.setTranslateX(errorPanel.getPrefWidth());
+                slideIn.play();
+            }
+        );
+    }
+
+    /**
+     * Обрабатывает нажатие кнопки регистрации
+     */
     public void registrationClick() {
-        System.out.println("clicked");
+        RegistrationRequest registrationRequest = getRegisterRequest();
+
+        try {
+            Http
+            .request("/api/auth/registration")
+            .post(JsonEncoder.encode(registrationRequest))
+            .onResponse(response -> {
+                String body = response.body();
+
+                if (response.statusCode() == 200) {
+                    TypeReference<ApiResponse<RegistrationResponse>> typeRef = new TypeReference<>() {};
+                    try {
+                        ApiResponse<RegistrationResponse> registerResponse = JsonEncoder.decodeApiResponse(body, typeRef);
+                        System.out.println(registerResponse.data.accessToken);
+                        System.out.println(registerResponse.data.refreshToken);
+                    } catch (JsonProcessingException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    
+                }
+                else {
+                    try {
+                        RegistrationErrorResponse errorResponse = JsonEncoder.decode(body, RegistrationErrorResponse.class);
+
+                        displayRegisterErrors(errorResponse.errors);
+
+                    } catch (JsonProcessingException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+            })
+            .send();
+        } catch (JsonProcessingException e) {
+            System.out.println(e.getMessage());
+        }
+        
     }
 }

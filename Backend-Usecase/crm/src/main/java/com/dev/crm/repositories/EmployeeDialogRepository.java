@@ -9,8 +9,6 @@ import org.springframework.data.repository.query.Param;
 import com.dev.crm.entities.PersonalEmployeeDialog;
 
 public interface EmployeeDialogRepository extends JpaRepository<PersonalEmployeeDialog, Long> {
-    public List<PersonalEmployeeDialog> findByCompanionLogin(String login);
-
     @Query(value = """
             SELECT
                 *

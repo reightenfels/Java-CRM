@@ -1,0 +1,12 @@
+.formTextInput {
+    -fx-border-color: transparent transparent #fff transparent;
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: #fff;
+    -fx-text-fill: #fff;
+    -fx-font-size: 16;
+}
+
+.errorRegisterFormLable {
+    -fx-text-fill: #fff;
+    -fx-font-size: 16;
+}

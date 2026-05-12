@@ -56,6 +56,7 @@ public class AuthService implements AuthServiceContract {
         user.setFirstName(command.firstName());
         user.setLastName(command.lastName());
         user.setPhone(command.phone());
+        user.setEmail(command.email());
         
         Role role = roleRepository.findById(command.roleId()).orElseThrow(
             () -> {

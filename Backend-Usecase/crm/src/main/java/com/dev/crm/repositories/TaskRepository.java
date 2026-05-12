@@ -13,19 +13,19 @@ import com.dev.crm.entities.Task;
 public interface TaskRepository extends JpaRepository<Task, Long> {
     @Modifying
     @Transactional
-    @Query(value = "UDPATE task SET status = ?1 WHERE id = ?2")
+    @Query(value = "UPDATE task SET status = ?1 WHERE id = ?2", nativeQuery=true)
     public int updateStatus(Long statusId, Long taskId);
 
     public List<Task> findByStatusId(Long statusId);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE task SET is_editing = 1 WHERE id = ?1")
+    @Query(value = "UPDATE task SET is_editing = 1 WHERE id = ?1", nativeQuery=true)
     public int makeEditingOn(Long taskId);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE task SET is_editing = 0 WHERE id = ?1")
+    @Query(value = "UPDATE task SET is_editing = 0 WHERE id = ?1", nativeQuery=true)
     public int makeEditingOff(Long taskId);
 
     @Modifying

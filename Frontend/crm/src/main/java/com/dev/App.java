@@ -18,18 +18,17 @@ public class App extends Application {
         stage.setWidth(1000);
         stage.setHeight(720);
         
-        Parent root = FXMLLoader.load(
-            getClass().getResource("/registration.fxml") // или App.class.getResource(...)
+        Parent loginRoot = FXMLLoader.load(
+            getClass().getResource("/login.fxml")
         );
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(loginRoot);
 
         scene.getStylesheets().add(
             getClass().getResource("/style.css").toExternalForm()
         );
 
         stage.setScene(scene);
-
         stage.show();
     }
 

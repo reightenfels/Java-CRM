@@ -12,7 +12,7 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
             SELECT
                 *
             FROM role
-            ORDERBY
+            ORDER BY
                 level ASC,
                 id ASC
             LIMIT 1

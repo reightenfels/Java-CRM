@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #3D3030;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.RegistrationController">
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #3D3030;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.RegistrationController">
    <children>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="310.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #3D3030;">
          <children>
@@ -22,43 +22,52 @@
                   <Insets bottom="55.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="login" promptText="Логин" style="-fx-border-color: transparent transparent #fff transparent; -fx-background-color: transparent; -fx-prompt-text-fill: #fff; -fx-text-fill: #fff;">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </TextField>
-            <PasswordField fx:id="password" promptText="Пароль" style="-fx-border-color: transparent transparent #fff transparent; -fx-background-color: transparent; -fx-prompt-text-fill: #fff; -fx-text-fill: #fff;">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="26.0" />
-               </VBox.margin>
-            </PasswordField>
-            <TextField fx:id="firstName" promptText="Имя" style="-fx-border-color: transparent transparent #fff transparent; -fx-background-color: transparent; -fx-prompt-text-fill: #fff; -fx-text-fill: #fff;">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="26.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="lastName" promptText="Фамилия" style="-fx-border-color: transparent transparent #fff transparent; -fx-background-color: transparent; -fx-prompt-text-fill: #fff; -fx-text-fill: #fff;">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="26.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="phone" promptText="Телефон" style="-fx-border-color: transparent transparent #fff transparent; -fx-background-color: transparent; -fx-prompt-text-fill: #fff; -fx-text-fill: #fff;">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="26.0" />
-               </VBox.margin>
-            </TextField>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="26.0">
+               <children>
+                  <TextField fx:id="login" promptText="Логин" style="-fx-border-color: transparent transparent #fff transparent; -fx-background-color: transparent; -fx-prompt-text-fill: #fff; -fx-text-fill: #fff;" styleClass="formTextInput">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="password" promptText="Пароль" style="-fx-border-color: transparent transparent #fff transparent; -fx-background-color: transparent; -fx-prompt-text-fill: #fff; -fx-text-fill: #fff;" styleClass="formTextInput">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </PasswordField>
+                  <TextField fx:id="firstName" promptText="Имя" style="-fx-border-color: transparent transparent #fff transparent; -fx-background-color: transparent; -fx-prompt-text-fill: #fff; -fx-text-fill: #fff;" styleClass="formTextInput">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="lastName" promptText="Фамилия" style="-fx-border-color: transparent transparent #fff transparent; -fx-background-color: transparent; -fx-prompt-text-fill: #fff; -fx-text-fill: #fff;" styleClass="formTextInput">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="phone" promptText="Телефон" style="-fx-border-color: transparent transparent #fff transparent; -fx-background-color: transparent; -fx-prompt-text-fill: #fff; -fx-text-fill: #fff;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="email" promptText="Email" style="-fx-border-color: transparent transparent #fff transparent; -fx-background-color: transparent; -fx-prompt-text-fill: #fff; -fx-text-fill: #fff;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
             <Button fx:id="registerBtn" minHeight="50.0" minWidth="310.0" mnemonicParsing="false" onAction="#registrationClick" style="-fx-background-color: #fff; -fx-background-radius: 0;" styleClass="btn-registration" text="Зарегистрироваться">
                <font>
                   <Font size="16.0" />
@@ -71,6 +80,43 @@
                </cursor>
             </Button>
          </children>
+      </VBox>
+      <VBox fx:id="errorPanel" maxHeight="300.0" maxWidth="300.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eb4034;" StackPane.alignment="TOP_RIGHT">
+         <children>
+            <Label style="-fx-text-fill: #fff;" text="Ошибки регистрации:">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <VBox fx:id="errorsList" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Label style="-fx-text-fill: #fff;" styleClass="errorRegisterFormLable" text="Фамилия от 2 до 255 символов">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label style="-fx-text-fill: #fff;" text="Фамилия от 2 до 255 символов">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label style="-fx-text-fill: #fff;" text="Фамилия от 2 до 255 символов">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
       </VBox>
    </children>
 </StackPane>

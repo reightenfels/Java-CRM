@@ -28,4 +28,7 @@ public class RegistrationRequest {
 
     @NotBlank(message = "Телефон обязателен")
     private String phone;
+
+    @NotBlank(message = "Email обязателен")
+    private String email;
 }

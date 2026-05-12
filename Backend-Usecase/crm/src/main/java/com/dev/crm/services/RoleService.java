@@ -1,10 +1,13 @@
 package com.dev.crm.services;
 
+import org.springframework.stereotype.Service;
+
 import com.dev.crm.contracts.services.RoleServiceContract;
 import com.dev.crm.entities.Role;
 import com.dev.crm.repositories.RoleRepository;
 import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
 
+@Service
 public class RoleService implements RoleServiceContract {
     private final RoleRepository repository;
 
