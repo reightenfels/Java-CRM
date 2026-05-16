@@ -4,19 +4,22 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #3D3030;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #3D3030;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.MainController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
          <menus>
             <Menu mnemonicParsing="false" text="Чаты">
               <items>
-                <MenuItem mnemonicParsing="false" text="С сотрудниками" />
-                  <MenuItem mnemonicParsing="false" text="С клиентами" />
+                <MenuItem mnemonicParsing="false" onAction="#openEmployeeChatsPage" text="С сотрудниками" />
+                  <MenuItem mnemonicParsing="false" onAction="#openClientChatsPage" text="С клиентами" />
               </items>
             </Menu>
          </menus>
       </MenuBar>
    </top>
+   <center>
+      <StackPane fx:id="mainContent" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

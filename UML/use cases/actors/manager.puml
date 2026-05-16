@@ -47,12 +47,15 @@ rectangle "Модуль клиентов" {
     usecase "Создать клиента" as CreateClient
     usecase "Удалить клиента" as DeleteClient
     usecase "Открыть карточку клиента" as OpenClient
+    usecase "Получить список клиентов" as GetClientsList
 
     OpenClient -[hidden]- CreateClient
+    GetClientsList -[hidden]- DeleteClient
 }
 
 Менеджер --> CreateClient
 Менеджер --> DeleteClient
 Менеджер --> OpenClient
+Менеджер --> GetClientsList
 
 @enduml

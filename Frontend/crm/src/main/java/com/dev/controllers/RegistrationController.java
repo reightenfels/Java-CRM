@@ -1,21 +1,24 @@
 package com.dev.controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.dev.dto.requests.RegistrationRequest;
-import com.dev.dto.responses.ApiResponse;
 import com.dev.dto.responses.errors.RegistrationErrorResponse;
 import com.dev.dto.responses.success.RegistrationResponse;
 import com.dev.services.Http;
 import com.dev.services.JsonEncoder;
+import com.dev.services.JwtTokens;
+import com.dev.services.ResponseUnpacker;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -73,6 +76,9 @@ public class RegistrationController {
         slideOut.setInterpolator(javafx.animation.Interpolator.EASE_IN);
     }
 
+    /**
+     * Создает объект запроса на регистрацию
+     */
     private RegistrationRequest getRegisterRequest() {
         return new RegistrationRequest(
             login.getText(),
@@ -110,6 +116,15 @@ public class RegistrationController {
     }
 
     /**
+     * Отображает главный экран приложения
+     * @throws IOException
+     */
+    private void setMainScreen() throws IOException {
+        Scene scene = root.getScene();
+        scene.setRoot(FXMLLoader.load(getClass().getResource("/main.fxml")));
+    }
+
+    /**
      * Обрабатывает нажатие кнопки регистрации
      */
     public void registrationClick() {
@@ -123,12 +138,15 @@ public class RegistrationController {
                 String body = response.body();
 
                 if (response.statusCode() == 200) {
-                    TypeReference<ApiResponse<RegistrationResponse>> typeRef = new TypeReference<>() {};
                     try {
-                        ApiResponse<RegistrationResponse> registerResponse = JsonEncoder.decodeApiResponse(body, typeRef);
-                        System.out.println(registerResponse.data.accessToken);
-                        System.out.println(registerResponse.data.refreshToken);
-                    } catch (JsonProcessingException e) {
+                        RegistrationResponse registerResponse = ResponseUnpacker.extract(body, RegistrationResponse.class);
+                        
+                        JwtTokens.accessToken = registerResponse.accessToken;
+                        JwtTokens.refreshToken = registerResponse.refreshToken;
+
+                        setMainScreen();
+                    } 
+                    catch (IOException e) {
                         System.out.println(e.getMessage());
                     }
                     

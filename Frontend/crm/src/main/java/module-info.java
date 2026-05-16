@@ -5,6 +5,7 @@ module com.dev {
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
     requires javafx.base;
+    requires com.fasterxml.jackson.core;
 
     opens com.dev.controllers to javafx.fxml;
     opens com.dev.dto.requests to com.fasterxml.jackson.databind;
