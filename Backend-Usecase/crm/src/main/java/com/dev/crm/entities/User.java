@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
@@ -48,7 +49,7 @@ public class User implements UserDetails {
     @Column(name="last_name", nullable=false, length=255)
     private String lastName;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="role", nullable=false)
     private Role role;
 
@@ -76,7 +77,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(role);
+        return List.of(new SimpleGrantedAuthority(role.getSystemName()));
     }
 
     @Override

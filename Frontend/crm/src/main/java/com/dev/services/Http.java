@@ -24,6 +24,12 @@ public class Http {
         return new Http(url);
     }
 
+    public Http auth(String accessToken) {
+        accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsImlhdCI6MTc3OTE3NDUxNCwiZXhwIjoxNzc5MjEwNTE0fQ.HYoAvDcRyidlnuViUtR20yfuUB9FwgahgWeB-VvpUnc";
+        requestBuilder.header("Authorization", "Bearer " + accessToken);
+        return this;
+    }
+
     public Http get() {
         requestBuilder.GET();
         return this;

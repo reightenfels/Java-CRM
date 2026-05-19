@@ -7,6 +7,7 @@ module com.dev {
     requires javafx.base;
     requires com.fasterxml.jackson.core;
 
+    opens com.dev.controllers.parts to javafx.fxml;
     opens com.dev.controllers to javafx.fxml;
     opens com.dev.dto.requests to com.fasterxml.jackson.databind;
     opens com.dev.dto.responses.errors to com.fasterxml.jackson.databind;

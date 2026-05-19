@@ -120,6 +120,7 @@ public class LoginController {
             .post(JsonEncoder.encode(request))
             .onResponse(response -> {
                 String body = response.body();
+                System.out.println(body);
 
                 if (response.statusCode() == 200) {
                     try {

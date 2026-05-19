@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.ClientChats">
-   <left>
-      <VBox prefHeight="720.0" prefWidth="300.0" style="-fx-background-color: blue;" BorderPane.alignment="CENTER" />
-   </left>
+<BorderPane xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.ClientChat">
    <right>
-      <StackPane prefHeight="720.0" prefWidth="700.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER" />
+      <StackPane prefHeight="720.0" prefWidth="630.0" style="-fx-background-color: #3D3030;" BorderPane.alignment="CENTER" />
    </right>
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="1000.0" style="-fx-background-color: #261E1E; -fx-border-width: 1 0 1 0; -fx-border-color: #D4D4D4;" BorderPane.alignment="CENTER">
+         <children>
+            <Label style="-fx-text-fill: #fff;" text="Чат клиентов">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <ListView fx:id="dialogsListView" prefHeight="200.0" prefWidth="370.0" style="-fx-background-color: #261E1E;" BorderPane.alignment="CENTER" />
+   </left>
 </BorderPane>

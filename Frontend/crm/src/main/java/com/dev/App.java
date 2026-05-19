@@ -15,8 +15,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("CRM");
-        stage.setWidth(1000);
-        stage.setHeight(720);
+        stage.setWidth(1200);
+        stage.setHeight(800);
         
         Parent loginRoot = FXMLLoader.load(
             getClass().getResource("/main.fxml")
@@ -27,6 +27,16 @@ public class App extends Application {
         scene.getStylesheets().add(
             getClass().getResource("/style.css").toExternalForm()
         );
+
+        // Http
+        // .request("/api/tasks/create")
+        // .post("")
+        // .auth("")
+        // .onResponse(response -> {
+        //     System.out.println(response.body());
+        //     System.out.println(response.statusCode());
+        // })
+        // .send();
 
         stage.setScene(scene);
         stage.show();

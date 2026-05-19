@@ -10,3 +10,76 @@
     -fx-text-fill: #fff;
     -fx-font-size: 16;
 }
+
+/* MENU */
+.menu > .label,
+.menu-item > .label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.menu:hover > .label,
+.menu-item:hover > .label,
+.menu-item:focused > .label {
+    -fx-text-fill: #FFF;
+}
+
+.context-menu {
+    -fx-background-color: #000;
+}
+.context-menu .menu-item > .label {
+    -fx-text-fill: #FFFFFF;
+}
+
+/* SCROLL BAR */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: #3E88D1;
+}
+
+.scroll-bar:vertical {
+    -fx-pref-width: 5px;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.scroll-bar:horizontal {
+    -fx-pref-height: 12px;
+    -fx-background-color: #f0f0f0;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #3E88D1;
+    -fx-background-radius: 6px;
+    -fx-background-insets: 2, 0, 0;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #a0a0a0;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-pref-width: 0;
+    -fx-opacity: 0;
+}
+
+/* List View */
+.list-cell {
+    -fx-control-inner-background: transparent; /* Цвет фона ячеек */
+}
+
+/* Text Area */
+.text-area,
+.text-area .content,
+.text-area .scroll-pane,
+.text-area .scroll-pane .viewport {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}

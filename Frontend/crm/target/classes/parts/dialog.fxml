@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="370.0" spacing="20.0" style="-fx-background-color: transparent;" styleClass="dialogHBox" xmlns:fx="http://javafx.com/fxml" fx:controller="com.dev.controllers.parts.DialogController">
+    <children>
+        <VBox alignment="CENTER_LEFT" prefHeight="200.0" styleClass="dialogAvatarVBox">
+            <children>
+                <Circle fill="#d9d9d9" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+            </children>
+            <HBox.margin>
+                <Insets />
+            </HBox.margin>
+        </VBox>
+        <VBox alignment="CENTER_RIGHT" maxWidth="Infinity" minWidth="-Infinity" prefHeight="200.0" styleClass="dialogContentVBox" HBox.hgrow="ALWAYS">
+            <children>
+                <!-- Заголовок с названием чата и временем -->
+                <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0">
+                    <children>
+                        <Label fx:id="chatNameLabel" style="-fx-text-fill: #fff;" text="Чат сотрудников">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="timestampLabel" alignment="CENTER" style="-fx-text-fill: #E0E0E0;" text="01.01.2025 10:30" />
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+        <!-- Сообщение -->
+        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
+            <children>
+                <HBox prefHeight="100.0">
+                    <children>
+                        <Label style="-fx-text-fill: #91B0E8;" text="Сотрудник:" />
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="messageLabel" style="-fx-text-fill: #FFF;" text="Последнее сообщение" />
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+    </children>
+</VBox>
+</children>
+<padding>
+    <Insets bottom="10.0" left="0.0" right="20.0" top="10.0" />
+</padding>
+</HBox>

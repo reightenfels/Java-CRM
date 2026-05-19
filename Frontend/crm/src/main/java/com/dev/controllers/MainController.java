@@ -17,7 +17,7 @@ public class MainController {
 
     @FXML
     public void initialize() throws IOException {
-        Node content = FXMLLoader.load(getClass().getResource("/client-chats.fxml"));
+        Node content = FXMLLoader.load(getClass().getResource("/employee-chats.fxml"));
         mainContent.getChildren().add(content);
     }
 
@@ -32,15 +32,16 @@ public class MainController {
         double width = mainContent.getWidth();
 
         Interpolator interpolator = Interpolator.LINEAR;
+        Duration duration = Duration.millis(300);
 
         current.setTranslateX(0);
-        TranslateTransition out = new TranslateTransition(Duration.millis(500), current);
+        TranslateTransition out = new TranslateTransition(duration, current);
         out.setFromX(0);
         out.setToX(-width);
         out.setInterpolator(interpolator);
 
         next.setTranslateX(width);
-        TranslateTransition in = new TranslateTransition(Duration.millis(500), next);
+        TranslateTransition in = new TranslateTransition(duration, next);
         in.setFromX(width);
         in.setToX(0);
         in.setInterpolator(interpolator);
