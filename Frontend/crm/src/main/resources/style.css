@@ -74,6 +74,15 @@
     -fx-control-inner-background: transparent; /* Цвет фона ячеек */
 }
 
+/* Messages List View */
+.messagesListVeiw .list-cell {
+    -fx-background-color: transparent;
+}
+
+.messagesListVeiw .list-cell:selected {
+    -fx-background-color: transparent;
+}
+
 /* Text Area */
 .text-area,
 .text-area .content,
@@ -82,4 +91,142 @@
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-border-width: 0;
+}
+
+/* Message text */
+.messageText {
+    -fx-background-color: #261E1E;
+}
+
+.myMessage .messageText {
+    -fx-background-color: #3E88D1;
+}
+
+/* Table */
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 40px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FFF;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+    -fx-font-size: 16
+}
+
+.table-cell {
+    -fx-alignment: center;
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFF;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell:selected {
+    /* Полупрозрачный белый фон при выделении */
+    -fx-background-color: transparent; 
+}
+
+.table-row-cell:hover {
+    /* Легкая подсветка при наведении */
+    -fx-background-color: transparent;
+}
+
+.table-view {
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-cell {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+     -fx-padding: 10px 5px; 
+}
+
+.table-row-cell {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+/* Clients Table Btns */
+.client-table-btn-chat {
+    -fx-background-color: #D4348F;
+    -fx-background-radius: 10;
+    -fx-text-fill: #FFF;
+    -fx-max-height: 30;
+    -fx-pref-height: 30;
+    -fx-font-size: 16;
+}
+
+.client-table-btn-open {
+    -fx-background-color: #3E88D1;
+    -fx-background-radius: 10;
+    -fx-text-fill: #FFF;
+    -fx-max-height: 30;
+    -fx-pref-height: 30;
+    -fx-font-size: 16;
+}
+
+/* Task Desc Text Area */
+#taskDescTextArea {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+#taskDescTextArea .content {
+    -fx-padding: 0;
+}
+
+/* Searchble Combo Box */
+.combo-box-popup {
+    -fx-background-color: #261E1E;
+    -fx-border-color: #3c3f41;
+    -fx-border-radius: 4;
+    -fx-padding: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.4, 0, 3);
+}
+.combo-box-popup > .list-view {
+    -fx-background-color: #261E1E;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}
+.combo-box-popup .list-cell {
+    -fx-background-color: #261E1E;
+    -fx-text-fill: #FFF;
+    -fx-padding: 8 12;
+    -fx-font-size: 16px;
+    -fx-background-insets: 0;
+    -fx-border-width: 0;
+}
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #3c3f41;
+    -fx-cursor: hand;
+}
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: #3574f0;
+    -fx-text-fill: white;
+}
+.combo-box-popup .list-cell:empty {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+.searchable-combo-box {
+    -fx-background-color: transparent;
+    -fx-border-color: #FFF;
+    -fx-border-width: 0 0 1 0;
+    -fx-text-fill: #d4d4d4;
+}
+.searchable-combo-box:focused {
+    -fx-border-color: #3574f0;
+}
+.searchable-combo-box .cell {
+    -fx-text-fill: #ffffff; 
+    -fx-font-size: 16;
 }

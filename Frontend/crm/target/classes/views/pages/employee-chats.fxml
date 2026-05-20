@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane stylesheets="@../style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.EmployeeChatsController">
+   <right>
+      <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="800.0" style="-fx-background-color: #3D3030;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="BOTTOM_LEFT" style="-fx-border-width: 0 0 0 2; -fx-border-color: #3D3030;" stylesheets="@style.css">
+               <children>
+                  <VBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <ListView fx:id="messagesListView" style="-fx-background-color: transparent;" styleClass="messagesListVeiw" VBox.vgrow="SOMETIMES" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="40.0" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" style="-fx-background-color: #261E1E;">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/attachment-icon.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="18.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <TextArea fx:id="messageText" maxHeight="20.0" promptText="Сообщение..." style="-fx-prompt-text-fill: #B1B1B1; -fx-text-fill: #FFF;" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="30.0" right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </TextArea>
+                        <ImageView fx:id="sendMessageBtn" fitHeight="27.0" fitWidth="27.0" onMouseClicked="#sendMessageClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/send-message-icon.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="28.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children></StackPane>
+   </right>
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="1000.0" style="-fx-background-color: #261E1E; -fx-border-width: 1 0 1 0; -fx-border-color: #D4D4D4;" BorderPane.alignment="CENTER">
+         <children>
+            <Label style="-fx-text-fill: #fff;" text="Чаты задач">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Label>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="12.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button mnemonicParsing="false" style="-fx-background-color: #FF1C20; -fx-text-fill: #FFF; -fx-background-radius: 5;" text="Отметить просроченной">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: #5AD03F; -fx-text-fill: #FFF; -fx-background-radius: 5;" text="Отметить выполненной">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: #3E88D1; -fx-text-fill: #FFF; -fx-background-radius: 5;" text="Перейти к задаче">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <ListView fx:id="dialogsListView" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #261E1E;" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>

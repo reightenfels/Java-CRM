@@ -11,7 +11,6 @@ public class DialogController {
     @FXML
     private Label messageLabel;
 
-    // Метод для установки данных в элемент
     public void setData(String chatName, String timestamp, String message) {
         chatNameLabel.setText(chatName);
         timestampLabel.setText(timestamp);

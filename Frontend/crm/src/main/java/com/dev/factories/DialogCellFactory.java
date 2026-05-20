@@ -28,10 +28,9 @@ public class DialogCellFactory implements Callback<ListView<DialogModel>, ListCe
                     return;
                 }
 
-                // Загружаем FXML для каждой ячейки (не кэшируем)
                 if (cellTemplate == null) {
                     try {
-                        FXMLLoader loader = new FXMLLoader(DialogController.class.getResource("/parts/dialog.fxml"));
+                        FXMLLoader loader = new FXMLLoader(DialogController.class.getResource("/views/parts/dialog.fxml"));
                         cellTemplate = loader.load();
                         cellController = loader.getController();
                     } catch (IOException e) {

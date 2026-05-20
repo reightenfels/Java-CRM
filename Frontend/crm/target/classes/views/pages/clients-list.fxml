@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.ClientsListController">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="1000.0" style="-fx-background-color: #261E1E; -fx-border-width: 1 0 1 0; -fx-border-color: #D4D4D4;" BorderPane.alignment="CENTER">
+         <children>
+            <Label style="-fx-text-fill: #fff;" text="Мои клиенты">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField maxHeight="20.0" prefHeight="20.0" prefWidth="195.0" promptText="Поиск..." style="-fx-background-color: transparent; -fx-border-color: #FFF; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 0 2; -fx-text-fill: #FFF; -fx-prompt-text-fill: #FFF;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" prefWidth="95.0" style="-fx-background-color: #08D448; -fx-text-fill: #FFF; -fx-background-radius: 5;" text="Создать">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3D3030;" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="clientsTableView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+              <columns>
+                <TableColumn fx:id="photoColumn" prefWidth="75.0" text="Фото" />
+                <TableColumn fx:id="fioColumn" prefWidth="75.0" text="ФИО" />
+                  <TableColumn fx:id="loginColumn" prefWidth="75.0" text="Логин" />
+                  <TableColumn fx:id="emailColumn" prefWidth="75.0" text="Email" />
+                  <TableColumn fx:id="phoneColumn" prefWidth="75.0" text="Телефон" />
+                  <TableColumn fx:id="actionsColumn" prefWidth="75.0" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <StackPane.margin>
+                  <Insets top="35.0" />
+               </StackPane.margin>
+            </TableView>
+         </children></StackPane>
+   </center>
+</BorderPane>

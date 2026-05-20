@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #3D3030;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #3D3030;" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.MainController">
    <top>
       <MenuBar prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #261E1E; -fx-alignment: CENTER_LEFT; -fx-font-size: 14; -fx-spacing: 20;" BorderPane.alignment="CENTER">
          <menus>
@@ -19,7 +19,10 @@
             <Menu mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Мои задачи" />
             <Menu mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Мои клиенты" />
             <Menu mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Сотрудники" />
-            <Menu mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Профиль" />
+            <Menu mnemonicParsing="false" onAction="#openProfilePage" style="-fx-text-fill: #fff;" text="Профиль">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Профиль" />
+               </items></Menu>
          </menus>
       </MenuBar>
    </top>

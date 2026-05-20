@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="BOTTOM_LEFT" maxWidth="500.0" spacing="12.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.parts.MessageController">
+    <children>
+        <Circle fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+        <VBox spacing="3.0" HBox.hgrow="ALWAYS">
+            <children>
+            <Label fx:id="messageText" style="-fx-text-fill: #FFF; -fx-wrap-text: true; -fx-background-radius: 10;" styleClass="messageText" text="ТЕКСТ ТЕКС ТЕКСТ ТЕКС ТЕКСТ ТЕКСТ ТЕКСТ ЕТЕКС ТЕТКТДОВЫДАОВДЫ   ТЕКСТ ТЕКС ТЕКСТ ТЕКС ТЕКСТ ТЕКСТ ТЕКСТ ЕТЕКС ТЕТКТДОВЫДАОВДЫ   ТЕКСТ ТЕКС ТЕКСТ ТЕКС ТЕКСТ ТЕКСТ ТЕКСТ ЕТЕКС ТЕТКТДОВЫДАОВДЫ  " textOverrun="CLIP" wrapText="true" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </padding>
+            </Label>
+            <Label fx:id="messageSenderName" style="-fx-text-fill: #FFF;" text="Сотрудник А">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Label>
+            </children>
+        </VBox>
+    </children>
+    <VBox.margin>
+        <Insets top="30.0" />
+    </VBox.margin>
+   <padding>
+      <Insets bottom="14.0" top="14.0" />
+   </padding>
+</HBox>
