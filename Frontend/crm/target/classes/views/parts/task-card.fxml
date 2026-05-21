@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxWidth="200.0" minWidth="200.0" prefWidth="100.0" style="-fx-background-color: #261E1E; -fx-background-radius: 10; -fx-border-color: #FFF; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.parts.TaskCardController">
+    <children>
+        <Label fx:id="taskTitle" style="-fx-text-fill: #FFF;" text="Разработка дизайна CRM системы" textAlignment="CENTER" wrapText="true">
+            <font>
+            <Font size="16.0" />
+            </font>
+        </Label>
+        <Separator prefWidth="200.0">
+            <VBox.margin>
+            <Insets bottom="20.0" top="10.0" />
+            </VBox.margin>
+        </Separator>
+        <VBox prefWidth="100.0" spacing="13.0">
+            <children>
+            <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="6.0">
+                <children>
+                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                        <Image url="@../../images/money-icon.png" />
+                        </image>
+                    </ImageView>
+                    <Label fx:id="taskPrice" style="-fx-text-fill: #FFF;" text="10 000">
+                        <font>
+                        <Font size="12.0" />
+                        </font>
+                    </Label>
+                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="6.0">
+                <children>
+                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                        <Image url="@../../images/manager-icon.png" />
+                        </image>
+                    </ImageView>
+                    <Label fx:id="taskManagerLogin" style="-fx-text-fill: #3E88D1;" text="manager_login">
+                        <font>
+                        <Font size="12.0" />
+                        </font>
+                        <cursor>
+                        <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </Label>
+                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="6.0">
+                <children>
+                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                        <Image url="@../../images/date-icon.png" />
+                        </image>
+                    </ImageView>
+                    <Label fx:id="taskDeadline" style="-fx-text-fill: #FFF;" text="14.02.2025">
+                        <font>
+                        <Font size="12.0" />
+                        </font>
+                        <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                        </cursor>
+                    </Label>
+                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="6.0">
+                <children>
+                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                        <Image url="@../../images/client-icon.png" />
+                        </image>
+                    </ImageView>
+                    <Label fx:id="taskClientLogin" style="-fx-text-fill: #3E88D1;" text="client_login">
+                        <font>
+                        <Font size="12.0" />
+                        </font>
+                        <cursor>
+                        <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </Label>
+                </children>
+            </HBox>
+            </children>
+            <VBox.margin>
+            <Insets left="18.0" />
+            </VBox.margin>
+        </VBox>
+        <VBox prefWidth="100.0" spacing="10.0">
+            <VBox.margin>
+            <Insets left="18.0" right="18.0" top="30.0" />
+            </VBox.margin>
+            <children>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: #3E88D1; -fx-text-fill: #FFF; -fx-background-radius: 20;" text="Открыть">
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </Button>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: #DF663B; -fx-text-fill: #FFF; -fx-background-radius: 20;" text="В чат сотрудников">
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </Button>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: #D4348F; -fx-text-fill: #FFF; -fx-background-radius: 20;" text="В чат с клиентом">
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </Button>
+            </children>
+        </VBox>
+    </children>
+    <padding>
+        <Insets bottom="10.0" top="10.0" />
+    </padding>
+</VBox>

@@ -19,7 +19,7 @@ public class App extends Application {
         stage.setHeight(800);
         
         Parent loginRoot = FXMLLoader.load(
-            getClass().getResource("/views/pages/task.fxml")
+            getClass().getResource("/views/pages/tasks-list.fxml")
         );
 
         Scene scene = new Scene(loginRoot);
