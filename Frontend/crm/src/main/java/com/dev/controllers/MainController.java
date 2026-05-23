@@ -37,4 +37,32 @@ public class MainController {
     public void openProfilePage() {
         Navigation.getInstance().loadAndShowForward("/views/pages/profile.fxml");
     }
+
+    /**
+     * Обрабатывает открытие страницы задач
+     */
+    public void openTasksPage() {
+        Navigation.getInstance().loadAndShowForward("/views/pages/tasks-list.fxml");
+    }
+
+    /**
+     * Обрабатывает открытие страницы клиентов
+     */
+    public void openClientsPage() {
+        Navigation.getInstance().loadAndShowForward("/views/pages/clients-list.fxml");
+    }
+
+    /**
+     * Обрабатывает открытие страницы сотрудников
+     */
+    public void openEmployeesPage() {
+        Navigation.getInstance().loadAndShowForward("/views/pages/employees-list.fxml");
+    }
+
+    /**
+     * Обрабатывает открытие страницы создания задачи
+     */
+    public void openCreateTaskPage() {
+        Navigation.getInstance().loadAndShowForward("/views/pages/task-create.fxml");
+    }
 }

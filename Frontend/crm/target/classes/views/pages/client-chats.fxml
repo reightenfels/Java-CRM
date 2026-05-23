@@ -83,9 +83,14 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </Label>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #D4348F; -fx-text-fill: #FFF; -fx-background-radius: 5;" text="Перейти к клиенту">
+                  <Button mnemonicParsing="false" onAction="#handleGoToClientCardBtnClick" style="-fx-background-color: #D4348F; -fx-text-fill: #FFF; -fx-background-radius: 5;" text="Перейти к клиенту">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleGoToTaskCardBtnClick" style="-fx-background-color: #3E88D1; -fx-text-fill: #FFF; -fx-background-radius: 5;" text="Перейти к задаче">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

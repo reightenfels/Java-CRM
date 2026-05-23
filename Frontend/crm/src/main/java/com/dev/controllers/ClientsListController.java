@@ -1,6 +1,7 @@
 package com.dev.controllers;
 
 import com.dev.dto.models.ClientModel;
+import com.dev.services.Navigation;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -74,11 +75,15 @@ public class ClientsListController {
                 chatButton.setOnAction(event -> {
                     // ClientModel client = getTableView().getItems().get(getIndex());
                     // handleChatClick(client);
+
+                    Navigation.getInstance().loadAndShowForward("/views/pages/client-chats.fxml");
                 });
                 
                 openButton.setOnAction(event -> {
                     // ClientModel client = getTableView().getItems().get(getIndex());
                     // handleOpenClick(client);
+
+                    Navigation.getInstance().loadAndShowForward("/views/pages/client.fxml");
                 });
             }
             
@@ -93,5 +98,12 @@ public class ClientsListController {
                 }
             }
         });
+    }
+
+    /**
+     * Обработчик клика на кнопку создания клиента
+     */
+    public void handleCreateClientBtnClick() {
+        Navigation.getInstance().loadAndShowForward("/views/pages/client.fxml");
     }
 }

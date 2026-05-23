@@ -5,6 +5,7 @@ import com.dev.dto.models.message.ChatItem;
 import com.dev.dto.models.message.MessageModel;
 import com.dev.factories.DialogCellFactory;
 import com.dev.factories.MessageCellFactory;
+import com.dev.services.Navigation;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -100,5 +101,19 @@ public class ClientChatsController {
         scrollMessagesToBottom();
 
         messageText.clear();
+    }
+
+    /**
+     * Обрабатывает клик на кнопку перехода в карточку клиента
+     */
+    public void handleGoToClientCardBtnClick() {
+        Navigation.getInstance().loadAndShowForward("/views/pages/client.fxml");
+    }
+
+    /**
+     * Обрабатывает клик на кнопку перехода в карточку задачи
+     */
+    public void handleGoToTaskCardBtnClick() {
+        Navigation.getInstance().loadAndShowForward("/views/pages/task-edit.fxml");
     }
 }

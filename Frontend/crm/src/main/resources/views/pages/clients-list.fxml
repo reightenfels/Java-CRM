@@ -31,7 +31,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="95.0" style="-fx-background-color: #08D448; -fx-text-fill: #FFF; -fx-background-radius: 5;" text="Создать">
+                  <Button mnemonicParsing="false" onAction="#handleCreateClientBtnClick" prefWidth="95.0" style="-fx-background-color: #08D448; -fx-text-fill: #FFF; -fx-background-radius: 5;" text="Создать">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>

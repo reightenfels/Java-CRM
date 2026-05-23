@@ -5,6 +5,7 @@ import com.dev.dto.models.message.ChatItem;
 import com.dev.dto.models.message.MessageModel;
 import com.dev.factories.DialogCellFactory;
 import com.dev.factories.MessageCellFactory;
+import com.dev.services.Navigation;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -100,5 +101,12 @@ public class EmployeeChatsController {
         scrollMessagesToBottom();
 
         messageText.clear();
+    }
+
+    /**
+     * Обрабатывает клик на кнопку перехода к задаче
+     */
+    public void handleGoToTaskBtnClick() {
+        Navigation.getInstance().loadAndShowForward("/views/pages/task-edit.fxml");
     }
 }

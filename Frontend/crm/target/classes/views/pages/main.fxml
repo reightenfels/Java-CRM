@@ -16,9 +16,19 @@
                   <MenuItem mnemonicParsing="false" onAction="#openClientChatsPage" text="С клиентами" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Мои задачи" />
-            <Menu mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Мои клиенты" />
-            <Menu mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Сотрудники" />
+            <Menu mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Мои задачи">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openTasksPage" text="Мои задачи" />
+                  <MenuItem mnemonicParsing="false" onAction="#openCreateTaskPage" text="Создать" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Мои клиенты">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openClientsPage" text="Мои клиенты" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Сотрудники">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openEmployeesPage" text="Сотрудники" />
+               </items></Menu>
             <Menu mnemonicParsing="false" onAction="#openProfilePage" style="-fx-text-fill: #fff;" text="Профиль">
                <items>
                   <MenuItem mnemonicParsing="false" text="Профиль" />

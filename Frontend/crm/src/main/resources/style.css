@@ -131,12 +131,10 @@
 }
 
 .table-row-cell:selected {
-    /* Полупрозрачный белый фон при выделении */
     -fx-background-color: transparent; 
 }
 
 .table-row-cell:hover {
-    /* Легкая подсветка при наведении */
     -fx-background-color: transparent;
 }
 
@@ -229,4 +227,22 @@
 .searchable-combo-box .cell {
     -fx-text-fill: #ffffff; 
     -fx-font-size: 16;
+}
+
+/* Tasks List Views */
+.tasksListView .list-cell {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+}
+
+.tasksListView .list-cell:selected {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+}
+
+.tasksListView .scroll-bar:vertical {
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+    -fx-min-width: 0;
+    -fx-opacity: 0;
 }

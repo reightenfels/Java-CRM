@@ -2,11 +2,13 @@ package com.dev.controllers;
 
 import org.controlsfx.control.SearchableComboBox;
 
+import com.dev.services.Navigation;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
-public class TaskController {
+public class TaskEditController {
     @FXML
     private SearchableComboBox<String> statusesList;
 
@@ -33,5 +35,26 @@ public class TaskController {
 
         statusesList.setItems(statuses);
         respManagersList.setItems(managers);
+    }
+
+    /**
+     * Обрабатывает нажатие на кнопку возврата на предыдущую страницу
+     */
+    public void goBackBtnClick() {
+        Navigation.getInstance().loadAndShowBack();
+    }
+
+    /**
+     * Обрабатывает нажатие на кнопку открытия чата с сотрудниками
+     */
+    public void handleOpenEmployeeDialogBtnClick() {
+        Navigation.getInstance().loadAndShowForward("/views/pages/employee-chats.fxml");
+    }
+
+    /**
+     * Обрабатывает нажатие на кнопку открытия чата с клиентом
+     */
+    public void handleOpenClientDialogBtnClick() {
+        Navigation.getInstance().loadAndShowForward("/views/pages/client-chats.fxml");
     }
 }
