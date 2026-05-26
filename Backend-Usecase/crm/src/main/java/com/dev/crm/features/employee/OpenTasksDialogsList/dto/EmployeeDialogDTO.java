@@ -8,6 +8,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class EmployeeDialogDTO {
+    private final Long dialogId;
     private final String chatName;
     private final String message;
     private final LocalDateTime lastMessageDatetime;

@@ -3,14 +3,13 @@ package com.dev.crm.features.employee.SendMessageToTask;
 import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dev.crm.features.employee.SendMessageToTask.contracts.SendMessageToTaskContract;
 import com.dev.crm.features.employee.SendMessageToTask.dto.SendMessageToTaskRequest;
 import com.dev.crm.features.employee.SendMessageToTask.dto.SendMessageToTaskResponse;
 import com.dev.crm.queues.dto.notifications.SendMessageToTask;
 import com.dev.crm.queues.producers.NotificationProducer;
-
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SendMessageToTaskUseCase {
@@ -34,8 +33,8 @@ public class SendMessageToTaskUseCase {
 
         Long messageId = sendMessageService.createMessage(
             request.getText(), 
-            request.getDialogId(), 
-            currentUserId, 
+            currentUserId,
+            request.getDialogId(),  
             sendingDateTime
         );
 

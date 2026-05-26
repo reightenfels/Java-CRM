@@ -1,7 +1,5 @@
 package com.dev.crm.features.manager.OpenTaskCard.dto;
 
-import com.dev.crm.entities.Task;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,5 +8,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OpenTaskResponse {
-    private Task task;
+    private OpenTaskCardDTO task;
 }

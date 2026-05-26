@@ -1,6 +1,6 @@
 package com.dev.crm.features.manager.OpenTaskCard.contracts;
 
-import com.dev.crm.entities.Task;
+import com.dev.crm.features.manager.OpenTaskCard.dto.OpenTaskCardDTO;
 
 public interface OpenTaskContract {
     /**
@@ -8,7 +8,7 @@ public interface OpenTaskContract {
      * @param taskId - ID задачи
      * @return - Модель задачи
      */
-    public Task getTask(Long taskId);
+    public OpenTaskCardDTO getTask(Long taskId);
 
     /**
      * Добавляет редактора задачи

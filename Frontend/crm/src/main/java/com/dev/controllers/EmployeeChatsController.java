@@ -1,11 +1,16 @@
 package com.dev.controllers;
 
+import java.time.LocalDateTime;
+
 import com.dev.dto.models.DialogModel;
 import com.dev.dto.models.message.ChatItem;
 import com.dev.dto.models.message.MessageModel;
+import com.dev.dto.requests.SendMessageToTaskRequest;
 import com.dev.factories.DialogCellFactory;
 import com.dev.factories.MessageCellFactory;
+import com.dev.features.employee.OpenTaskDialog.OpenTaskDialogUseCase;
 import com.dev.features.employee.OpenTasksDialogsList.OpenTasksDialogsListUseCase;
+import com.dev.features.employee.SendMessageToTask.SendMessageToTaskUseCase;
 import com.dev.services.Navigation;
 
 import javafx.application.Platform;
@@ -14,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
 
 public class EmployeeChatsController {
     @FXML
@@ -25,7 +31,14 @@ public class EmployeeChatsController {
     @FXML
     private TextArea messageText;
 
+    @FXML
+    private HBox taskButtons;
+
+    @FXML
+    private HBox sendMessagePanel;
+
     private final ObservableList<DialogModel> dialogsObsList = FXCollections.observableArrayList();
+    private final ObservableList<ChatItem> messagesObsList = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
@@ -33,10 +46,57 @@ public class EmployeeChatsController {
         messagesListView.setCellFactory(new MessageCellFactory());
 
         dialogsListView.setItems(dialogsObsList);
+        messagesListView.setItems(messagesObsList);
 
         OpenTasksDialogsListUseCase.execute(dialogsObsList);
 
         scrollMessagesToBottom();
+        selectDialog();
+        hideIfDialogNotSelected();
+    }
+
+    /**
+     * Скрывает все нужные элементы если не выбран диалог
+     */
+    private void hideIfDialogNotSelected() {
+        taskButtons.setVisible(false);
+        sendMessagePanel.setVisible(false);
+    }
+
+    /**
+     * Показывает все нужные элементы если выбран диалог
+     */
+    private void showIfDialogSelected() {
+        taskButtons.setVisible(true);
+        sendMessagePanel.setVisible(true);
+    }
+
+    /**
+     * Возвращает ID текущего диалога
+     */
+    private Long getSelectedDialogId() {
+        return dialogsListView.getSelectionModel().getSelectedItem() != null ?
+            dialogsListView.getSelectionModel().getSelectedItem().getDialogId() :
+            null;
+    }
+
+    /**
+     * Обрабатывает выбор диалога
+     */
+    private void selectDialog() {
+        dialogsListView.getSelectionModel().selectedItemProperty().addListener(
+            (observable, oldValue, dialog) -> {
+                messagesObsList.clear();
+
+                if (dialog != null) {
+                    showIfDialogSelected();
+                    OpenTaskDialogUseCase.execute(dialog.getDialogId(), messagesObsList);
+                }
+                else {
+                    hideIfDialogNotSelected();
+                }
+            }
+        );
     }
 
     /**
@@ -55,6 +115,10 @@ public class EmployeeChatsController {
      * Обрабатывает клик на кнопку отправки сообщения
      */
     public void sendMessageClick() {
+        if (getSelectedDialogId() == null) {
+            return;
+        }
+
         String newMessageText = messageText.getText().stripTrailing();
 
         if (newMessageText.isEmpty()) {
@@ -67,13 +131,20 @@ public class EmployeeChatsController {
             new MessageModel(
                 newMessageText,
                 newMessageSender,
-                "18:30",
+                LocalDateTime.now(),
                 true,
                 ""
             )
         );
 
         scrollMessagesToBottom();
+
+        SendMessageToTaskUseCase.execute(
+            new SendMessageToTaskRequest(
+                newMessageText,
+                getSelectedDialogId()
+            )
+        );
 
         messageText.clear();
     }

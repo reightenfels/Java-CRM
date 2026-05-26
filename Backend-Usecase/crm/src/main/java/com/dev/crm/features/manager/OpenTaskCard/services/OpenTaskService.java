@@ -7,6 +7,7 @@ import com.dev.crm.entities.Task;
 import com.dev.crm.entities.TaskEditors;
 import com.dev.crm.entities.User;
 import com.dev.crm.features.manager.OpenTaskCard.contracts.OpenTaskContract;
+import com.dev.crm.features.manager.OpenTaskCard.dto.OpenTaskCardDTO;
 import com.dev.crm.repositories.TaskEditorsRepository;
 import com.dev.crm.repositories.TaskRepository;
 import com.dev.crm.repositories.UserRepository;
@@ -30,9 +31,20 @@ public class OpenTaskService implements OpenTaskContract {
     }
 
     @Override
-    public Task getTask(Long taskId) {
-        return taskRepository.findById(taskId).orElseThrow(
+    public OpenTaskCardDTO getTask(Long taskId) {
+        Task task = taskRepository.findById(taskId).orElseThrow(
             () -> new ResourceNotFoundException("Не найдена задача с ID: " + taskId)
+        );
+
+        return new OpenTaskCardDTO(
+            task.getId(),
+            task.getTitle(),
+            task.getDescription(),
+            task.getPrice(),
+            task.getDeadline(),
+            task.getStatus().getDisplayName(),
+            task.getResponsible().getLogin(),
+            task.getClient() != null ? task.getClient().getLogin() : ""
         );
     }
 

@@ -15,4 +15,18 @@ public interface UserRepository extends JpaRepository<User, Long> {
     public Optional<User> findByLogin(String login);
 
     public List<User> findByLoginOrPhoneOrEmail(String login, String phone, String email);
+
+    @Query(value="""
+            SELECT
+                u.login
+            FROM
+                user u
+            JOIN
+                role r
+            ON
+                u.role = r.id
+            WHERE
+                r.system_name = 'ROLE_MANAGER'
+            """, nativeQuery=true)
+    public List<String> findAllManagers();
 }

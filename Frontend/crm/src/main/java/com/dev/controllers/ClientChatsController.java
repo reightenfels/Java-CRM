@@ -1,5 +1,7 @@
 package com.dev.controllers;
 
+import java.time.LocalDateTime;
+
 import com.dev.dto.models.DialogModel;
 import com.dev.dto.models.message.ChatItem;
 import com.dev.dto.models.message.MessageModel;
@@ -8,6 +10,8 @@ import com.dev.factories.MessageCellFactory;
 import com.dev.services.Navigation;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -21,6 +25,8 @@ public class ClientChatsController {
 
     @FXML
     private TextArea messageText;
+
+    private ObservableList<ChatItem> messagesObjList = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
@@ -60,7 +66,7 @@ public class ClientChatsController {
             new MessageModel(
                 newMessageText,
                 newMessageSender,
-                "18:30",
+                LocalDateTime.now(),
                 true,
                 ""
             )

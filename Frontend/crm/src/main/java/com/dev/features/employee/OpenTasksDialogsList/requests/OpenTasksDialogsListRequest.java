@@ -40,7 +40,6 @@ public class OpenTasksDialogsListRequest {
         .auth()
         .onResponse(response -> {
             String body = response.body();
-            System.out.println(body);
 
             OpenTasksDialogsListResponse dialogsResponse = ResponseUnpacker.extract(body, OpenTasksDialogsListResponse.class);
 

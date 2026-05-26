@@ -16,6 +16,7 @@ module com.dev {
     opens com.dev.dto.responses.success to com.fasterxml.jackson.databind;
     opens com.dev.dto.responses to com.fasterxml.jackson.databind;
     opens com.dev.dto.models to com.fasterxml.jackson.databind;
+    opens com.dev.dto.models.message to com.fasterxml.jackson.databind;
 
     opens com.dev to javafx.fxml;
     exports com.dev;

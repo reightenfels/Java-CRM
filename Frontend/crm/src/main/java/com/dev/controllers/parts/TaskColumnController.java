@@ -1,6 +1,6 @@
 package com.dev.controllers.parts;
 
-import com.dev.dto.models.TaskModel;
+import com.dev.dto.models.TaskCardModel;
 import com.dev.factories.TaskCardCellFactory;
 
 import javafx.collections.FXCollections;
@@ -14,9 +14,9 @@ public class TaskColumnController {
     private Label columnTitle;
 
     @FXML
-    private ListView<TaskModel> tasksListView;
+    private ListView<TaskCardModel> tasksListView;
 
-    private final ObservableList<TaskModel> tasksObsList = FXCollections.observableArrayList();
+    private final ObservableList<TaskCardModel> tasksObsList = FXCollections.observableArrayList();
 
     private String systemName;
     private Long id;
@@ -47,7 +47,7 @@ public class TaskColumnController {
         columnTitle.setText(title);
     }
 
-    public void addTask(TaskModel task) {
+    public void addTask(TaskCardModel task) {
         tasksObsList.add(task);
     }
 }

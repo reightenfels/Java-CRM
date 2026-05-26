@@ -2,39 +2,49 @@ package com.dev.controllers;
 
 import org.controlsfx.control.SearchableComboBox;
 
+import com.dev.features.manager.OpenTaskCard.OpenTaskCardUseCase;
 import com.dev.services.Navigation;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class TaskEditController {
     @FXML
-    private SearchableComboBox<String> statusesList;
+    public Label taskTitleLabel;
+    
+    @FXML
+    public TextField taskTitle;
 
     @FXML
-    private SearchableComboBox<String> respManagersList;
+    public TextArea taskDescription;
+
+    @FXML
+    public TextField taskPrice;
+
+    @FXML
+    public DatePicker taskDeadline;
+    
+    @FXML
+    public SearchableComboBox<String> statusesList;
+
+    @FXML
+    public SearchableComboBox<String> respManagersList;
+
+    public ObservableList<String> statusesObsList = FXCollections.observableArrayList();
+
+    public ObservableList<String> managersObsList = FXCollections.observableArrayList();
+
+    private Long taskId;
 
     @FXML
     public void initialize() {
-        ObservableList<String> statuses = FXCollections.observableArrayList(
-            "В работе",
-            "Не начато",
-            "Ожидается оплата",
-            "Просрочено",
-            "Выполнено"
-        );
-
-        ObservableList<String> managers = FXCollections.observableArrayList(
-            "manager_login",  
-            "manager_login_1",  
-            "manager_login_2",  
-            "manager_login_3",  
-            "manager_login_4"  
-        );
-
-        statusesList.setItems(statuses);
-        respManagersList.setItems(managers);
+        statusesList.setItems(statusesObsList);
+        respManagersList.setItems(managersObsList);
     }
 
     /**
@@ -56,5 +66,20 @@ public class TaskEditController {
      */
     public void handleOpenClientDialogBtnClick() {
         Navigation.getInstance().loadAndShowForward("/views/pages/client-chats.fxml");
+    }
+
+    public void setTaskId(Long taskId) {
+        this.taskId = taskId;
+        loadData();
+    }
+
+    public Long getTaskId() {
+        return taskId;
+    }
+
+    public void loadData() {
+        if (taskId != null) {
+            OpenTaskCardUseCase.execute(this);
+        }
     }
 }

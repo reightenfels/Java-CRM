@@ -47,8 +47,8 @@ public class MessageCellFactory implements Callback<ListView<ChatItem>, ListCell
                 }
 
                 cellController.setData(
-                    ((MessageModel) item).text(), 
-                    ((MessageModel) item).sender()
+                    ((MessageModel) item).getText(), 
+                    ((MessageModel) item).getSender()
                 );
 
                 if (((MessageModel) item).isMe()) {

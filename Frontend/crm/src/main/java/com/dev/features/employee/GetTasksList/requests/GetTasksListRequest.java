@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.dev.controllers.parts.TaskColumnController;
-import com.dev.dto.models.TaskModel;
+import com.dev.dto.models.TaskCardModel;
 import com.dev.dto.responses.success.GetTasksListResponse;
 import com.dev.services.Http;
 import com.dev.services.ResponseUnpacker;
@@ -24,10 +24,10 @@ public class GetTasksListRequest {
     }
 
     public void addTasks(
-        List<TaskModel> tasks,
+        List<TaskCardModel> tasks,
         Map<Long, TaskColumnController> columnsMap
     ) {
-        for (TaskModel task: tasks) {
+        for (TaskCardModel task: tasks) {
             Long statusId = task.getStatusId();
             TaskColumnController columnController = columnsMap.get(statusId);
 

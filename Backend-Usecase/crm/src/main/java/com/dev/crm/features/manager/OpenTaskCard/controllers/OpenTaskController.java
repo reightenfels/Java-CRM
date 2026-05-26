@@ -12,7 +12,7 @@ import com.dev.crm.features.manager.OpenTaskCard.OpenTaskUseCase;
 import com.dev.crm.features.manager.OpenTaskCard.dto.OpenTaskResponse;
 
 @RestController
-@RequestMapping("/api/tasks/{id}")
+@RequestMapping("/api/tasks")
 public class OpenTaskController {
     private final OpenTaskUseCase useCase;
 
@@ -20,7 +20,7 @@ public class OpenTaskController {
         this.useCase = useCase;
     }
 
-    @GetMapping("/")
+    @GetMapping("/{id}")
     public ApiResponse<OpenTaskResponse> get(@PathVariable("id") Long dialogId) {
         Long currentAuthUserId = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
         OpenTaskResponse useCaseResult = useCase.handle(dialogId, currentAuthUserId);

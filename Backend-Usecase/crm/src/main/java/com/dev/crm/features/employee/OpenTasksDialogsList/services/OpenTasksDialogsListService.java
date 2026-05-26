@@ -34,6 +34,7 @@ public class OpenTasksDialogsListService implements OpenTasksDialogsListContract
                 TaskDialogMessage lastMessage = messagesRepository.findTopByDialogIdOrderByIdDesc(dialog.getId()).orElse(null);
                 
                 return new EmployeeDialogDTO(
+                    dialog.getId(),
                     dialog.getTask().getTitle(),
                     lastMessage != null ? lastMessage.getText() : "",
                     lastMessage != null ? lastMessage.getCreatedAt() : null,

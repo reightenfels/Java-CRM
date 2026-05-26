@@ -16,11 +16,11 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.SearchableComboBox?>
 
-<BorderPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.TaskEditController">
+<BorderPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.TaskEditController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="1000.0" style="-fx-background-color: #261E1E; -fx-border-width: 1 0 1 0; -fx-border-color: #D4D4D4;" BorderPane.alignment="CENTER">
          <children>
-            <Label style="-fx-text-fill: #fff;" text="Разработка дизайна CRM системы">
+            <Label fx:id="taskTitleLabel" style="-fx-text-fill: #fff;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -74,7 +74,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;" text="Разработка дизайна CRM системы">
+                                    <TextField fx:id="taskTitle" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -92,7 +92,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextArea id="taskDescTextArea" prefHeight="70.0" prefWidth="550.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0;" text="Текстовое описание задачи Текстовое описание задачи Текстовое описание задачи описание задачи описание задачиописание задачиописание задачи описание задачиописание задачи" wrapText="true">
+                                    <TextArea id="taskDescTextArea" fx:id="taskDescription" prefHeight="70.0" prefWidth="550.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0;" wrapText="true">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -113,7 +113,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;" text="10 000">
+                                    <TextField fx:id="taskPrice" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -127,7 +127,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <DatePicker maxWidth="1.7976931348623157E308" />
+                                    <DatePicker fx:id="taskDeadline" maxWidth="1.7976931348623157E308" />
                                  </children>
                               </VBox>
                            </children>

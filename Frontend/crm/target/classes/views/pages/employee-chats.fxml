@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.EmployeeChatsController">
+<BorderPane xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.EmployeeChatsController">
    <right>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="800.0" style="-fx-background-color: #3D3030;" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="BOTTOM_LEFT" style="-fx-border-width: 0 0 0 2; -fx-border-color: #3D3030;" >
+            <VBox alignment="BOTTOM_LEFT" style="-fx-border-width: 0 0 0 2; -fx-border-color: #3D3030;">
                <children>
                   <VBox VBox.vgrow="ALWAYS">
                      <children>
@@ -31,7 +31,7 @@
                         <Insets bottom="20.0" left="20.0" right="40.0" />
                      </padding>
                   </VBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" style="-fx-background-color: #261E1E;">
+                  <HBox fx:id="sendMessagePanel" alignment="CENTER_LEFT" prefHeight="50.0" style="-fx-background-color: #261E1E;">
                      <children>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -83,7 +83,7 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </Label>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="12.0" HBox.hgrow="ALWAYS">
+            <HBox fx:id="taskButtons" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="12.0" HBox.hgrow="ALWAYS">
                <children>
                   <Button mnemonicParsing="false" style="-fx-background-color: #FF1C20; -fx-text-fill: #FFF; -fx-background-radius: 5;" text="Отметить просроченной">
                      <cursor>

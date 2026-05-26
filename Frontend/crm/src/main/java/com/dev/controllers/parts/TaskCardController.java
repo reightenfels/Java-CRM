@@ -3,6 +3,7 @@ package com.dev.controllers.parts;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import com.dev.controllers.TaskEditController;
 import com.dev.services.Navigation;
 
 import javafx.fxml.FXML;
@@ -24,25 +25,34 @@ public class TaskCardController {
     @FXML
     private Label taskClientLogin;
 
+    private Long id;
+
     public void setData(
         String taskTitle,
         Long taskPrice,
         String taskManagerLogin,
         LocalDateTime taskDeadline,
-        String taskClientLogin
+        String taskClientLogin,
+        Long id
     ) {
         this.taskTitle.setText(taskTitle);
         this.taskPrice.setText(String.valueOf(taskPrice));
         this.taskManagerLogin.setText(taskManagerLogin);
         this.taskDeadline.setText(taskDeadline.format(DateTimeFormatter.ofPattern("dd.MM.YYYY HH:mm")));
         this.taskClientLogin.setText(taskClientLogin);
+        this.id = id;
     }
 
     /**
      * Обрабатывает нажатие на кнопку открытия задачи
      */
     public void handleOpenTaskBtnClik() {
-        Navigation.getInstance().loadAndShowForward("/views/pages/task-edit.fxml");
+        // Navigation.getInstance().loadAndShowForward("/views/pages/task-edit.fxml");
+        Navigation.getInstance().loadAndShowForwardTyped(
+            "/views/pages/task-edit.fxml",
+            TaskEditController.class,
+            controller -> controller.setTaskId(id)
+        );
     }
 
     /**

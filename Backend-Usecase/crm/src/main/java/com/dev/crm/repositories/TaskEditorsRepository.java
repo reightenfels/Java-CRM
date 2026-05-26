@@ -18,7 +18,7 @@ public interface TaskEditorsRepository extends JpaRepository<TaskEditors, Long> 
             FROM 
                 user u
             JOIN 
-                task_editor e ON e.user_id = u.id
+                task_editors e ON e.user_id = u.id
             JOIN 
                 task t ON e.task_id = t.id
             WHERE

@@ -3,15 +3,11 @@ package com.dev.crm.features.employee.OpenTaskDialog;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
-import com.dev.crm.features.employee.OpenTaskDialog.dto.OpenTaskDialogResponse;
-
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dev.crm.features.employee.OpenTaskDialog.contracts.OpenTaskDialogContract;
-
-import com.dev.crm.entities.TaskDialogMessage;
-
+import com.dev.crm.features.employee.OpenTaskDialog.dto.OpenTaskDialogMessageDTO;
+import com.dev.crm.features.employee.OpenTaskDialog.dto.OpenTaskDialogResponse;
 @Service
 public class OpenTaskDialogUseCase {
     private final OpenTaskDialogContract openTaskDialogService;
@@ -21,8 +17,8 @@ public class OpenTaskDialogUseCase {
     }
 
     @Transactional
-    public OpenTaskDialogResponse handle(Long dialogId) {
-        List<TaskDialogMessage> messages = openTaskDialogService.getAllDialogMessages(dialogId);
+    public OpenTaskDialogResponse handle(Long dialogId, Long currentUserId) {
+        List<OpenTaskDialogMessageDTO> messages = openTaskDialogService.getAllDialogMessages(dialogId, currentUserId);
 
         return new OpenTaskDialogResponse (
             messages

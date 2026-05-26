@@ -2,8 +2,8 @@ package com.dev.crm.features.manager.OpenTaskCard;
 
 import org.springframework.stereotype.Service;
 
-import com.dev.crm.entities.Task;
 import com.dev.crm.features.manager.OpenTaskCard.contracts.OpenTaskContract;
+import com.dev.crm.features.manager.OpenTaskCard.dto.OpenTaskCardDTO;
 import com.dev.crm.features.manager.OpenTaskCard.dto.OpenTaskResponse;
 import com.dev.crm.features.manager.OpenTaskCard.services.OpenTaskCardNotificationService;
 
@@ -21,9 +21,9 @@ public class OpenTaskUseCase {
     }
 
     public OpenTaskResponse handle(Long taskId, Long currentUserId) {
-        Task task = openTaskService.getTask(taskId);
+        OpenTaskCardDTO task = openTaskService.getTask(taskId);
 
-        openTaskService.createTaskEditor(task.getId(), currentUserId);
+        openTaskService.createTaskEditor(taskId, currentUserId);
 
         notificationService.send(taskId);
 

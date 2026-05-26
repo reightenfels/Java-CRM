@@ -1,6 +1,7 @@
 package com.dev.crm.features.employee.SendMessageToTask.controllers;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ public class SendMessageToTaskController {
         this.useCase = useCase;
     }
 
+    @PostMapping
     public ApiResponse<SendMessageToTaskResponse> send(@RequestBody @Valid SendMessageToTaskRequest request) {
         Long currentUserAuthId = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
         SendMessageToTaskResponse useCaseResult = useCase.handle(request, currentUserAuthId);

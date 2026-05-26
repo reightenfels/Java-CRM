@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.dev.controllers.parts.DialogController;
 import com.dev.controllers.parts.TaskCardController;
-import com.dev.dto.models.TaskModel;
+import com.dev.dto.models.TaskCardModel;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,15 +12,15 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
-public class TaskCardCellFactory implements Callback<ListView<TaskModel>, ListCell<TaskModel>> {
+public class TaskCardCellFactory implements Callback<ListView<TaskCardModel>, ListCell<TaskCardModel>> {
     @Override
-    public ListCell<TaskModel> call(ListView<TaskModel> param) {
+    public ListCell<TaskCardModel> call(ListView<TaskCardModel> param) {
         return new ListCell<>() {
             private Parent cellTemplate;
             private TaskCardController cellController;
 
             @Override
-            protected void updateItem(TaskModel item, boolean empty) {
+            protected void updateItem(TaskCardModel item, boolean empty) {
                 super.updateItem(item, empty);
 
                 if (empty || item == null) {
@@ -43,7 +43,8 @@ public class TaskCardCellFactory implements Callback<ListView<TaskModel>, ListCe
                     item.getPrice() / 100,
                     item.getManagerLogin(),
                     item.getDeadline(),
-                    item.getClientLogin()
+                    item.getClientLogin(),
+                    item.getId()
                 );
 
                 setGraphic(cellTemplate);

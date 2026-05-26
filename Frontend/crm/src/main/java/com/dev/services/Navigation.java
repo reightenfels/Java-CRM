@@ -140,6 +140,31 @@ public class Navigation {
     }
 
     /**
+     * Загружает и отображает FXML следующей страницы и позволяет выполнить определенные действия после загрузки
+     */
+    public <T> void loadAndShowForwardTyped(String fxmlName, Class<T> controllerClass, java.util.function.Consumer<T> dataInjector) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
+            Node next = loader.load();
+            
+            Object controller = loader.getController();
+            if (controllerClass.isInstance(controller)) {
+                dataInjector.accept(controllerClass.cast(controller));
+            }
+            
+            if (next != null) {
+                Node current = mainContent.getChildren().get(0);
+                if (navigationStack.isEmpty() || !fxmlName.equals(navigationStack.peek())) {
+                    navigationStack.push(fxmlName);
+                }
+                changePageAnimationForward(current, next);
+            }
+        } catch (IOException e) {
+            System.err.println("❌ Ошибка загрузки " + fxmlName + ": " + e.getMessage());
+        }
+    }
+
+    /**
      * Загружает и отображает FXML предыдущей страницы
      * @param fxmlName
      */

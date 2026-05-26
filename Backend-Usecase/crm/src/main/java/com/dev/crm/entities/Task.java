@@ -74,4 +74,7 @@ public class Task {
 
     @Column(name="created_at")
     private LocalDateTime createdAt;
+
+    @Column(name="description")
+    private String description;
 }
