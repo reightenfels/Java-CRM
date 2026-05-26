@@ -1,6 +1,7 @@
 package com.dev.crm.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -21,4 +22,6 @@ public interface TaskDialogMessagesRepository extends JpaRepository<TaskDialogMe
                 dialog_id = (SELECT id FROM task_dialog WHERE task_id = :taskId)
             """, nativeQuery=true)
     public Long deleteByTaskId(@Param("taskId") Long taskId);
+
+    Optional<TaskDialogMessage> findTopByDialogIdOrderByIdDesc(Long dialogId);
 }

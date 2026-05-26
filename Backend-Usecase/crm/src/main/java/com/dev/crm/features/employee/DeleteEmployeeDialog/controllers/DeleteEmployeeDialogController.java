@@ -21,7 +21,7 @@ public class DeleteEmployeeDialogController {
         this.useCase = useCase;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ApiResponse<DeleteEmployeeDialogResponse> delete(@RequestBody @Valid DeleteEmployeeDialogRequest request) {
         DeleteEmployeeDialogResponse useCaseResult = useCase.handle(request);
 

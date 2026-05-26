@@ -23,7 +23,7 @@ public class SendMessageToEmployeeController {
         this.useCase = useCase;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ApiResponse<SendMessageToEmployeeResponse> send(@RequestBody @Valid SendMessageToEmployeeRequest request) {
         Long currentUserAuthId = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
         SendMessageToEmployeeResponse useCaseResult = useCase.handle(request, currentUserAuthId);

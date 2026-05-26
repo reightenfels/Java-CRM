@@ -136,6 +136,7 @@ public class RegistrationController {
             .post(JsonEncoder.encode(registrationRequest))
             .onResponse(response -> {
                 String body = response.body();
+                System.out.println(body);
 
                 if (response.statusCode() == 200) {
                     try {

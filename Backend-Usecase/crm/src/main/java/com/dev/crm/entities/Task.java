@@ -45,16 +45,13 @@ public class Task {
     @JoinColumn(name="status", nullable=false)
     private TaskStatus status;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="responsible", nullable=false)
     private User responsible;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="client", nullable=true)
     private User client;
-
-    @Column(name="is_editing", nullable=false, columnDefinition="TINYINT(1)")
-    private Boolean isEditing;
 
     @Version
     private int version;
@@ -74,4 +71,7 @@ public class Task {
         inverseJoinColumns=@JoinColumn(name="user_id", nullable=false)
     )
     private Set<User> performers;
+
+    @Column(name="created_at")
+    private LocalDateTime createdAt;
 }

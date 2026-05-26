@@ -21,7 +21,7 @@ public class UpdateTaskController {
         this.useCase = useCase;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ApiResponse<UpdateTaskResponse> update(@RequestBody @Valid UpdateTaskRequest request) {
         UpdateTaskResponse useCaseResult = useCase.handle(request);
 

@@ -4,14 +4,13 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="750.0" prefWidth="1200.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.TasksListController">
+<BorderPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.TasksListController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="1000.0" style="-fx-background-color: #261E1E; -fx-border-width: 1 0 1 0; -fx-border-color: #D4D4D4;" BorderPane.alignment="CENTER">
          <children>
@@ -40,65 +39,16 @@
       </HBox>
    </top>
    <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3D3030;" BorderPane.alignment="CENTER">
+      <StackPane alignment="TOP_LEFT" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3D3030;">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label style="-fx-text-fill: #FFF;" text="В работе">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="15.0" />
-                           </VBox.margin>
-                        </Label>
-                        <ListView fx:id="inWorkTasksListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="tasksListView" VBox.vgrow="ALWAYS">
-                           <VBox.margin>
-                              <Insets bottom="30.0" />
-                           </VBox.margin></ListView>
-                     </children>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label style="-fx-text-fill: #FFF;" text="Не начато">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="15.0" />
-                           </VBox.margin>
-                        </Label>
-                        <ListView fx:id="notStartedTasksListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="tasksListView" VBox.vgrow="ALWAYS">
-                           <VBox.margin>
-                              <Insets bottom="30.0" />
-                           </VBox.margin>
-                        </ListView>
-                     </children>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label style="-fx-text-fill: #70FB51;" text="Выполнено">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="15.0" />
-                           </VBox.margin>
-                        </Label>
-                        <ListView fx:id="completedTasksListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="tasksListView" VBox.vgrow="ALWAYS">
-                           <VBox.margin>
-                              <Insets bottom="30.0" />
-                           </VBox.margin>
-                        </ListView>
-                     </children>
-                  </VBox>
-               </children>
+            <ScrollPane fx:id="columnsListScrollPane" fitToHeight="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #3D3030;" vbarPolicy="NEVER">
                <StackPane.margin>
-                  <Insets top="40.0" />
+                  <Insets top="20.0" />
                </StackPane.margin>
-            </HBox>
+               <content>
+                  <HBox fx:id="statusesColumnsHBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #3D3030;" />
+               </content>
+            </ScrollPane>
          </children>
       </StackPane>
    </center>

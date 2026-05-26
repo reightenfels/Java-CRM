@@ -3,12 +3,11 @@ package com.dev.crm.features.employee.OpenTasksDialogsList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
-import com.dev.crm.entities.TaskDialog;
-import com.dev.crm.features.employee.OpenTasksDialogsList.contracts.OpenTasksDialogsListContract;
-import com.dev.crm.features.employee.OpenTasksDialogsList.dto.OpenTasksDialogsListResponse;
-
 import org.springframework.transaction.annotation.Transactional;
+
+import com.dev.crm.features.employee.OpenTasksDialogsList.contracts.OpenTasksDialogsListContract;
+import com.dev.crm.features.employee.OpenTasksDialogsList.dto.EmployeeDialogDTO;
+import com.dev.crm.features.employee.OpenTasksDialogsList.dto.OpenTasksDialogsListResponse;
 
 @Service
 public class OpenTasksDialogsListUseCase {
@@ -20,7 +19,7 @@ public class OpenTasksDialogsListUseCase {
 
     @Transactional
     public OpenTasksDialogsListResponse handle(Long userId) {
-        List<TaskDialog> dialogs = openTasksDialogsListService.getUserActiveTasksDialogs(userId);
+        List<EmployeeDialogDTO> dialogs = openTasksDialogsListService.getUserActiveTasksDialogs(userId);
 
         return new OpenTasksDialogsListResponse(
             dialogs

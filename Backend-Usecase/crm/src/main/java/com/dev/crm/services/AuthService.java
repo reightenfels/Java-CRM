@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -104,7 +105,7 @@ public class AuthService implements AuthServiceContract {
         );
 
         User user = userRepository.findByLogin(command.login()).orElseThrow(
-            () -> new ResourceNotFoundException("Не найден пользователь с логином: " + command.login())
+            () -> new UsernameNotFoundException("Не найден пользователь с логином: " + command.login())
         );
 
         String accessToken = jwtService.generateAccessToken(user);

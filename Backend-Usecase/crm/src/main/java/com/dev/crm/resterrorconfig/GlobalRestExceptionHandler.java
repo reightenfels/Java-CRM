@@ -8,7 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -25,8 +28,12 @@ import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
 import com.dev.crm.resterrorconfig.exceptions.SaveEntityException;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
+import io.jsonwebtoken.ExpiredJwtException;
+import lombok.extern.slf4j.Slf4j;
+
 @RestControllerAdvice
 @Component
+@Slf4j
 public class GlobalRestExceptionHandler {
     /**
      * Обрабатывает ситуацию когда сущность не найдена
@@ -65,6 +72,39 @@ public class GlobalRestExceptionHandler {
     }
 
     /**
+     * Обрабатывает ситуацию когда пользователь ввел неверный логин/пароль
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ErrorResponse> handleAuthenticationError(BadCredentialsException exception) {
+        ErrorResponse errorResponse = new ErrorResponse("Неверный логин/пароль");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+    }
+
+    /**
+     * Обрабатывает ситуацию когда аккаунт пользователя отключен
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(DisabledException.class)
+    public ResponseEntity<ErrorResponse> handleAuthenticationError(DisabledException exception) {
+        ErrorResponse errorResponse = new ErrorResponse("Аккаунт отключен");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+    }
+
+    /**
+     * Обрабатывает ситуацию когда пользователь не найден
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleAuthenticationError(UsernameNotFoundException exception) {
+        ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+    }
+
+    /**
      * Обрабатывает ситуацию когда пользователь не аутентифицирован
      * @param exception
      * @return
@@ -74,6 +114,7 @@ public class GlobalRestExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse("Ошибка аутентификации");
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
     }
+
 
     /**
      * Обрабатывает ситуацию когда пользователь не авторизован
@@ -155,5 +196,28 @@ public class GlobalRestExceptionHandler {
         }
         
         return ResponseEntity.badRequest().body(new ErrorResponse(message));
+    }
+
+    /**
+     * Обрабатывает ситуацию когда истек срок токена авторизации
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<ErrorResponse> handleSaveEntityError(ExpiredJwtException exception) {
+        ErrorResponse errorResponse = new ErrorResponse("Истек срок текущего сеанса. Войдите в систему повторно");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+    }
+
+    /**
+     * Обрабатывает ситуацию когда на сервере произошла необработанная ошибка
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleSaveEntityError(Exception exception) {
+        ErrorResponse errorResponse = new ErrorResponse("На сервере произошла ошибка. Пожалуйста попробуйте позже, или свяжитесь с разработчиком");
+        log.error("Ошибка: " + exception.getMessage(), exception);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }
 }

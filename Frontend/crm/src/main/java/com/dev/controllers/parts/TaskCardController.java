@@ -1,5 +1,8 @@
 package com.dev.controllers.parts;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import com.dev.services.Navigation;
 
 import javafx.fxml.FXML;
@@ -23,15 +26,15 @@ public class TaskCardController {
 
     public void setData(
         String taskTitle,
-        int taskPrice,
+        Long taskPrice,
         String taskManagerLogin,
-        String taskDeadline,
+        LocalDateTime taskDeadline,
         String taskClientLogin
     ) {
         this.taskTitle.setText(taskTitle);
         this.taskPrice.setText(String.valueOf(taskPrice));
         this.taskManagerLogin.setText(taskManagerLogin);
-        this.taskDeadline.setText(taskDeadline);
+        this.taskDeadline.setText(taskDeadline.format(DateTimeFormatter.ofPattern("dd.MM.YYYY HH:mm")));
         this.taskClientLogin.setText(taskClientLogin);
     }
 

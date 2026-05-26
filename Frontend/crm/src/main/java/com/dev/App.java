@@ -28,16 +28,6 @@ public class App extends Application {
             getClass().getResource("/style.css").toExternalForm()
         );
 
-        // Http
-        // .request("/api/tasks/create")
-        // .post("")
-        // .auth("")
-        // .onResponse(response -> {
-        //     System.out.println(response.body());
-        //     System.out.println(response.statusCode());
-        // })
-        // .send();
-
         stage.setScene(scene);
         stage.show();
     }

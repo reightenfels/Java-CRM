@@ -97,12 +97,14 @@ public class CreateTaskService implements CreateTaskContract {
 
         dialog.setTask(task);
 
-        Attachment avatar = attachmentRepository.findById(avatarId).orElseThrow(
-            () -> new ResourceNotFoundException("Не найдено вложение с ID: " + avatarId)
-        );
+        if (avatarId != null) {
+            Attachment avatar = attachmentRepository.findById(avatarId).orElseThrow(
+                () -> new ResourceNotFoundException("Не найдено вложение с ID: " + avatarId)
+            );
 
-        dialog.setAvatar(avatar);
-
+            dialog.setAvatar(avatar);
+        }
+        
         try {
             dialogRepository.save(dialog);
         }

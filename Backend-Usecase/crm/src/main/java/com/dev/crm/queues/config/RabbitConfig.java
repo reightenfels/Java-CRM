@@ -50,8 +50,14 @@ public class RabbitConfig {
     @Bean
     public MessageConverter jsonMessageConverter(ObjectMapper objectMapper) {
         Jackson2JsonMessageConverter converter = new Jackson2JsonMessageConverter(objectMapper);
-        // Отключаем автоматическую сериализацию классов в заголовки, полагаемся на @JsonTypeInfo
-        converter.setClassMapper(new org.springframework.amqp.support.converter.DefaultClassMapper());
+        
+        var classMapper = new org.springframework.amqp.support.converter.DefaultClassMapper();
+        classMapper.setTrustedPackages(
+            "com.dev.crm.queues.dto.notifications",
+            "com.dev.crm.queues.dto"
+        );
+
+        converter.setClassMapper(classMapper);
         return converter;
     }
 

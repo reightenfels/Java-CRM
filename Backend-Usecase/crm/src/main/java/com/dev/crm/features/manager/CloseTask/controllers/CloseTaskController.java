@@ -23,7 +23,7 @@ public class CloseTaskController {
         this.useCase = useCase;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ApiResponse<CloseTaskResponse> close(@RequestBody @Valid CloseTaskRequest request) {
         Long currentAuthUserId = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
         CloseTaskResponse useCaseResult = useCase.handle(request, currentAuthUserId);

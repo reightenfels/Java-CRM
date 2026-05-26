@@ -3,7 +3,9 @@ package com.dev.crm.queues.dto.notifications;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @JsonTypeInfo(
@@ -30,6 +32,8 @@ import lombok.experimental.SuperBuilder;
 })
 @Data
 @SuperBuilder
+@NoArgsConstructor(access = lombok.AccessLevel.PROTECTED) 
+@AllArgsConstructor(access = lombok.AccessLevel.PROTECTED)
 public abstract class BaseNotification {
     protected String type;
     protected Long timestamp;

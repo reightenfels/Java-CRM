@@ -2,7 +2,7 @@ package com.dev.crm.features.manager.CreateTask.dto;
 
 import java.time.LocalDateTime;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,19 +11,18 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateTaskRequest {
-    @NotBlank(message = "Отсутствует название в запросе")
     private String title;
 
-    @NotBlank(message = "Отсутствует цена в запросе")
+    @NotNull(message = "Отсутствует цена в запросе")
     private Long price;
 
-    @NotBlank(message = "Отсутствует дедлайн в запросе")
+    @NotNull(message = "Отсутствует дедлайн в запросе")
     private LocalDateTime deadline;
 
-    @NotBlank(message = "Отсутствует ID статуса в запросе")
+    @NotNull(message = "Отсутствует ID статуса в запросе")
     private Long statusId;
 
-    @NotBlank(message = "Отсутствует ID ответственного в запросе")
+    @NotNull(message = "Отсутствует ID ответственного в запросе")
     private Long responsibleId;
 
     private Long clientId;

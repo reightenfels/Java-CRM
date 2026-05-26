@@ -21,7 +21,7 @@ public class AddClientToTaskController {
         this.useCase = useCase;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ApiResponse<AddClientToTaskResponse> addClient(@RequestBody @Valid AddClientToTaskRequest request) {
         AddClientToTaskResponse useCaseResult = useCase.handle(request);
 

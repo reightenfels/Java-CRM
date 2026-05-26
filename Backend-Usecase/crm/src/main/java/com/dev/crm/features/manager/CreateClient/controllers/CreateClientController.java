@@ -21,7 +21,7 @@ public class CreateClientController {
         this.useCase = useCase;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ApiResponse<CreateClientResponse> create(@RequestBody @Valid CreateClientRequest request) {
         CreateClientResponse useCaseResult = useCase.handle(request);
 

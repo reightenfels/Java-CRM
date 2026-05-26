@@ -23,7 +23,7 @@ public class DeleteTaskController {
         this.useCase = useCase;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ApiResponse<DeleteTaskResponse> delete(@RequestBody @Valid DeleteTaskRequest request) {
         Long currentAuthUserId = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
         DeleteTaskResponse useCaseResult = useCase.handle(request, currentAuthUserId);

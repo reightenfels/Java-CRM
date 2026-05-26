@@ -39,7 +39,13 @@ public class DialogCellFactory implements Callback<ListView<DialogModel>, ListCe
                 }
 
                 // Обновляем данные в контроллере
-                cellController.setData(item.getChatName(), item.getTimestamp(), item.getMessage());
+                cellController.setData(
+                    item.getChatName(), 
+                    item.getLastMessageDatetime(), 
+                    item.getMessage(), 
+                    item.getLastSenderName(),
+                    item.getDialogId()
+                );
                 setGraphic(cellTemplate);
 
                 if (isSelected()) {

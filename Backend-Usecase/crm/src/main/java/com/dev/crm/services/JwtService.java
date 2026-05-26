@@ -94,18 +94,17 @@ public class JwtService implements JwtServiceContract {
 
     @Override
     public boolean isAccessTokenExpired(String token) {
-        return !extractExpiration(token).before(new Date());
+        return extractExpiration(token).before(new Date());
     }
 
     @Override
     public boolean isValid(String token, UserDetails user) {
         String username = extractUsername(token);
 
-        // boolean isValidToken = tokenRepository.findByAccessToken(token).map(t -> !t.getIsLoggedOut()).orElse(false);
-        boolean isValidToken = true;
+        boolean isValidToken = tokenRepository.findByAccessToken(token).map(t -> !t.getIsLoggedOut()).orElse(false);
 
         return username.equals(user.getUsername())
-                && isAccessTokenExpired(token)
+                && !isAccessTokenExpired(token)
                 && isValidToken;
     }
 

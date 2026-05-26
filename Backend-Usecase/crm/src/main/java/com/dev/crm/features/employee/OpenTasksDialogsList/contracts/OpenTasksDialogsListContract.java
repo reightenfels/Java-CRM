@@ -2,7 +2,7 @@ package com.dev.crm.features.employee.OpenTasksDialogsList.contracts;
 
 import java.util.List;
 
-import com.dev.crm.entities.TaskDialog;
+import com.dev.crm.features.employee.OpenTasksDialogsList.dto.EmployeeDialogDTO;
 
 public interface OpenTasksDialogsListContract {
     /**
@@ -10,5 +10,5 @@ public interface OpenTasksDialogsListContract {
      * @param userId - ID сотрудника
      * @return - список диалогов
      */
-    public List<TaskDialog> getUserActiveTasksDialogs(Long userId);
+    public List<EmployeeDialogDTO> getUserActiveTasksDialogs(Long userId);
 }

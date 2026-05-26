@@ -40,7 +40,7 @@ public class TaskCardCellFactory implements Callback<ListView<TaskModel>, ListCe
 
                 cellController.setData(
                     item.getTitle(),
-                    item.getPrice(),
+                    item.getPrice() / 100,
                     item.getManagerLogin(),
                     item.getDeadline(),
                     item.getClientLogin()

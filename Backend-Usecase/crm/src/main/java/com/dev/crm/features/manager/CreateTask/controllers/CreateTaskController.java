@@ -21,10 +21,9 @@ public class CreateTaskController {
         this.useCase = useCase;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ApiResponse<CreateTaskResponse> create(@RequestBody @Valid CreateTaskRequest request) {
         CreateTaskResponse useCaseResult = useCase.handle(request);
-
         return ApiResponse.ok(useCaseResult);
     }
 }

@@ -27,39 +27,7 @@ public class ClientChatsController {
         dialogsListView.setCellFactory(new DialogCellFactory());
         messagesListView.setCellFactory(new MessageCellFactory());
 
-        for (int i = 0; i < 3; i++) {
-            dialogsListView.getItems().add(
-                new DialogModel(
-                    "Чат " + i,
-                    "01.01.2025 10:" + String.format("%02d", i % 60),
-                    "Сообщение " + i
-                )
-            );
-        }
-
-        for (int i = 0; i < 3; i++) {
-            messagesListView.getItems().add(
-                new MessageModel(
-                    "Текст сообщения " + i,
-                    "Отправитель " + i,
-                    "18:30",
-                    false,
-                    ""
-                )
-            );
-        }
-
-        for (int i = 0; i < 30; i++) {
-            messagesListView.getItems().add(
-                new MessageModel(
-                    "Текст сообщения " + i,
-                    "Отправитель " + i,
-                    "18:30",
-                    true,
-                    ""
-                )
-            );
-        }
+        
 
         scrollMessagesToBottom();
     }

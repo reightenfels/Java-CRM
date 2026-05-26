@@ -20,16 +20,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE task SET is_editing = 1 WHERE id = ?1", nativeQuery=true)
-    public int makeEditingOn(Long taskId);
-
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE task SET is_editing = 0 WHERE id = ?1", nativeQuery=true)
-    public int makeEditingOff(Long taskId);
-
-    @Modifying
-    @Transactional
     @Query(value="UPDATE task SET client = :clientId, version = version + 1 WHERE id = :taskId AND version = :version", nativeQuery=true)
     public Long updateClientId(
         @Param("taskId") Long taskId, 
@@ -53,4 +43,18 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
         @Param("taskId") Long taskId, 
         @Param("version") int  version
     );
+
+    @Query(value="""
+            SELECT
+                t.*
+            FROM
+                task t
+            JOIN
+                users_tasks_map m
+            ON
+                t.id = m.task_id
+            WHERE
+                m.user_id = :employeeId
+            """, nativeQuery=true)
+    public List<Task> getEmployeeTasks(@Param("employeeId") Long employeeId);
 }

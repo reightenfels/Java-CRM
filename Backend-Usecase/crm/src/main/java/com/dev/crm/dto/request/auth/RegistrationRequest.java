@@ -1,5 +1,6 @@
 package com.dev.crm.dto.request.auth;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -30,5 +31,7 @@ public class RegistrationRequest {
     private String phone;
 
     @NotBlank(message = "Email обязателен")
+    @Size(min = 2, max = 255, message = "Email от 2 до 255 символов")
+    @Email
     private String email;
 }

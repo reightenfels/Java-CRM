@@ -21,7 +21,7 @@ public class ChangeTaskStatusController {
         this.useCase = useCase;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ApiResponse<ChangeTaskStatusResponse> changeStatus(@RequestBody @Valid ChangeTaskStatusRequest request) {
         ChangeTaskStatusResponse useCaseResult = useCase.handle(request);
 

@@ -137,9 +137,9 @@ public class LoginController {
                 }
                 else {
                     try {
-                        ErrorResponse errorResponse = JsonEncoder.decode(body, ErrorResponse.class);
+                        ErrorResponse errorResponse = ResponseUnpacker.extract(body, ErrorResponse.class);
                         displayLoginErrors(errorResponse.errors);
-                    } catch (JsonProcessingException e) {
+                    } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                 }

@@ -1,23 +1,41 @@
 package com.dev.dto.models;
 
-public class TaskModel {
-    private final String title;
-    private final int price;
-    private final String deadline;
-    private final String managerLogin; 
-    private final String clientLogin;
+import java.time.LocalDateTime;
 
-    public TaskModel(String title, int price, String deadline, String managerLogin, String clientLogin) {
+public class TaskModel {
+    private Long id;
+    private String title;
+    private Long price;
+    private LocalDateTime deadline;
+    private String managerLogin; 
+    private String clientLogin;
+    private Long statusId;
+
+    public TaskModel() {}
+
+    public TaskModel(
+        Long id, 
+        String title, 
+        Long price, 
+        LocalDateTime deadline, 
+        String managerLogin, 
+        String clientLogin,
+        Long statusId
+    ) {
+        this.id = id;
         this.title = title;
         this.price = price;
         this.deadline = deadline;
         this.managerLogin = managerLogin;
         this.clientLogin = clientLogin;
+        this.statusId = statusId;
     }
 
+    public Long getId() { return id; }
     public String getTitle() { return title; }
-    public int getPrice() { return price; }
-    public String getDeadline() { return deadline; }
+    public Long getPrice() { return price; }
+    public LocalDateTime getDeadline() { return deadline; }
     public String getManagerLogin() { return managerLogin; }
     public String getClientLogin() { return clientLogin; }
+    public Long getStatusId() { return statusId; }
 }

@@ -14,7 +14,7 @@ public class MainController {
     @FXML
     public void initialize() throws IOException {
         Navigation.getInstance().setMainContent(mainContent);
-        Navigation.getInstance().loadStartPage("/views/pages/client-chats.fxml");
+        Navigation.getInstance().loadStartPage("/views/pages/tasks-list.fxml");
     }
 
     /**

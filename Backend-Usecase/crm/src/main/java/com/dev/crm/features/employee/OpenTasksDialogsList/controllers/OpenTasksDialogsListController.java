@@ -11,7 +11,7 @@ import com.dev.crm.features.employee.OpenTasksDialogsList.OpenTasksDialogsListUs
 import com.dev.crm.features.employee.OpenTasksDialogsList.dto.OpenTasksDialogsListResponse;
 
 @RestController
-@RequestMapping("/api/dialogs/tasks/list")
+@RequestMapping("/api/employee/dialogs/tasks")
 public class OpenTasksDialogsListController {
     private final OpenTasksDialogsListUseCase useCase;
 
@@ -19,7 +19,7 @@ public class OpenTasksDialogsListController {
         this.useCase = useCase;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ApiResponse<OpenTasksDialogsListResponse> openDialogsList() {
         Long currentAuthUserId = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
 
