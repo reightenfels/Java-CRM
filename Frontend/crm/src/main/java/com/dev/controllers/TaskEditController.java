@@ -1,58 +1,16 @@
 package com.dev.controllers;
 
-import org.controlsfx.control.SearchableComboBox;
-
 import com.dev.features.manager.OpenTaskCard.OpenTaskCardUseCase;
+import com.dev.features.manager.UpdateTask.UpdateTaskUseCase;
 import com.dev.services.Navigation;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 
-public class TaskEditController {
-    @FXML
-    public Label taskTitleLabel;
-    
-    @FXML
-    public TextField taskTitle;
-
-    @FXML
-    public TextArea taskDescription;
-
-    @FXML
-    public TextField taskPrice;
-
-    @FXML
-    public DatePicker taskDeadline;
-    
-    @FXML
-    public SearchableComboBox<String> statusesList;
-
-    @FXML
-    public SearchableComboBox<String> respManagersList;
-
-    public ObservableList<String> statusesObsList = FXCollections.observableArrayList();
-
-    public ObservableList<String> managersObsList = FXCollections.observableArrayList();
-
+public class TaskEditController extends AbstractTaskController {
     private Long taskId;
-
-    @FXML
-    public void initialize() {
-        statusesList.setItems(statusesObsList);
-        respManagersList.setItems(managersObsList);
-    }
-
-    /**
-     * Обрабатывает нажатие на кнопку возврата на предыдущую страницу
-     */
-    public void goBackBtnClick() {
-        Navigation.getInstance().loadAndShowBack();
-    }
+    private int version;
 
     /**
      * Обрабатывает нажатие на кнопку открытия чата с сотрудниками
@@ -68,6 +26,41 @@ public class TaskEditController {
         Navigation.getInstance().loadAndShowForward("/views/pages/client-chats.fxml");
     }
 
+
+
+    /**
+     * Обрабатывает клик на кнопку сохранения задачи
+     */
+    public void handelSaveBtnClick() {
+        try {
+            UpdateTaskUseCase.execute(this);
+        }
+        catch (JsonProcessingException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Показывает модальное окно успеха обновления
+     */
+    public void showSuccessUpdateModal() {
+        slideIn.setFromX(rootWidth);
+        slideIn.setToX(0);
+        slideIn.setInterpolator(javafx.animation.Interpolator.EASE_OUT);
+        slideIn.play();
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+
+        pause.setOnFinished(event -> {
+            slideOut.setFromX(0);
+            slideOut.setToX(rootWidth);
+            slideOut.setInterpolator(javafx.animation.Interpolator.EASE_IN);
+            slideOut.play();
+        });
+
+        pause.play();        
+    }
+
     public void setTaskId(Long taskId) {
         this.taskId = taskId;
         loadData();
@@ -75,6 +68,14 @@ public class TaskEditController {
 
     public Long getTaskId() {
         return taskId;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public int getVersion() {
+        return version;
     }
 
     public void loadData() {

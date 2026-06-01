@@ -38,42 +38,50 @@ public class UpdateTaskService implements UpdateTaskContract {
 
     @Override
     @Transactional
-    public Long updateTask(
+    public Task updateTask(
         Long id,
         String title,
+        String description,
         Long price,
         LocalDateTime deadline,
-        Long statusId,
-        Long responsibleId,
-        Long clientId,
+        String statusDisplayName,
+        String responsibleLogin,
+        String clientLogin,
         int version
     ) {
         Task task = taskRepository.findById(id).orElseThrow(
             () -> new ResourceNotFoundException("Не найдена задача с ID: " + id)
         );
-        task.setVersion(version);
+        
+        if (version != task.getVersion()) {
+            throw new OldEntityVersionException("Есть более новая версия данной задачи");
+        }
+
         task.setTitle(title);
         task.setPrice(price);
         task.setDeadline(deadline);
+        task.setDescription(description);
 
-        TaskStatus status = statusRepository.findById(statusId).orElseThrow(
-            () -> new ResourceNotFoundException("Не найден статус с ID: " + statusId)
+        TaskStatus status = statusRepository.findByDisplayName(statusDisplayName).orElseThrow(
+            () -> new ResourceNotFoundException("Не найден статус с названием: " + statusDisplayName)
         );
         task.setStatus(status);
 
-        User responsible = userRepository.findById(responsibleId).orElseThrow(
-            () -> new ResourceNotFoundException("Не найден ответственный с ID: " + responsibleId)
+        User responsible = userRepository.findByLogin(responsibleLogin).orElseThrow(
+            () -> new ResourceNotFoundException("Не найден ответственный с логином: " + responsibleLogin)
         );
         task.setResponsible(responsible);
 
-        User client = userRepository.findById(clientId).orElseThrow(
-            () -> new ResourceNotFoundException("Не найден клиент с ID: " + clientId)
-        );
-        task.setClient(client);
+        if (clientLogin != null) {
+            User client = userRepository.findByLogin(clientLogin).orElseThrow(
+                () -> new ResourceNotFoundException("Не найден клиент с логином: " + clientLogin)
+            );
+            task.setClient(client);
+        }
 
         try {
             task = taskRepository.save(task);
-            return task.getId();
+            return task;
         } 
         catch (OptimisticLockException e) {
             throw new OldEntityVersionException("Есть более новая версия данной задачи");
@@ -87,7 +95,7 @@ public class UpdateTaskService implements UpdateTaskContract {
     @Transactional
     public Long updateTaskPerformers(
         Long taskId, 
-        Set<Long> performersIds,
+        Set<String> employeesLogins,
         int version
     ) {
         Task task = taskRepository.findById(taskId).orElseThrow(
@@ -96,7 +104,7 @@ public class UpdateTaskService implements UpdateTaskContract {
         task.setVersion(version);
         
         Set<User> currentSet = new HashSet<>(task.getPerformers());
-        Set<User> desiredSet = new HashSet<>(userRepository.findAllById(performersIds));
+        Set<User> desiredSet = new HashSet<>(userRepository.findAllByLogin(employeesLogins));
 
         Set<User> toRemove = new HashSet<>(currentSet);
         toRemove.removeAll(desiredSet);

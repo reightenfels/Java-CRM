@@ -8,9 +8,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OpenClientCardResponse {
-    private String login;
-    private String firstName;
-    private String lastName;
-    private String phone;
-    private String email;
+    private OpenClientCardDTO client;
 }

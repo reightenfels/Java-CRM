@@ -3,40 +3,44 @@ package com.dev.crm.features.manager.UpdateTask.contracts;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import com.dev.crm.entities.Task;
+
 public interface UpdateTaskContract {
     /**
      * Обновляет данные задачи
      * @param id - ID
      * @param title - Заголовок
+     * @param description - Описание
      * @param price - Цена
      * @param deadline - Дедлайн
-     * @param statusId - ID статуса
-     * @param responsibleId - ID ответственного
-     * @param clientId - ID клиента
+     * @param statusDisplayName - Название статуса
+     * @param responsibleLogin - Логин ответственного
+     * @param clientLogin - Логни клиента
      * @param version - Версия
-     * @return - ID обновленной задачи
+     * @return - обновленню задачу
      */
-    public Long updateTask(
+    public Task updateTask(
         Long id,
         String title,
+        String description,
         Long price,
         LocalDateTime deadline,
-        Long statusId,
-        Long responsibleId,
-        Long clientId,
+        String statusDisplayName,
+        String responsibleLogin,
+        String clientLogin,
         int version
     );
 
     /**
      * Обновляет исполнителей задачи
      * @param taskId - ID задачи
-     * @param performersIds - Список ID исполнителей
+     * @param employeesLogins - Список логинов исполнителей
      * @param version - Версия задачи
      * @return - ID обновленной задачи
      */
     public Long updateTaskPerformers(
         Long taskId, 
-        Set<Long> performersIds,
+        Set<String> employeesLogins,
         int version
     );
 }

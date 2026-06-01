@@ -2,6 +2,7 @@ package com.dev.crm.features.manager.UpdateTask;
 
 import org.springframework.stereotype.Service;
 
+import com.dev.crm.entities.Task;
 import com.dev.crm.features.manager.UpdateTask.contracts.UpdateTaskContract;
 import com.dev.crm.features.manager.UpdateTask.dto.UpdateTaskRequest;
 import com.dev.crm.features.manager.UpdateTask.dto.UpdateTaskResponse;
@@ -21,27 +22,29 @@ public class UpdateTaskUseCase {
     }
 
     public UpdateTaskResponse handle(UpdateTaskRequest request) {
-        updateTaskService.updateTask(
+        Task updatedTask = updateTaskService.updateTask(
             request.getTaskId(),
             request.getTitle(),
+            request.getDescription(),
             request.getPrice(),
             request.getDeadline(),
-            request.getStatusId(),
-            request.getResponsibleId(),
-            request.getClientId(),
+            request.getStatusDisplayName(),
+            request.getResponsibleLogin(),
+            request.getClientLogin(),
             request.getVersion()
         );
 
         updateTaskService.updateTaskPerformers(
-            request.getTaskId(),
-            request.getPerformersIds(),
+            updatedTask.getId(),
+            request.getEmployeesLogins(),
             request.getVersion() + 1
         );
 
-        notificationService.send(request.getTaskId());
+        notificationService.send(updatedTask.getId());
 
         return new UpdateTaskResponse(
-            request.getTaskId()
+            updatedTask.getId(),
+            updatedTask.getVersion()
         );
     }
 }

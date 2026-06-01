@@ -1,5 +1,8 @@
 package com.dev.crm.features.manager.OpenTaskCard.services;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,6 +39,10 @@ public class OpenTaskService implements OpenTaskContract {
             () -> new ResourceNotFoundException("Не найдена задача с ID: " + taskId)
         );
 
+        Set<String> employeesLogins = task.getPerformers().stream()
+            .map(employee -> employee.getLogin())
+            .collect(Collectors.toSet());
+
         return new OpenTaskCardDTO(
             task.getId(),
             task.getTitle(),
@@ -44,7 +51,9 @@ public class OpenTaskService implements OpenTaskContract {
             task.getDeadline(),
             task.getStatus().getDisplayName(),
             task.getResponsible().getLogin(),
-            task.getClient() != null ? task.getClient().getLogin() : ""
+            task.getClient() != null ? task.getClient().getLogin() : "",
+            task.getVersion(),
+            employeesLogins
         );
     }
 

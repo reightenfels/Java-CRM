@@ -2,6 +2,8 @@ package com.dev.crm.security.filters;
 
 import java.io.IOException;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,9 +12,12 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.dev.crm.resterrorconfig.errorresponses.ErrorResponse;
 import com.dev.crm.services.JwtService;
 import com.dev.crm.services.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -44,8 +49,15 @@ public class JwtFilter extends OncePerRequestFilter {
       
         String token = authHeader.substring(7);
 
-        String username = jwtService.extractUsername(token);
-    
+        String username; 
+        
+        try {
+            username = jwtService.extractUsername(token);
+        } catch (ExpiredJwtException e) {
+            sendErrorResponse(response, HttpStatus.UNAUTHORIZED, "jwtExpired");
+            return;
+        }
+        
         if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userService.loadUserByUsername(username);
 
@@ -65,5 +77,19 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         filterChain.doFilter(request, response);
+    }
+
+    private void sendErrorResponse(
+            HttpServletResponse response, 
+            HttpStatus status, 
+            String message) throws IOException {
+        
+        response.setStatus(status.value());
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setCharacterEncoding("UTF-8");
+        
+        ErrorResponse errorResponse = new ErrorResponse(message);
+        String json = new ObjectMapper().writeValueAsString(errorResponse);
+        response.getWriter().write(json);
     }
 }

@@ -1,12 +1,11 @@
 package com.dev.crm.features.manager.OpenClientCard;
 
 import org.springframework.stereotype.Service;
-
-import com.dev.crm.entities.User;
-import com.dev.crm.features.manager.OpenClientCard.contracts.OpenClientCardContract;
-import com.dev.crm.features.manager.OpenClientCard.dto.OpenClientCardResponse;
-
 import org.springframework.transaction.annotation.Transactional;
+
+import com.dev.crm.features.manager.OpenClientCard.contracts.OpenClientCardContract;
+import com.dev.crm.features.manager.OpenClientCard.dto.OpenClientCardDTO;
+import com.dev.crm.features.manager.OpenClientCard.dto.OpenClientCardResponse;
 
 @Service
 public class OpenClientCardUseCase {
@@ -17,15 +16,11 @@ public class OpenClientCardUseCase {
     }
     
     @Transactional
-    public OpenClientCardResponse handle(Long clientId) {
-        User client = openClientService.getClientById(clientId);
+    public OpenClientCardResponse handle(String clientLogin) {
+        OpenClientCardDTO client = openClientService.getClientByLogin(clientLogin);
 
         return new OpenClientCardResponse(
-            client.getLogin(),
-            client.getFirstName(),
-            client.getLastName(),
-            client.getPhone(),
-            client.getEmail()
+            client
         );
     }
 }

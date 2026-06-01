@@ -3,6 +3,8 @@ package com.dev.controllers.parts;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import com.dev.controllers.ClientController;
+import com.dev.controllers.ProfileController;
 import com.dev.controllers.TaskEditController;
 import com.dev.services.Navigation;
 
@@ -47,7 +49,6 @@ public class TaskCardController {
      * Обрабатывает нажатие на кнопку открытия задачи
      */
     public void handleOpenTaskBtnClik() {
-        // Navigation.getInstance().loadAndShowForward("/views/pages/task-edit.fxml");
         Navigation.getInstance().loadAndShowForwardTyped(
             "/views/pages/task-edit.fxml",
             TaskEditController.class,
@@ -73,13 +74,21 @@ public class TaskCardController {
      * Обрабатывает нажатие на кнопку открытия данных ответственного менеджера
      */
     public void handleOpenRespManagerBtnClick() {
-        Navigation.getInstance().loadAndShowForward("/views/pages/profile.fxml");
+        Navigation.getInstance().loadAndShowForwardTyped(
+            "/views/pages/profile.fxml",
+            ProfileController.class,
+            controller -> controller.setLogin(taskManagerLogin.getText())
+        );
     }
 
     /**
      * Обрабатывает нажатие на кнопку открытия данных клиента
      */
     public void handleOpenClientBtnClick() {
-        Navigation.getInstance().loadAndShowForward("/views/pages/profile.fxml");
+        Navigation.getInstance().loadAndShowForwardTyped(
+            "/views/pages/client.fxml",
+            ClientController.class,
+            controller -> controller.setLogin(taskClientLogin.getText())
+        );
     }
 }

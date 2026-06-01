@@ -28,7 +28,6 @@ import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
 import com.dev.crm.resterrorconfig.exceptions.SaveEntityException;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
-import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
 
 @RestControllerAdvice
@@ -199,23 +198,12 @@ public class GlobalRestExceptionHandler {
     }
 
     /**
-     * Обрабатывает ситуацию когда истек срок токена авторизации
-     * @param exception
-     * @return
-     */
-    @ExceptionHandler(ExpiredJwtException.class)
-    public ResponseEntity<ErrorResponse> handleSaveEntityError(ExpiredJwtException exception) {
-        ErrorResponse errorResponse = new ErrorResponse("Истек срок текущего сеанса. Войдите в систему повторно");
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
-    }
-
-    /**
      * Обрабатывает ситуацию когда на сервере произошла необработанная ошибка
      * @param exception
      * @return
      */
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleSaveEntityError(Exception exception) {
+    public ResponseEntity<ErrorResponse> handleServerError(Exception exception) {
         ErrorResponse errorResponse = new ErrorResponse("На сервере произошла ошибка. Пожалуйста попробуйте позже, или свяжитесь с разработчиком");
         log.error("Ошибка: " + exception.getMessage(), exception);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);

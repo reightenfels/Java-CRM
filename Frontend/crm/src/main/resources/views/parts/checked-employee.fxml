@@ -1,0 +1,21 @@
+<HBox spacing="10.0" style="-fx-border-color: #3E88D1; -fx-border-width: 2 2 2 2; -fx-border-radius: 30;">
+    <children>
+        <Label style="-fx-text-fill: #3E88D1;" text="Сотрудник">
+            <font>
+            <Font size="16.0" />
+            </font>
+        </Label>
+        <StackPane>
+            <children>
+            <Line endX="15.0" fill="#ff1c20" rotate="45.0" stroke="#ff1c20" strokeWidth="2.0" />
+            <Line endX="15.0" fill="#ff1c20" rotate="-45.0" stroke="#ff1c20" strokeWidth="2.0" />
+            </children>
+            <cursor>
+            <Cursor fx:constant="HAND" />
+            </cursor>
+        </StackPane>
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+    </padding>
+</HBox>

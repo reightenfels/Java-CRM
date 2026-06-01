@@ -9,4 +9,5 @@ import lombok.Setter;
 @Setter
 public class UpdateTaskResponse {
     private Long updatedTaskId;
+    private int version;
 }

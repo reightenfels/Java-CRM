@@ -5,18 +5,21 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.SearchableComboBox?>
 
-<BorderPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.TaskEditController">
+<BorderPane fx:id="borderPaneRoot" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.TaskEditController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="1000.0" style="-fx-background-color: #261E1E; -fx-border-width: 1 0 1 0; -fx-border-color: #D4D4D4;" BorderPane.alignment="CENTER">
          <children>
@@ -54,139 +57,202 @@
       </HBox>
    </top>
    <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #3D3030;" BorderPane.alignment="CENTER">
+      <StackPane style="-fx-background-color: #3D3030;" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label style="-fx-text-fill: #FFF;" text="Редактирование задачи">
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                  </Label>
-                  <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
-                           <children>
-                              <VBox prefHeight="200.0" prefWidth="550.0" spacing="10.0">
-                                 <children>
-                                    <Label style="-fx-text-fill: #FFF;" text="Название:">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="taskTitle" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefWidth="200.0">
-                           <children>
-                              <VBox prefWidth="550.0" spacing="10.0">
-                                 <children>
-                                    <Label style="-fx-text-fill: #FFF;" text="Описание">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextArea id="taskDescTextArea" fx:id="taskDescription" prefHeight="70.0" prefWidth="550.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0;" wrapText="true">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </TextArea>
-                                 </children>
-                              </VBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="27.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="60.0">
-                           <children>
-                              <VBox prefHeight="200.0" prefWidth="245.0" spacing="10.0">
-                                 <children>
-                                    <Label style="-fx-text-fill: #FFF;" text="Цена">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="taskPrice" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="245.0" spacing="10.0">
-                                 <children>
-                                    <Label style="-fx-text-fill: #FFF;" text="Дата завершения">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <DatePicker fx:id="taskDeadline" maxWidth="1.7976931348623157E308" />
-                                 </children>
-                              </VBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="27.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="60.0">
-                           <children>
-                              <VBox prefHeight="200.0" prefWidth="245.0" spacing="10.0">
-                                 <children>
-                                    <Label style="-fx-text-fill: #FFF;" text="Статус">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <SearchableComboBox fx:id="statusesList" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="245.0" spacing="10.0">
-                                 <children>
-                                    <Label style="-fx-text-fill: #FFF;" text="Ответственный менеджер">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <SearchableComboBox fx:id="respManagersList" />
-                                 </children>
-                              </VBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="27.0" />
-                           </VBox.margin>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="12.0" />
-                     </VBox.margin>
-                  </VBox>
-                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <Button mnemonicParsing="false" prefWidth="195.0" style="-fx-background-color: #08D448; -fx-text-fill: #FFF; -fx-background-radius: 20;" text="Сохранить">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="35.0" />
-                     </VBox.margin>
-                  </VBox>
-               </children>
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent;">
                <StackPane.margin>
                   <Insets top="17.0" />
                </StackPane.margin>
-            </VBox>
+               <content>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #3D3030;">
+                     <children>
+                        <Label style="-fx-text-fill: #FFF;" text="Редактирование задачи">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <VBox maxWidth="550.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="550.0" spacing="10.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #FFF;" text="Название:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="taskTitle" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefWidth="550.0" spacing="10.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #FFF;" text="Описание:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextArea id="taskDescTextArea" fx:id="taskDescription" prefHeight="70.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0;" wrapText="true">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="27.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="60.0">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="245.0" spacing="10.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #FFF;" text="Цена:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="taskPrice" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="200.0" prefWidth="245.0" spacing="10.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #FFF;" text="Дата завершения:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <DatePicker fx:id="taskDeadline" maxWidth="1.7976931348623157E308" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="27.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="60.0">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="245.0" spacing="10.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #FFF;" text="Статус:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <SearchableComboBox fx:id="statusesList">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </SearchableComboBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="200.0" prefWidth="245.0" spacing="10.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: #FFF;" text="Ответственный менеджер:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <SearchableComboBox fx:id="respManagersList">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </SearchableComboBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="27.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="60.0">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="245.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label style="-fx-text-fill: #FFF;" text="Клиент:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <SearchableComboBox fx:id="clientsList">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </SearchableComboBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="27.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="60.0">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="245.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label style="-fx-text-fill: #FFF;" text="Исполнители:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <FlowPane fx:id="selectedEmployeesContainer" hgap="10.0" vgap="10.0">
+                                             <children>
+                                                
+                                             </children>
+                                          </FlowPane>
+                                          <TextField fx:id="searchEmployeesTextField" style="-fx-background-color: transparent; -fx-border-color: #FFF; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 0 0; -fx-text-fill: #FFF;">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <ListView fx:id="employeesListView" minHeight="200.0" prefHeight="200.0" prefWidth="200.0" styleClass="employeesListView" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="27.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handelSaveBtnClick" prefWidth="195.0" style="-fx-background-color: #08D448; -fx-text-fill: #FFF; -fx-background-radius: 20;" text="Сохранить">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="35.0" top="35.0" />
+                           </VBox.margin>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
             <VBox maxHeight="45.0" maxWidth="45.0" prefHeight="45.0" prefWidth="45.0" StackPane.alignment="TOP_LEFT">
                <children>
                   <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#goBackBtnClick" pickOnBounds="true" preserveRatio="true">
@@ -201,6 +267,15 @@
                <StackPane.margin>
                   <Insets left="20.0" top="7.0" />
                </StackPane.margin>
+            </VBox>
+            <VBox fx:id="successUpdateModal" alignment="CENTER" maxHeight="75.0" maxWidth="300.0" style="-fx-background-color: rgb(53, 116, 240, 0.8);" StackPane.alignment="TOP_RIGHT">
+               <children>
+                  <Label style="-fx-text-fill: #FFF;" text="Сохранение прошло успешно">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
             </VBox>
          </children>
       </StackPane>

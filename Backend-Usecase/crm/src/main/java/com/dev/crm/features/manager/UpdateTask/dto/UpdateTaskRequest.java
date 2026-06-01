@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,29 +13,30 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UpdateTaskRequest {
-    @NotBlank(message = "Отсутствует ID задачи в запросе")
+    @NotNull(message = "Отсутствует ID задачи в запросе")
     private Long taskId;
 
     @NotBlank(message = "Отсутствует название задачи в запросе")
     private String title;
 
-    @NotBlank(message = "Отсутствует цена задачи в запросе")
+    private String description;
+
+    @NotNull(message = "Отсутствует цена задачи в запросе")
     private Long price;
 
-    @NotBlank(message = "Отсутствует дедлайн в запросе")
+    @NotNull(message = "Отсутствует дедлайн в запросе")
     private LocalDateTime deadline;
 
-    @NotBlank(message = "Отсутствует ID статуса в запросе")
-    private Long statusId;
+    @NotNull(message = "Отсутствует название статуса в запросе")
+    private String statusDisplayName;
 
-    @NotBlank(message = "Отсутствует ID ответственного в запросе")
-    private Long responsibleId;
+    @NotNull(message = "Отсутствует логин ответственного в запросе")
+    private String responsibleLogin;
 
-    private Long clientId;
+    private String clientLogin;
     
-    @NotBlank(message = "Отсутствует версия задачи в запросе")
+    @NotNull(message = "Отсутствует версия задачи в запросе")
     private int version;
 
-    @NotBlank(message = "Отсутствует ID исполнителей задачи в запросе")
-    private Set<Long> performersIds;
+    private Set<String> employeesLogins;
 }

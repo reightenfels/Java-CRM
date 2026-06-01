@@ -44,7 +44,6 @@ public class OpenTaskCardManagersRequest {
         .auth()
         .onResponse(response -> {
             String body = response.body();
-            System.out.println(body);
 
             OpenTaskCardManagersResponse managersResponse = ResponseUnpacker.extract(body, OpenTaskCardManagersResponse.class);
 

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.dev.crm.entities.User;
 import com.dev.crm.features.manager.OpenClientCard.contracts.OpenClientCardContract;
+import com.dev.crm.features.manager.OpenClientCard.dto.OpenClientCardDTO;
 import com.dev.crm.repositories.UserRepository;
 import com.dev.crm.resterrorconfig.exceptions.ResourceNotFoundException;
 
@@ -16,9 +17,17 @@ public class OpenClientCardService implements OpenClientCardContract {
     }
 
     @Override
-    public User getClientById(Long clientId) {
-        return userRepository.findById(clientId).orElseThrow(
-            () -> new ResourceNotFoundException("Не найден клиент с ID: " + clientId)
+    public OpenClientCardDTO getClientByLogin(String clientLogin) {
+        User client = userRepository.findByLogin(clientLogin).orElseThrow(
+            () -> new ResourceNotFoundException("Не найден клиент с логином: " + clientLogin)
+        );
+
+        return new OpenClientCardDTO(
+            client.getLogin(),
+            client.getFirstName(),
+            client.getLastName(),
+            client.getPhone(),
+            client.getEmail()
         );
     }
 }

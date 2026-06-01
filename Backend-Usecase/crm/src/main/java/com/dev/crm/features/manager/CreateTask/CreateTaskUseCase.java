@@ -25,11 +25,13 @@ public class CreateTaskUseCase {
     public CreateTaskResponse handle(CreateTaskRequest request) {
         Long newTaskId = createTaskService.createTask(
             request.getTitle(),
+            request.getDescription(),
             request.getPrice(),
             request.getDeadline(),
-            request.getStatusId(),
-            request.getResponsibleId(),
-            request.getClientId()
+            request.getStatusDisplayName(),
+            request.getResponsibleLogin(),
+            request.getClientLogin(),
+            request.getEmployeesLogins()
         );
 
         Long newDialogId = createTaskService.createTaskDialog(newTaskId, null);

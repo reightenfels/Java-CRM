@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="750.0" prefWidth="1200.0"  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.ClientController">
+<BorderPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.ClientController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="1000.0" style="-fx-background-color: #261E1E; -fx-border-width: 1 0 1 0; -fx-border-color: #D4D4D4;" BorderPane.alignment="CENTER">
          <children>
-            <Label style="-fx-text-fill: #fff;" text="client_login">
+            <Label fx:id="clientLogin" style="-fx-text-fill: #fff;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -67,7 +67,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;" text="Иван">
+                              <TextField fx:id="clientFirstName" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -81,7 +81,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;" text="Иванов">
+                              <TextField fx:id="clientLastName" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -102,7 +102,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;" text="+7 (961) 123 12 12">
+                              <TextField fx:id="clientPhone" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -116,7 +116,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;" text="client@mail.ru">
+                              <TextField fx:id="clientEmail" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

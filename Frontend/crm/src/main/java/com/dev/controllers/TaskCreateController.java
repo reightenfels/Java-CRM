@@ -1,46 +1,48 @@
 package com.dev.controllers;
+import com.dev.features.manager.CreateTask.CreateTaskUseCase;
+import com.dev.features.manager.OpenCreateTaskCard.OpenCreateTaskCardUseCase;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
-import org.controlsfx.control.SearchableComboBox;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 
-import com.dev.services.Navigation;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-
-public class TaskCreateController {
-    @FXML
-    private SearchableComboBox<String> statusesList;
-
-    @FXML
-    private SearchableComboBox<String> respManagersList;
-
-    @FXML
-    public void initialize() {
-        ObservableList<String> statuses = FXCollections.observableArrayList(
-            "В работе",
-            "Не начато",
-            "Ожидается оплата",
-            "Просрочено",
-            "Выполнено"
-        );
-
-        ObservableList<String> managers = FXCollections.observableArrayList(
-            "manager_login",  
-            "manager_login_1",  
-            "manager_login_2",  
-            "manager_login_3",  
-            "manager_login_4"  
-        );
-
-        statusesList.setItems(statuses);
-        respManagersList.setItems(managers);
+public class TaskCreateController extends AbstractTaskController {
+    /**
+     * Обрабатывает клик на кнопку создания задачи
+     */
+    public void handelSaveBtnClick() {
+        try {
+            CreateTaskUseCase.execute(this);
+        } catch (JsonProcessingException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
-     * Обрабатывает нажатие на кнопку возврата на предыдущую страницу
+     * Показывает модальное окно успеха обновления
      */
-    public void goBackBtnClick() {
-        Navigation.getInstance().loadAndShowBack();
+    public void showSuccessUpdateModal() {
+        slideIn.setFromX(rootWidth);
+        slideIn.setToX(0);
+        slideIn.setInterpolator(javafx.animation.Interpolator.EASE_OUT);
+        slideIn.play();
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+
+        pause.setOnFinished(event -> {
+            slideOut.setFromX(0);
+            slideOut.setToX(rootWidth);
+            slideOut.setInterpolator(javafx.animation.Interpolator.EASE_IN);
+            slideOut.play();
+        });
+
+        pause.play();        
+    }
+
+    /**
+     * Загружает данные
+     */
+    public void loadData() {
+        OpenCreateTaskCardUseCase.execute(this);
     }
 }

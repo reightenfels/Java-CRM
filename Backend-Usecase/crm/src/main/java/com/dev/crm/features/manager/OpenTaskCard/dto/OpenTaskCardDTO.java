@@ -1,6 +1,7 @@
 package com.dev.crm.features.manager.OpenTaskCard.dto;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,4 +17,6 @@ public class OpenTaskCardDTO {
     private final String statusDisplayName;
     private final String managerLogin;
     private final String clientLogin;
+    private final int version;
+    private final Set<String> employees;
 }

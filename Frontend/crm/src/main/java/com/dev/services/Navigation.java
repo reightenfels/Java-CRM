@@ -161,6 +161,7 @@ public class Navigation {
             }
         } catch (IOException e) {
             System.err.println("❌ Ошибка загрузки " + fxmlName + ": " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

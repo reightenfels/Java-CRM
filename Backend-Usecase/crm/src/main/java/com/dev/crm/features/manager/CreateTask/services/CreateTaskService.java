@@ -1,6 +1,8 @@
 package com.dev.crm.features.manager.CreateTask.services;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
@@ -43,35 +45,47 @@ public class CreateTaskService implements CreateTaskContract {
     @Override
     public Long createTask(
         String title,
+        String description,
         Long price,
         LocalDateTime deadline,
-        Long statusId,
-        Long responsibleId,
-        Long clientId
+        String statusDisplayName,
+        String responsibleLogin,
+        String clientLogin,
+        Set<String> employeesLogins
     ) {
         Task task = new Task();
         task.setTitle(title);
+
+        if (description != null) {
+            task.setDescription(description);
+        }
+
         task.setPrice(price);
         task.setDeadline(deadline);
         
-        TaskStatus status = statusRepository.findById(statusId).orElseThrow(
-            () -> new ResourceNotFoundException("Не найден статус с ID: " + statusId)
+        TaskStatus status = statusRepository.findByDisplayName(statusDisplayName).orElseThrow(
+            () -> new ResourceNotFoundException("Не найден статус с названием: " + statusDisplayName)
         );
 
         task.setStatus(status);
 
-        User responsible = userRepository.findById(responsibleId).orElseThrow(
-            () -> new ResourceNotFoundException("Не найден пользоваель с ID: " + responsibleId)
+        User responsible = userRepository.findByLogin(responsibleLogin).orElseThrow(
+            () -> new ResourceNotFoundException("Не найден пользоваель с логином: " + responsibleLogin)
         );
 
         task.setResponsible(responsible);
 
-        if (clientId != null) {
-            User client = userRepository.findById(clientId).orElseThrow(
-                () -> new ResourceNotFoundException("Не найден пользоваель с ID: " + responsibleId)
+        if (clientLogin != null) {
+            User client = userRepository.findByLogin(clientLogin).orElseThrow(
+                () -> new ResourceNotFoundException("Не найден пользоваель с логином: " + clientLogin)
             );
 
             task.setClient(client);
+        }
+
+        if (!employeesLogins.isEmpty()) {
+            Set<User> employees = new HashSet<>(userRepository.findAllByLogin(employeesLogins));
+            task.setPerformers(employees);
         }
 
         try {

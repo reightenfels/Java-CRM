@@ -22,6 +22,10 @@ public class TasksListController {
     }
 
     public void handleCreateTaskClickBtn() {
-        Navigation.getInstance().loadAndShowForward("/views/pages/task-create.fxml");
+        Navigation.getInstance().loadAndShowForwardTyped(
+            "/views/pages/task-create.fxml",
+            TaskCreateController.class,
+            controller -> controller.loadData()
+        );
     }
 }

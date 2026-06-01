@@ -1,5 +1,7 @@
 package com.dev.features.manager.OpenTaskCard.request;
 
+import java.util.Set;
+
 import com.dev.controllers.TaskEditController;
 import com.dev.dto.models.TaskModel;
 import com.dev.dto.responses.success.OpenTaskCardResponse;
@@ -7,6 +9,7 @@ import com.dev.services.Http;
 import com.dev.services.ResponseUnpacker;
 
 import javafx.application.Platform;
+import javafx.scene.layout.HBox;
 
 public class OpenTaskCardRequest {
     private static OpenTaskCardRequest instance = null;
@@ -28,10 +31,21 @@ public class OpenTaskCardRequest {
             controller.taskTitleLabel.setText(task.getTitle());
             controller.taskTitle.setText(task.getTitle());
             controller.taskDescription.setText(task.getDescription());
-            controller.taskPrice.setText(String.valueOf(task.getPrice()));
+            controller.taskPrice.setText(String.valueOf(task.getPrice() / 100));
             controller.taskDeadline.setValue(task.getDeadline().toLocalDate());
             controller.statusesList.setValue(task.getStatusDisplayName());
+            controller.clientsList.setValue(task.getClientLogin());
             controller.respManagersList.setValue(task.getManagerLogin());
+            controller.setVersion(task.getVersion());
+
+            Set<String> employees = task.getEmployees();
+
+            for (String employee : employees) {
+                HBox chip = controller.createEmployeeChip(employee);
+                controller.selectedEmployeesContainer.getChildren().add(chip);
+                controller.checkedEmployees.add(employee);
+                controller.employeesObsList.remove(employee);
+            }
         });
     }
 
@@ -46,7 +60,6 @@ public class OpenTaskCardRequest {
         .get()
         .onResponse(response -> {
             String body = response.body();
-            System.out.println(body);
 
             OpenTaskCardResponse taskResponse = ResponseUnpacker.extract(body, OpenTaskCardResponse.class);
 

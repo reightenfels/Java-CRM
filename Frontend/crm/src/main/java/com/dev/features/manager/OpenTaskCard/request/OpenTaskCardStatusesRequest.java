@@ -26,13 +26,11 @@ public class OpenTaskCardStatusesRequest {
         List<StatusModel> statusesList,
         ObservableList<String> statusesObsList
     ) {
-        for(int i = 0; i < statusesList.size(); i++) {
-            final int index = i;
-
-            Platform.runLater(() -> {
-                statusesObsList.add(statusesList.get(index).displayName);
-            });
-        }
+        Platform.runLater(() -> {
+            for (StatusModel status: statusesList) {
+                statusesObsList.add(status.displayName);
+            }            
+        });
     }
 
     public void requestAndDisplay(
