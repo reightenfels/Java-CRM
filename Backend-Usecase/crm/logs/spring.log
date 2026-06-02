@@ -1,20 +1,20 @@
-2026-06-01T22:02:46.417+03:00  INFO 43877 --- [crm] [main] com.dev.crm.CrmApplication               : Starting CrmApplication using Java 21.0.11 with PID 43877 (/home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm/target/classes started by san in /home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm)
-2026-06-01T22:02:46.439+03:00  INFO 43877 --- [crm] [main] com.dev.crm.CrmApplication               : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T22:02:48.010+03:00  INFO 43877 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-01T22:02:48.335+03:00  INFO 43877 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 311 ms. Found 12 JPA repository interfaces.
-2026-06-01T22:02:49.146+03:00  INFO 43877 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-06-01T22:02:49.165+03:00  INFO 43877 --- [crm] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-06-01T22:02:49.166+03:00  INFO 43877 --- [crm] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
-2026-06-01T22:02:49.240+03:00  INFO 43877 --- [crm] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-06-01T22:02:49.243+03:00  INFO 43877 --- [crm] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2655 ms
-2026-06-01T22:02:49.502+03:00  INFO 43877 --- [crm] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-01T22:02:49.612+03:00  INFO 43877 --- [crm] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
-2026-06-01T22:02:49.679+03:00  INFO 43877 --- [crm] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-01T22:02:50.031+03:00  INFO 43877 --- [crm] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-01T22:02:50.065+03:00  INFO 43877 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-01T22:02:50.641+03:00  INFO 43877 --- [crm] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@37caecda
-2026-06-01T22:02:50.644+03:00  INFO 43877 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-01T22:02:50.850+03:00  INFO 43877 --- [crm] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-06-02T12:16:54.278+03:00  INFO 10084 --- [crm] [main] com.dev.crm.CrmApplication               : Starting CrmApplication using Java 21.0.11 with PID 10084 (/home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm/target/classes started by san in /home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm)
+2026-06-02T12:16:54.285+03:00  INFO 10084 --- [crm] [main] com.dev.crm.CrmApplication               : No active profile set, falling back to 1 default profile: "default"
+2026-06-02T12:16:56.093+03:00  INFO 10084 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-02T12:16:56.307+03:00  INFO 10084 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 198 ms. Found 12 JPA repository interfaces.
+2026-06-02T12:16:57.316+03:00  INFO 10084 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-02T12:16:57.350+03:00  INFO 10084 --- [crm] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-02T12:16:57.350+03:00  INFO 10084 --- [crm] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-06-02T12:16:57.441+03:00  INFO 10084 --- [crm] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-02T12:16:57.443+03:00  INFO 10084 --- [crm] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3054 ms
+2026-06-02T12:16:57.721+03:00  INFO 10084 --- [crm] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-02T12:16:57.821+03:00  INFO 10084 --- [crm] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
+2026-06-02T12:16:57.893+03:00  INFO 10084 --- [crm] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-02T12:16:58.253+03:00  INFO 10084 --- [crm] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-02T12:16:58.295+03:00  INFO 10084 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-02T12:16:58.711+03:00  INFO 10084 --- [crm] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@900649e
+2026-06-02T12:16:58.714+03:00  INFO 10084 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-02T12:16:58.816+03:00  INFO 10084 --- [crm] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0.45
@@ -22,52 +22,50 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-06-01T22:02:52.340+03:00  INFO 43877 --- [crm] [main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.dev.crm.entities.Privilegy (class must be instantiated by Interceptor)
-2026-06-01T22:02:52.976+03:00  INFO 43877 --- [crm] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-01T22:02:53.315+03:00  INFO 43877 --- [crm] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01T22:02:54.545+03:00  INFO 43877 --- [crm] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-06-01T22:02:55.106+03:00  INFO 43877 --- [crm] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
-2026-06-01T22:02:56.917+03:00  WARN 43877 --- [crm] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-01T22:02:58.017+03:00  INFO 43877 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-06-01T22:02:58.021+03:00  INFO 43877 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@190ec769]]
-2026-06-01T22:02:58.026+03:00  INFO 43877 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-06-01T22:02:58.093+03:00  INFO 43877 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2026-06-01T22:02:58.104+03:00  INFO 43877 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-06-01T22:02:58.263+03:00  INFO 43877 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7843b65e:0/SimpleConnection@1b6824c1 [delegate=amqp://guest@127.0.0.1:5672/, localPort=56244]
-2026-06-01T22:02:58.500+03:00  INFO 43877 --- [crm] [main] com.dev.crm.CrmApplication               : Started CrmApplication in 12.726 seconds (process running for 13.251)
-2026-06-01T22:03:58.017+03:00  INFO 43877 --- [crm] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
-2026-06-01T22:20:08.692+03:00  INFO 43877 --- [crm] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-01T22:20:08.693+03:00  INFO 43877 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-06-01T22:20:08.701+03:00  INFO 43877 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
-2026-06-01T22:33:58.080+03:00  INFO 43877 --- [crm] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
-2026-06-01T23:03:58.095+03:00  INFO 43877 --- [crm] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
-2026-06-01T23:31:41.897+03:00  INFO 43877 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
-2026-06-01T23:31:42.092+03:00  INFO 43877 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
-2026-06-01T23:31:42.096+03:00  INFO 43877 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-06-01T23:31:42.104+03:00  INFO 43877 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-06-01T23:31:42.116+03:00  INFO 43877 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
-2026-06-01T23:31:42.117+03:00  INFO 43877 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@190ec769]]
-2026-06-01T23:31:42.117+03:00  INFO 43877 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
-2026-06-01T23:31:42.152+03:00  INFO 43877 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01T23:31:42.174+03:00  INFO 43877 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-01T23:31:42.181+03:00  INFO 43877 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-06-01T23:38:57.006+03:00  INFO 102294 --- [crm] [main] com.dev.crm.CrmApplication               : Starting CrmApplication using Java 21.0.11 with PID 102294 (/home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm/target/classes started by san in /home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm)
-2026-06-01T23:38:57.011+03:00  INFO 102294 --- [crm] [main] com.dev.crm.CrmApplication               : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T23:38:58.559+03:00  INFO 102294 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-01T23:38:58.731+03:00  INFO 102294 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 160 ms. Found 12 JPA repository interfaces.
-2026-06-01T23:38:59.605+03:00  INFO 102294 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-06-01T23:38:59.620+03:00  INFO 102294 --- [crm] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-06-01T23:38:59.620+03:00  INFO 102294 --- [crm] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
-2026-06-01T23:38:59.687+03:00  INFO 102294 --- [crm] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-06-01T23:38:59.688+03:00  INFO 102294 --- [crm] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2587 ms
-2026-06-01T23:38:59.964+03:00  INFO 102294 --- [crm] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-01T23:39:00.090+03:00  INFO 102294 --- [crm] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
-2026-06-01T23:39:00.157+03:00  INFO 102294 --- [crm] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-01T23:39:00.692+03:00  INFO 102294 --- [crm] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-01T23:39:00.719+03:00  INFO 102294 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-01T23:39:01.561+03:00  INFO 102294 --- [crm] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2619cb76
-2026-06-01T23:39:01.571+03:00  INFO 102294 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-01T23:39:01.808+03:00  INFO 102294 --- [crm] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-06-02T12:16:59.926+03:00  INFO 10084 --- [crm] [main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.dev.crm.entities.Privilegy (class must be instantiated by Interceptor)
+2026-06-02T12:17:00.175+03:00  INFO 10084 --- [crm] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-02T12:17:00.254+03:00  INFO 10084 --- [crm] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-02T12:17:00.548+03:00  INFO 10084 --- [crm] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-02T12:17:00.776+03:00  INFO 10084 --- [crm] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-06-02T12:17:01.591+03:00  WARN 10084 --- [crm] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-02T12:17:02.409+03:00  INFO 10084 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-06-02T12:17:02.411+03:00  INFO 10084 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5bf86398]]
+2026-06-02T12:17:02.412+03:00  INFO 10084 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-06-02T12:17:02.432+03:00  INFO 10084 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-02T12:17:02.436+03:00  INFO 10084 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-06-02T12:17:02.474+03:00  INFO 10084 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#513fb873:0/SimpleConnection@b41ceac [delegate=amqp://guest@127.0.0.1:5672/, localPort=39312]
+2026-06-02T12:17:02.584+03:00  INFO 10084 --- [crm] [main] com.dev.crm.CrmApplication               : Started CrmApplication in 9.061 seconds (process running for 9.565)
+2026-06-02T12:17:15.375+03:00  INFO 10084 --- [crm] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-02T12:17:15.376+03:00  INFO 10084 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-02T12:17:15.378+03:00  INFO 10084 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-02T12:18:02.412+03:00  INFO 10084 --- [crm] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-06-02T12:44:14.816+03:00  INFO 10084 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-06-02T12:44:15.562+03:00  INFO 10084 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-06-02T12:44:15.575+03:00  INFO 10084 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-02T12:44:15.605+03:00  INFO 10084 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-02T12:44:15.635+03:00  INFO 10084 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-06-02T12:44:15.641+03:00  INFO 10084 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5bf86398]]
+2026-06-02T12:44:15.641+03:00  INFO 10084 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-06-02T12:44:15.831+03:00  INFO 10084 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-02T12:44:15.894+03:00  INFO 10084 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-02T12:44:15.916+03:00  INFO 10084 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-02T12:46:01.758+03:00  INFO 27669 --- [crm] [main] com.dev.crm.CrmApplication               : Starting CrmApplication using Java 21.0.11 with PID 27669 (/home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm/target/classes started by san in /home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm)
+2026-06-02T12:46:01.762+03:00  INFO 27669 --- [crm] [main] com.dev.crm.CrmApplication               : No active profile set, falling back to 1 default profile: "default"
+2026-06-02T12:46:03.356+03:00  INFO 27669 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-02T12:46:03.526+03:00  INFO 27669 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 157 ms. Found 12 JPA repository interfaces.
+2026-06-02T12:46:04.475+03:00  INFO 27669 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-02T12:46:04.502+03:00  INFO 27669 --- [crm] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-02T12:46:04.503+03:00  INFO 27669 --- [crm] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-06-02T12:46:04.580+03:00  INFO 27669 --- [crm] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-02T12:46:04.581+03:00  INFO 27669 --- [crm] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2749 ms
+2026-06-02T12:46:04.932+03:00  INFO 27669 --- [crm] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-02T12:46:05.051+03:00  INFO 27669 --- [crm] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
+2026-06-02T12:46:05.110+03:00  INFO 27669 --- [crm] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-02T12:46:05.449+03:00  INFO 27669 --- [crm] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-02T12:46:05.487+03:00  INFO 27669 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-02T12:46:06.104+03:00  INFO 27669 --- [crm] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@340b4f07
+2026-06-02T12:46:06.111+03:00  INFO 27669 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-02T12:46:06.271+03:00  INFO 27669 --- [crm] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0.45
@@ -75,50 +73,50 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-06-01T23:39:02.629+03:00  INFO 102294 --- [crm] [main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.dev.crm.entities.Privilegy (class must be instantiated by Interceptor)
-2026-06-01T23:39:02.844+03:00  INFO 102294 --- [crm] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-01T23:39:02.980+03:00  INFO 102294 --- [crm] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01T23:39:03.221+03:00  INFO 102294 --- [crm] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-06-01T23:39:03.393+03:00  INFO 102294 --- [crm] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
-2026-06-01T23:39:04.198+03:00  WARN 102294 --- [crm] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-01T23:39:05.061+03:00  INFO 102294 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-06-01T23:39:05.062+03:00  INFO 102294 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3e5e7f4c]]
-2026-06-01T23:39:05.065+03:00  INFO 102294 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-06-01T23:39:05.078+03:00  INFO 102294 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2026-06-01T23:39:05.082+03:00  INFO 102294 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-06-01T23:39:05.371+03:00  INFO 102294 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7a2b3cfd:0/SimpleConnection@545d772e [delegate=amqp://guest@127.0.0.1:5672/, localPort=37066]
-2026-06-01T23:39:05.594+03:00  INFO 102294 --- [crm] [main] com.dev.crm.CrmApplication               : Started CrmApplication in 9.057 seconds (process running for 9.743)
-2026-06-01T23:40:05.060+03:00  INFO 102294 --- [crm] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
-2026-06-01T23:47:56.539+03:00  INFO 102294 --- [crm] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-01T23:47:56.574+03:00  INFO 102294 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-06-01T23:47:56.703+03:00  INFO 102294 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 127 ms
-2026-06-01T23:48:34.835+03:00  INFO 102294 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
-2026-06-01T23:48:35.085+03:00  INFO 102294 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
-2026-06-01T23:48:35.090+03:00  INFO 102294 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-06-01T23:48:35.099+03:00  INFO 102294 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-06-01T23:48:35.116+03:00  INFO 102294 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
-2026-06-01T23:48:35.119+03:00  INFO 102294 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3e5e7f4c]]
-2026-06-01T23:48:35.120+03:00  INFO 102294 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
-2026-06-01T23:48:35.310+03:00  INFO 102294 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01T23:48:35.331+03:00  INFO 102294 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-01T23:48:35.345+03:00  INFO 102294 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-06-01T23:48:36.442+03:00  INFO 108771 --- [crm] [main] com.dev.crm.CrmApplication               : Starting CrmApplication using Java 21.0.11 with PID 108771 (/home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm/target/classes started by san in /home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm)
-2026-06-01T23:48:36.444+03:00  INFO 108771 --- [crm] [main] com.dev.crm.CrmApplication               : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T23:48:37.491+03:00  INFO 108771 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-01T23:48:37.655+03:00  INFO 108771 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 143 ms. Found 12 JPA repository interfaces.
-2026-06-01T23:48:38.120+03:00  INFO 108771 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-06-01T23:48:38.133+03:00  INFO 108771 --- [crm] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-06-01T23:48:38.133+03:00  INFO 108771 --- [crm] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
-2026-06-01T23:48:38.185+03:00  INFO 108771 --- [crm] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-06-01T23:48:38.186+03:00  INFO 108771 --- [crm] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1688 ms
-2026-06-01T23:48:38.345+03:00  INFO 108771 --- [crm] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-01T23:48:38.405+03:00  INFO 108771 --- [crm] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
-2026-06-01T23:48:38.451+03:00  INFO 108771 --- [crm] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-01T23:48:38.702+03:00  INFO 108771 --- [crm] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-01T23:48:38.723+03:00  INFO 108771 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-01T23:48:39.036+03:00  INFO 108771 --- [crm] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@340b4f07
-2026-06-01T23:48:39.038+03:00  INFO 108771 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-01T23:48:39.119+03:00  INFO 108771 --- [crm] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-06-02T12:46:07.292+03:00  INFO 27669 --- [crm] [main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.dev.crm.entities.Privilegy (class must be instantiated by Interceptor)
+2026-06-02T12:46:07.644+03:00  INFO 27669 --- [crm] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-02T12:46:07.794+03:00  INFO 27669 --- [crm] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-02T12:46:08.048+03:00  INFO 27669 --- [crm] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-02T12:46:08.289+03:00  INFO 27669 --- [crm] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-06-02T12:46:09.061+03:00  WARN 27669 --- [crm] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-02T12:46:09.855+03:00  INFO 27669 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-06-02T12:46:09.859+03:00  INFO 27669 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@56a0dd11]]
+2026-06-02T12:46:09.870+03:00  INFO 27669 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-06-02T12:46:09.890+03:00  INFO 27669 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-02T12:46:09.895+03:00  INFO 27669 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-06-02T12:46:10.189+03:00  INFO 27669 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#15b882a0:0/SimpleConnection@726e780a [delegate=amqp://guest@127.0.0.1:5672/, localPort=47230]
+2026-06-02T12:46:10.334+03:00  INFO 27669 --- [crm] [main] com.dev.crm.CrmApplication               : Started CrmApplication in 9.372 seconds (process running for 9.822)
+2026-06-02T12:46:18.755+03:00  INFO 27669 --- [crm] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-02T12:46:18.756+03:00  INFO 27669 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-02T12:46:18.762+03:00  INFO 27669 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2026-06-02T12:47:09.859+03:00  INFO 27669 --- [crm] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-06-02T12:55:51.043+03:00  INFO 27669 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-06-02T12:55:51.223+03:00  INFO 27669 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-06-02T12:55:51.258+03:00  INFO 27669 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-02T12:55:51.318+03:00  INFO 27669 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-02T12:55:51.363+03:00  INFO 27669 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-06-02T12:55:51.367+03:00  INFO 27669 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@56a0dd11]]
+2026-06-02T12:55:51.371+03:00  INFO 27669 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-06-02T12:55:51.488+03:00  INFO 27669 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-02T12:55:51.661+03:00  INFO 27669 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-02T12:55:51.832+03:00  INFO 27669 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-02T12:55:53.653+03:00  INFO 33664 --- [crm] [main] com.dev.crm.CrmApplication               : Starting CrmApplication using Java 21.0.11 with PID 33664 (/home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm/target/classes started by san in /home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm)
+2026-06-02T12:55:53.657+03:00  INFO 33664 --- [crm] [main] com.dev.crm.CrmApplication               : No active profile set, falling back to 1 default profile: "default"
+2026-06-02T12:55:54.856+03:00  INFO 33664 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-02T12:55:55.029+03:00  INFO 33664 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 159 ms. Found 12 JPA repository interfaces.
+2026-06-02T12:55:55.736+03:00  INFO 33664 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-02T12:55:55.757+03:00  INFO 33664 --- [crm] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-02T12:55:55.758+03:00  INFO 33664 --- [crm] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-06-02T12:55:55.814+03:00  INFO 33664 --- [crm] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-02T12:55:55.815+03:00  INFO 33664 --- [crm] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2094 ms
+2026-06-02T12:55:56.018+03:00  INFO 33664 --- [crm] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-02T12:55:56.109+03:00  INFO 33664 --- [crm] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
+2026-06-02T12:55:56.155+03:00  INFO 33664 --- [crm] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-02T12:55:56.414+03:00  INFO 33664 --- [crm] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-02T12:55:56.445+03:00  INFO 33664 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-02T12:55:56.991+03:00  INFO 33664 --- [crm] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@340b4f07
+2026-06-02T12:55:56.993+03:00  INFO 33664 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-02T12:55:57.106+03:00  INFO 33664 --- [crm] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0.45
@@ -126,131 +124,30 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-06-01T23:48:39.805+03:00  INFO 108771 --- [crm] [main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.dev.crm.entities.Privilegy (class must be instantiated by Interceptor)
-2026-06-01T23:48:40.020+03:00  INFO 108771 --- [crm] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-01T23:48:40.087+03:00  INFO 108771 --- [crm] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01T23:48:40.302+03:00  INFO 108771 --- [crm] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-06-01T23:48:40.458+03:00  INFO 108771 --- [crm] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
-2026-06-01T23:48:41.001+03:00  WARN 108771 --- [crm] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-01T23:48:41.446+03:00  INFO 108771 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-06-01T23:48:41.448+03:00  INFO 108771 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7b4b6dca]]
-2026-06-01T23:48:41.449+03:00  INFO 108771 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-06-01T23:48:41.464+03:00  INFO 108771 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2026-06-01T23:48:41.469+03:00  INFO 108771 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-06-01T23:48:41.530+03:00  INFO 108771 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#35c83c56:0/SimpleConnection@3ea3b20d [delegate=amqp://guest@127.0.0.1:5672/, localPort=49194]
-2026-06-01T23:48:41.620+03:00  INFO 108771 --- [crm] [main] com.dev.crm.CrmApplication               : Started CrmApplication in 5.618 seconds (process running for 6.092)
-2026-06-01T23:48:48.213+03:00  INFO 108771 --- [crm] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-01T23:48:48.213+03:00  INFO 108771 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-06-01T23:48:48.215+03:00  INFO 108771 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-06-01T23:48:48.789+03:00  WARN 108771 --- [crm] [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1048, SQLState: 23000
-2026-06-01T23:48:48.789+03:00 ERROR 108771 --- [crm] [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column 'created_at' cannot be null
-2026-06-01T23:49:00.827+03:00  INFO 108771 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
-2026-06-01T23:49:01.615+03:00  INFO 108771 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
-2026-06-01T23:49:01.621+03:00  INFO 108771 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-06-01T23:49:01.633+03:00  INFO 108771 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-06-01T23:49:01.638+03:00  INFO 108771 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
-2026-06-01T23:49:01.642+03:00  INFO 108771 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7b4b6dca]]
-2026-06-01T23:49:01.643+03:00  INFO 108771 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
-2026-06-01T23:49:01.668+03:00  INFO 108771 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01T23:49:01.672+03:00  INFO 108771 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-01T23:49:01.687+03:00  INFO 108771 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-06-01T23:55:16.732+03:00  INFO 112114 --- [crm] [main] com.dev.crm.CrmApplication               : Starting CrmApplication using Java 21.0.11 with PID 112114 (/home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm/target/classes started by san in /home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm)
-2026-06-01T23:55:16.735+03:00  INFO 112114 --- [crm] [main] com.dev.crm.CrmApplication               : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T23:55:18.194+03:00  INFO 112114 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-01T23:55:18.380+03:00  INFO 112114 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 174 ms. Found 12 JPA repository interfaces.
-2026-06-01T23:55:19.185+03:00  INFO 112114 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-06-01T23:55:19.210+03:00  INFO 112114 --- [crm] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-06-01T23:55:19.211+03:00  INFO 112114 --- [crm] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
-2026-06-01T23:55:19.272+03:00  INFO 112114 --- [crm] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-06-01T23:55:19.273+03:00  INFO 112114 --- [crm] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2476 ms
-2026-06-01T23:55:19.481+03:00  INFO 112114 --- [crm] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-01T23:55:19.598+03:00  INFO 112114 --- [crm] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
-2026-06-01T23:55:19.663+03:00  INFO 112114 --- [crm] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-01T23:55:19.951+03:00  INFO 112114 --- [crm] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-01T23:55:19.984+03:00  INFO 112114 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-01T23:55:20.341+03:00  INFO 112114 --- [crm] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@8ef1d58
-2026-06-01T23:55:20.343+03:00  INFO 112114 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-01T23:55:20.470+03:00  INFO 112114 --- [crm] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 8.0.45
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2026-06-01T23:55:21.337+03:00  INFO 112114 --- [crm] [main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.dev.crm.entities.Privilegy (class must be instantiated by Interceptor)
-2026-06-01T23:55:21.549+03:00  INFO 112114 --- [crm] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-01T23:55:21.670+03:00  INFO 112114 --- [crm] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01T23:55:21.901+03:00  INFO 112114 --- [crm] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-06-01T23:55:22.092+03:00  INFO 112114 --- [crm] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
-2026-06-01T23:55:22.988+03:00  WARN 112114 --- [crm] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-01T23:55:23.773+03:00  INFO 112114 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-06-01T23:55:23.773+03:00  INFO 112114 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@538c90bf]]
-2026-06-01T23:55:23.775+03:00  INFO 112114 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-06-01T23:55:23.790+03:00  INFO 112114 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2026-06-01T23:55:23.793+03:00  INFO 112114 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-06-01T23:55:23.888+03:00  INFO 112114 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6dcb4f30:0/SimpleConnection@645a9649 [delegate=amqp://guest@127.0.0.1:5672/, localPort=34286]
-2026-06-01T23:55:23.957+03:00  INFO 112114 --- [crm] [main] com.dev.crm.CrmApplication               : Started CrmApplication in 7.971 seconds (process running for 8.382)
-2026-06-01T23:55:29.164+03:00  INFO 112114 --- [crm] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-01T23:55:29.165+03:00  INFO 112114 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-06-01T23:55:29.166+03:00  INFO 112114 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-06-01T23:56:04.423+03:00  INFO 112114 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
-2026-06-01T23:56:04.979+03:00  INFO 112114 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
-2026-06-01T23:56:04.982+03:00  INFO 112114 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-06-01T23:56:04.984+03:00  INFO 112114 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-06-01T23:56:04.988+03:00  INFO 112114 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
-2026-06-01T23:56:04.989+03:00  INFO 112114 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@538c90bf]]
-2026-06-01T23:56:04.989+03:00  INFO 112114 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
-2026-06-01T23:56:05.014+03:00  INFO 112114 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01T23:56:05.020+03:00  INFO 112114 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-01T23:56:05.032+03:00  INFO 112114 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-06-01T23:57:03.248+03:00  INFO 113256 --- [crm] [main] com.dev.crm.CrmApplication               : Starting CrmApplication using Java 21.0.11 with PID 113256 (/home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm/target/classes started by san in /home/san/Документы/CRM/Java-CRM/Backend-Usecase/crm)
-2026-06-01T23:57:03.250+03:00  INFO 113256 --- [crm] [main] com.dev.crm.CrmApplication               : No active profile set, falling back to 1 default profile: "default"
-2026-06-01T23:57:04.366+03:00  INFO 113256 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-01T23:57:04.499+03:00  INFO 113256 --- [crm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 123 ms. Found 12 JPA repository interfaces.
-2026-06-01T23:57:05.166+03:00  INFO 113256 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-06-01T23:57:05.197+03:00  INFO 113256 --- [crm] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-06-01T23:57:05.199+03:00  INFO 113256 --- [crm] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
-2026-06-01T23:57:05.266+03:00  INFO 113256 --- [crm] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-06-01T23:57:05.267+03:00  INFO 113256 --- [crm] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1953 ms
-2026-06-01T23:57:05.472+03:00  INFO 113256 --- [crm] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-01T23:57:05.536+03:00  INFO 113256 --- [crm] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
-2026-06-01T23:57:05.606+03:00  INFO 113256 --- [crm] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-01T23:57:05.902+03:00  INFO 113256 --- [crm] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-01T23:57:05.921+03:00  INFO 113256 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-01T23:57:06.303+03:00  INFO 113256 --- [crm] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@340b4f07
-2026-06-01T23:57:06.305+03:00  INFO 113256 --- [crm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-01T23:57:06.388+03:00  INFO 113256 --- [crm] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 8.0.45
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2026-06-01T23:57:07.152+03:00  INFO 113256 --- [crm] [main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.dev.crm.entities.Privilegy (class must be instantiated by Interceptor)
-2026-06-01T23:57:07.362+03:00  INFO 113256 --- [crm] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-01T23:57:07.438+03:00  INFO 113256 --- [crm] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01T23:57:07.859+03:00  INFO 113256 --- [crm] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-06-01T23:57:08.032+03:00  INFO 113256 --- [crm] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
-2026-06-01T23:57:08.852+03:00  WARN 113256 --- [crm] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-01T23:57:09.482+03:00  INFO 113256 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-06-01T23:57:09.482+03:00  INFO 113256 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@56a0dd11]]
-2026-06-01T23:57:09.484+03:00  INFO 113256 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-06-01T23:57:09.504+03:00  INFO 113256 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2026-06-01T23:57:09.514+03:00  INFO 113256 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-06-01T23:57:09.580+03:00  INFO 113256 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#15b882a0:0/SimpleConnection@726e780a [delegate=amqp://guest@127.0.0.1:5672/, localPort=48606]
-2026-06-01T23:57:09.682+03:00  INFO 113256 --- [crm] [main] com.dev.crm.CrmApplication               : Started CrmApplication in 6.88 seconds (process running for 7.343)
-2026-06-01T23:57:15.696+03:00  INFO 113256 --- [crm] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-01T23:57:15.697+03:00  INFO 113256 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-06-01T23:57:15.700+03:00  INFO 113256 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2026-06-01T23:57:57.924+03:00  INFO 113256 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
-2026-06-01T23:57:58.729+03:00  INFO 113256 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
-2026-06-01T23:57:58.734+03:00  INFO 113256 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-06-01T23:57:58.742+03:00  INFO 113256 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-06-01T23:57:58.749+03:00  INFO 113256 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
-2026-06-01T23:57:58.751+03:00  INFO 113256 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@56a0dd11]]
-2026-06-01T23:57:58.751+03:00  INFO 113256 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
-2026-06-01T23:57:58.774+03:00  INFO 113256 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01T23:57:58.777+03:00  INFO 113256 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-01T23:57:58.786+03:00  INFO 113256 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-02T12:55:58.153+03:00  INFO 33664 --- [crm] [main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.dev.crm.entities.Privilegy (class must be instantiated by Interceptor)
+2026-06-02T12:55:58.419+03:00  INFO 33664 --- [crm] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-02T12:55:58.544+03:00  INFO 33664 --- [crm] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-02T12:55:58.950+03:00  INFO 33664 --- [crm] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-02T12:55:59.261+03:00  INFO 33664 --- [crm] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-06-02T12:56:00.553+03:00  WARN 33664 --- [crm] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-02T12:56:01.237+03:00  INFO 33664 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-06-02T12:56:01.238+03:00  INFO 33664 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1940bacd]]
+2026-06-02T12:56:01.240+03:00  INFO 33664 --- [crm] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-06-02T12:56:01.261+03:00  INFO 33664 --- [crm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-02T12:56:01.268+03:00  INFO 33664 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-06-02T12:56:01.337+03:00  INFO 33664 --- [crm] [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6ade4ac6:0/SimpleConnection@4698ae6 [delegate=amqp://guest@127.0.0.1:5672/, localPort=47194]
+2026-06-02T12:56:01.466+03:00  INFO 33664 --- [crm] [main] com.dev.crm.CrmApplication               : Started CrmApplication in 8.65 seconds (process running for 9.348)
+2026-06-02T12:56:06.737+03:00  INFO 33664 --- [crm] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-02T12:56:06.737+03:00  INFO 33664 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-02T12:56:06.741+03:00  INFO 33664 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2026-06-02T12:57:01.255+03:00  INFO 33664 --- [crm] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-06-02T13:19:26.350+03:00  INFO 33664 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-06-02T13:19:27.035+03:00  INFO 33664 --- [crm] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-06-02T13:19:27.040+03:00  INFO 33664 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-02T13:19:27.045+03:00  INFO 33664 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-02T13:19:27.049+03:00  INFO 33664 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-06-02T13:19:27.049+03:00  INFO 33664 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1940bacd]]
+2026-06-02T13:19:27.050+03:00  INFO 33664 --- [crm] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-06-02T13:19:27.077+03:00  INFO 33664 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-02T13:19:27.081+03:00  INFO 33664 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-02T13:19:27.091+03:00  INFO 33664 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -52,8 +52,8 @@ public class ClientsListController {
             clientsList.add(new ClientModel(
                 "Photo",
                 "Иванов Иван Иванович",
-                "login",
-                "test@mai.ru",
+                "client" + (i + 1),
+                "client" + (i + 1) + "@mail.ru",
                 "+7 (961) 123 12 12"
             ));
         }
@@ -104,6 +104,6 @@ public class ClientsListController {
      * Обработчик клика на кнопку создания клиента
      */
     public void handleCreateClientBtnClick() {
-        Navigation.getInstance().loadAndShowForward("/views/pages/client.fxml");
+        Navigation.getInstance().loadAndShowForward("/views/pages/client-create.fxml");
     }
 }

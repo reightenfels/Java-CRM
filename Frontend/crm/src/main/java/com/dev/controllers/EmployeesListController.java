@@ -52,8 +52,8 @@ public class EmployeesListController {
             employeesList.add(new EmployeeModel(
                 "Photo",
                 "Иванов Иван Иванович",
-                "login",
-                "test@mai.ru",
+                "employee" + (i + 1),
+                "employee" + (i + 1) + "@mail.ru",
                 "+7 (961) 123 12 12"
             ));
         }
@@ -73,17 +73,18 @@ public class EmployeesListController {
                 openButton.setCursor(Cursor.HAND);
                 
                 chatButton.setOnAction(event -> {
-                    // ClientModel client = getTableView().getItems().get(getIndex());
-                    // handleChatClick(client);
-
                     Navigation.getInstance().loadAndShowForward("/views/pages/employee-chats.fxml");
                 });
                 
                 openButton.setOnAction(event -> {
-                    // ClientModel client = getTableView().getItems().get(getIndex());
-                    // handleOpenClick(client);
+                    EmployeeModel employee = getTableView().getItems().get(getIndex());
+                    String employeeLogin = employee.getLogin();
 
-                    Navigation.getInstance().loadAndShowForward("/views/pages/profile.fxml");
+                    Navigation.getInstance().loadAndShowForwardTyped(
+                        "/views/pages/profile.fxml",
+                        ProfileController.class,
+                        controller -> controller.setLogin(employeeLogin)
+                    );
                 });
             }
             
@@ -101,9 +102,9 @@ public class EmployeesListController {
     }
 
     /**
-     * Обработчик клика на кнопку создания клиента
+     * Обработчик клика на кнопку создания сотрудника
      */
     public void handleCreateEmployeeBtnClick() {
-        Navigation.getInstance().loadAndShowForward("/views/pages/profile.fxml");
+        Navigation.getInstance().loadAndShowForward("/views/pages/employee-create.fxml");
     }
 }

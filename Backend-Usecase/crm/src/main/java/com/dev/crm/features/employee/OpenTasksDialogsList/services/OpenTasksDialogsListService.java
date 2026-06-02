@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.dev.crm.entities.Task;
 import com.dev.crm.entities.TaskDialog;
 import com.dev.crm.entities.TaskDialogMessage;
 import com.dev.crm.features.employee.OpenTasksDialogsList.contracts.OpenTasksDialogsListContract;
@@ -32,12 +33,13 @@ public class OpenTasksDialogsListService implements OpenTasksDialogsListContract
         List<EmployeeDialogDTO> dialgsDTO = dialogs.stream()
             .map(dialog -> {
                 TaskDialogMessage lastMessage = messagesRepository.findTopByDialogIdOrderByIdDesc(dialog.getId()).orElse(null);
+                Task task = dialog.getTask();
                 
                 return new EmployeeDialogDTO(
                     dialog.getId(),
-                    dialog.getTask().getTitle(),
+                    task.getTitle(),
                     lastMessage != null ? lastMessage.getText() : "",
-                    lastMessage != null ? lastMessage.getCreatedAt() : null,
+                    lastMessage != null ? lastMessage.getCreatedAt() : task.getCreatedAt(),
                     lastMessage != null ? lastMessage.getSender().getLogin() : null
                 );
             })

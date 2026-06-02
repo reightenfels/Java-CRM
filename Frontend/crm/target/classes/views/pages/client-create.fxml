@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.controllers.ClientController">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="1000.0" style="-fx-background-color: #261E1E; -fx-border-width: 1 0 1 0; -fx-border-color: #D4D4D4;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="clientLogin" style="-fx-text-fill: #fff;" text="Новый клиент">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Label>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #3D3030;">
+               <children>
+                  <Label style="-fx-text-fill: #FFF;" text="Создание клиента">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="17.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="60.0" spacing="55.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <Label style="-fx-text-fill: #FFF;" text="Имя:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="clientFirstName" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <Label style="-fx-text-fill: #FFF;" text="Фамилия:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="clientLastName" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="37.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="60.0" spacing="55.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <Label style="-fx-text-fill: #FFF;" text="Номер телефона:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="clientPhone" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <Label style="-fx-text-fill: #FFF;" text="Email:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="clientEmail" minWidth="245.0" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 1 0; -fx-border-color: #FFF; -fx-text-fill: #FFF; -fx-padding: 0 0 0 0;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="37.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button mnemonicParsing="false" prefWidth="195.0" style="-fx-background-color: #08D448; -fx-text-fill: #FFF; -fx-background-radius: 20;" text="Создать">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="35.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox maxHeight="45.0" maxWidth="45.0" prefHeight="200.0" prefWidth="45.0" StackPane.alignment="TOP_LEFT">
+               <children>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#goBackBtnClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/go-back-image.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <StackPane.margin>
+                  <Insets left="20.0" top="7.0" />
+               </StackPane.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

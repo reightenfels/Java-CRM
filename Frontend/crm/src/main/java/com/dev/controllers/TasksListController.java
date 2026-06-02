@@ -21,6 +21,9 @@ public class TasksListController {
         GetTasksListUseCase.execute(columnsMap, statusesColumnsHBox);
     }
 
+    /**
+     * Переход на страницу создания задачи
+     */
     public void handleCreateTaskClickBtn() {
         Navigation.getInstance().loadAndShowForwardTyped(
             "/views/pages/task-create.fxml",

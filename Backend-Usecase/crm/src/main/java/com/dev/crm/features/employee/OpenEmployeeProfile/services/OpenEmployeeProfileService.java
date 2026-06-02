@@ -23,6 +23,7 @@ public class OpenEmployeeProfileService implements OpenEmployeeProfileContract {
         );
 
         return new OpenEmployeeProfileDTO(
+            employee.getLogin(),
             employee.getFirstName(),
             employee.getLastName(),
             employee.getPhone(),

@@ -1,6 +1,7 @@
 package com.dev.dto.models;
 
 public class ProfileModel {
+    private String login;
     private String firstName;
     private String lastName;
     private String phone;
@@ -8,7 +9,8 @@ public class ProfileModel {
 
     public ProfileModel() {}
 
-    public ProfileModel(String email, String firstName, String lastName, String phone) {
+    public ProfileModel(String login, String email, String firstName, String lastName, String phone) {
+        this.login = login;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,5 +31,9 @@ public class ProfileModel {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getLogin() {
+        return login;
     }
 }

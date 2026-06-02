@@ -4,10 +4,14 @@ import com.dev.features.employee.OpenEmployeeProfile.OpenEmployeeProfileUseCase;
 import com.dev.services.Navigation;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class ProfileController {
+    @FXML
+    public Label employeeLogin;
+
     @FXML
     public TextField employeeFirstName;
 

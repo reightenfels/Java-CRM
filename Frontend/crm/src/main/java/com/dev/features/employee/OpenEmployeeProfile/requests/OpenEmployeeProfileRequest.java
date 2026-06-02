@@ -25,6 +25,7 @@ public class OpenEmployeeProfileRequest {
         ProfileController controller
     ) {
         Platform.runLater(() -> {
+            controller.employeeLogin.setText(profileModel.getLogin());
             controller.employeeFirstName.setText(profileModel.getFirstName());
             controller.employeeLastName.setText(profileModel.getLastName());
             controller.employeePhone.setText(profileModel.getPhone());
