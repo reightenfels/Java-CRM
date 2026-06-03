@@ -1,0 +1,50 @@
+@startuml
+
+class "GET /dialogs/clients/{id}" {
+    <<query>>
+    id: Long
+    ---
+    <<response 200>>
+    messages: ClientDialogMessage[]
+}
+
+class "DELETE /dialogs/employees/{id}" {
+    <<query>>
+    id: Long
+    ---
+    <<response 200>>
+    deletedDialogId: Long
+}
+
+class "GET /dialogs/employees/{id}" {
+    <<query>>
+    id: Long
+    ---
+    <<response 200>>
+    messages: EmployeeDialogMessage[]
+}
+
+class "GET /dialogs/employees" {
+    <<query>>
+    ---
+    <<response 200>>
+    dialogs: EmployeeDialog[]
+}
+
+class "GET /dialogs/tasks/{id}" {
+    <<query>>
+    id: Long
+    ---
+    <<response 200>>
+    messages: TaskDialogMessage[]
+}
+
+class "GET /dialogs/tasks/{id}" {
+    <<query>>
+    id: Long
+    ---
+    <<response 200>>
+    messages: TaskDialogMessage[]
+}
+
+@enduml

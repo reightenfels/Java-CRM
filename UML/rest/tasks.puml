@@ -1,0 +1,95 @@
+@startuml
+
+class "POST /tasks/change-status" {
+    <<query>>
+    taskId: Long
+    statusId: Long
+    version: int
+    ---
+    <<response 200>>
+    updatedTaskId: Long
+}
+
+class "POST /tasks/add-client" {
+    <<query>>
+    taskId: Long
+    clientId: Long
+    version: int
+    ---
+    <<response 200>>
+    updatedTaskId: Long
+}
+
+class "GET /employee/tasks" {
+    <<query>>
+    ---
+    <<response 200>>
+    tasks: Task[]
+}
+
+class "POST /tasks/close" {
+    <<query>>
+    taskId: Long
+    ---
+    <<response 200>>
+    taskId: Long
+}
+
+class "POST /tasks" {
+    <<query>>
+    title: String
+    description: String
+    price: Long
+    deadline: Datetime
+    statusDisplayName: String
+    responsibleLogin: String
+    clientLogin: String
+    employeesLogins: String[]
+    ---
+    <<response 201>>
+    newTaskId: Long
+    newDialogId: Long
+}
+
+class "DELETE /tasks/{id}" {
+    <<query>>
+    id: Long
+    version: int
+    ---
+    <<response 200>>
+    deletedTaskId: Long
+}
+
+class "GET /tasks/{id}" {
+    <<query>>
+    id: Long
+    ---
+    <<response 200>>
+    title: String
+    description: String
+    price: Long
+    deadline: Datetime
+    statusDisplayName: String
+    responsibleLogin: String
+    clientLogin: String
+    employeesLogins: String[]
+}
+
+class "PUT /tasks{id}" {
+    <<query>>
+    id: Long
+    title: String
+    description: String
+    price: Long
+    deadline: Datetime
+    statusDisplayName: String
+    responsibleLogin: String
+    clientLogin: String
+    employeesLogins: String[]
+    ---
+    <<response 201>>
+    newTaskId: Long
+    newDialogId: Long
+}
+
+@enduml

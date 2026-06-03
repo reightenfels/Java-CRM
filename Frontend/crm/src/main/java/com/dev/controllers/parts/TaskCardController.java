@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import com.dev.controllers.ClientController;
+import com.dev.controllers.EmployeeChatsController;
 import com.dev.controllers.ProfileController;
 import com.dev.controllers.TaskEditController;
 import com.dev.services.Navigation;
@@ -28,6 +29,7 @@ public class TaskCardController {
     private Label taskClientLogin;
 
     private Long id;
+    private Long taskDialogId;
 
     public void setData(
         String taskTitle,
@@ -35,7 +37,8 @@ public class TaskCardController {
         String taskManagerLogin,
         LocalDateTime taskDeadline,
         String taskClientLogin,
-        Long id
+        Long id,
+        Long taskDialogId
     ) {
         this.taskTitle.setText(taskTitle);
         this.taskPrice.setText(String.valueOf(taskPrice));
@@ -43,6 +46,7 @@ public class TaskCardController {
         this.taskDeadline.setText(taskDeadline.format(DateTimeFormatter.ofPattern("dd.MM.YYYY HH:mm")));
         this.taskClientLogin.setText(taskClientLogin);
         this.id = id;
+        this.taskDialogId = taskDialogId;
     }
 
     /**
@@ -60,7 +64,11 @@ public class TaskCardController {
      * Обрабатывает нажатие на кнопку открытия чата с сотрудниками
      */
     public void handleOpenEmployeeDialogBtnClick() {
-        Navigation.getInstance().loadAndShowForward("/views/pages/employee-chats.fxml");
+        Navigation.getInstance().loadAndShowForwardTyped(
+            "/views/pages/employee-chats.fxml",
+            EmployeeChatsController.class,
+            controller -> controller.setDefaultSelectedDialogId(taskDialogId)
+        );
     }
 
     /**
@@ -90,5 +98,9 @@ public class TaskCardController {
             ClientController.class,
             controller -> controller.setLogin(taskClientLogin.getText())
         );
+    }
+
+    public Long getTaskDialogId() {
+        return taskDialogId;
     }
 }

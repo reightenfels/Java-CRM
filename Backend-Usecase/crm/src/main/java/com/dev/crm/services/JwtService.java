@@ -115,7 +115,7 @@ public class JwtService implements JwtServiceContract {
         boolean isValidRefreshToken = tokenRepository.findByRefreshToken(token).map(t -> !t.getIsLoggedOut()).orElse(false);
 
         return username.equals(user.getUsername())
-                && isAccessTokenExpired(token)
+                && !isAccessTokenExpired(token)
                 && isValidRefreshToken;
     }
 

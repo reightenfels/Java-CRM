@@ -2,13 +2,13 @@ package com.dev.features.employee.OpenTasksDialogsList.requests;
 
 import java.util.List;
 
+import com.dev.controllers.EmployeeChatsController;
 import com.dev.dto.models.DialogModel;
 import com.dev.dto.responses.success.OpenTasksDialogsListResponse;
 import com.dev.services.Http;
 import com.dev.services.ResponseUnpacker;
 
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 
 public class OpenTasksDialogsListRequest {
     private static OpenTasksDialogsListRequest instance = null;
@@ -24,15 +24,17 @@ public class OpenTasksDialogsListRequest {
 
     public void addDialogs(
         List<DialogModel> dialogs,
-        ObservableList<DialogModel> dialogsObsList
+        EmployeeChatsController controller
     ) {
         Platform.runLater(() -> {
-            dialogsObsList.addAll(dialogs);
+            controller.dialogsObsList.addAll(dialogs);
+            controller.selectDefaultDialogById();
         });
     }
 
     public void requestAndDisplay(
-        ObservableList<DialogModel> dialogsObsList
+        EmployeeChatsController controller,
+        Runnable onSuccess
     ) {
         Http
         .request("/api/employee/dialogs/tasks")
@@ -45,7 +47,9 @@ public class OpenTasksDialogsListRequest {
 
             List<DialogModel> dialogs = dialogsResponse.dialogs;
 
-            addDialogs(dialogs, dialogsObsList);
+            addDialogs(dialogs, controller);
+
+            if (onSuccess != null) onSuccess.run();
         })
         .send();
     }

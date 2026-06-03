@@ -37,8 +37,10 @@ public class EmployeeChatsController {
     @FXML
     private HBox sendMessagePanel;
 
-    private final ObservableList<DialogModel> dialogsObsList = FXCollections.observableArrayList();
+    public final ObservableList<DialogModel> dialogsObsList = FXCollections.observableArrayList();
     private final ObservableList<ChatItem> messagesObsList = FXCollections.observableArrayList();
+
+    private Long defaultSelectedDialogId;
 
     @FXML
     public void initialize() {
@@ -48,7 +50,7 @@ public class EmployeeChatsController {
         dialogsListView.setItems(dialogsObsList);
         messagesListView.setItems(messagesObsList);
 
-        OpenTasksDialogsListUseCase.execute(dialogsObsList);
+        OpenTasksDialogsListUseCase.execute(this);
 
         scrollMessagesToBottom();
         selectDialog();
@@ -155,4 +157,26 @@ public class EmployeeChatsController {
     public void handleGoToTaskBtnClick() {
         Navigation.getInstance().loadAndShowForward("/views/pages/task-edit.fxml");
     }
+
+    /**
+     * Выбирает диалог по ID
+     */
+    public void selectDefaultDialogById() {
+        DialogModel targetDialog = dialogsObsList.stream()
+            .filter(dialog -> dialog.getDialogId().equals(this.defaultSelectedDialogId))
+            .findFirst()
+            .orElse(null);
+
+        if (targetDialog != null) {
+            dialogsListView.getSelectionModel().select(targetDialog);
+        }
+    }
+
+    public Long getDefaultSelectedDialogId() {
+        return defaultSelectedDialogId;
+    }
+
+    public void setDefaultSelectedDialogId(Long defaultSelectedDialogId) {
+        this.defaultSelectedDialogId = defaultSelectedDialogId;
+    }    
 }

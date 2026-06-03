@@ -44,7 +44,8 @@ public class TaskCardCellFactory implements Callback<ListView<TaskCardModel>, Li
                     item.getManagerLogin(),
                     item.getDeadline(),
                     item.getClientLogin(),
-                    item.getId()
+                    item.getId(),
+                    item.getEmployeeDialogId()
                 );
 
                 setGraphic(cellTemplate);

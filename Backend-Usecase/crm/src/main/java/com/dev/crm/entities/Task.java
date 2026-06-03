@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
@@ -78,6 +79,9 @@ public class Task {
 
     @Column(name="description")
     private String description;
+
+    @OneToOne(mappedBy="task", fetch=FetchType.LAZY)
+    private TaskDialog taskDialog;
 
     @PrePersist
     protected void onCreate() {

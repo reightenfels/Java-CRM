@@ -1,0 +1,29 @@
+@startuml
+
+class "GET /users" {
+    <<query>>
+    login: String
+    ---
+    <<response 200>>
+    login: String
+    firstName: String
+    lastName: String
+    phone: String
+    email: String
+}
+
+class "GET /users/employees/logins" {
+    <<query>>
+    ---
+    <<response 200>>
+    employees: String[]
+}
+
+class "GET /users/managers/logins" {
+    <<query>>
+    ---
+    <<response 200>>
+    managers: String[]
+}
+
+@enduml

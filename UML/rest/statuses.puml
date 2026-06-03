@@ -1,0 +1,10 @@
+@startuml
+
+class "GET /statuses" {
+    <<query>>
+    ---
+    <<response 200>>
+    statuses: TaskStatus[]
+}
+
+@enduml

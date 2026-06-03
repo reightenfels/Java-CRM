@@ -28,7 +28,7 @@ public class OpenTasksDialogsListService implements OpenTasksDialogsListContract
 
     @Override
     public List<EmployeeDialogDTO> getUserActiveTasksDialogs(Long userId) {
-        List<TaskDialog> dialogs = dialogRepository.findAllUseActiveDialogs(userId);
+        List<TaskDialog> dialogs = dialogRepository.findAllUserActiveDialogs(userId);
 
         List<EmployeeDialogDTO> dialgsDTO = dialogs.stream()
             .map(dialog -> {

@@ -18,7 +18,7 @@ public interface TaskDialogRepository extends JpaRepository<TaskDialog, Long> {
             WHERE
                 u.user_id = ?1
             """, nativeQuery = true)
-    public List<TaskDialog> findAllUseActiveDialogs(Long userId);
+    public List<TaskDialog> findAllUserActiveDialogs(Long userId);
 
     public Long deleteByTaskId(Long taskId);
 

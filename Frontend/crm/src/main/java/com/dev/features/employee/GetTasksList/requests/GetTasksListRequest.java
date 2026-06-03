@@ -27,16 +27,18 @@ public class GetTasksListRequest {
         List<TaskCardModel> tasks,
         Map<Long, TaskColumnController> columnsMap
     ) {
-        for (TaskCardModel task: tasks) {
-            Long statusId = task.getStatusId();
-            TaskColumnController columnController = columnsMap.get(statusId);
+        Platform.runLater(() -> {
+            for (TaskCardModel task: tasks) {
+                Long statusId = task.getStatusId();
+                TaskColumnController columnController = columnsMap.get(statusId);
 
-            if (columnController != null) {
-                Platform.runLater(() -> columnController.addTask(task));
-            } else {
-                System.err.println("Колонка для статуса " + task.getStatusId() + " не найдена");
+                if (columnController != null) {
+                    columnController.addTask(task);
+                } else {
+                    System.err.println("Колонка для статуса " + task.getStatusId() + " не найдена");
+                }
             }
-        }
+        });
     }
 
     public void requestAndDisplay(

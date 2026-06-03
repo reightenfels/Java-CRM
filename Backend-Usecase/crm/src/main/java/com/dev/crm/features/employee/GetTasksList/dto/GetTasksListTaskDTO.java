@@ -15,4 +15,5 @@ public class GetTasksListTaskDTO {
     private final String managerLogin; 
     private final String clientLogin;
     private final Long statusId;
+    private final Long employeeDialogId;
 }

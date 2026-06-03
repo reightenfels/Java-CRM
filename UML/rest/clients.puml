@@ -1,0 +1,43 @@
+@startuml
+
+class "POST /clients" {
+    <<query>>
+    login: String
+    password: String
+    firstName: String
+    lastName: String
+    phone: String
+    email: String
+    ---
+    <<response 201>>
+    newClientId: Long
+}
+
+class "GET /clients" {
+    <<query>>
+    login: String
+    ---
+    <<response 200>>
+    login: String
+    firstName: String
+    lastName: String
+    phone: String
+    email: String
+}
+
+class "DELETE /clients/{id}" {
+    <<query>>
+    id: Long
+    ---
+    <<response 200>>
+    deletedClientId: Long
+}
+
+class "DELETE /clients/logins" {
+    <<query>>
+    ---
+    <<response 200>>
+    clients: String[]
+}
+
+@enduml

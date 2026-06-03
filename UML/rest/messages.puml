@@ -1,0 +1,32 @@
+@startuml
+
+class "POST /messages/employees/send" {
+    <<query>>
+    text: String
+    dialogId: Long
+    recipientId: Long
+    ---
+    <<response 200>>
+    newMessageId: Long
+    dialogId: Long
+}
+
+class "POST /messages/tasks/send" {
+    <<query>>
+    text: String
+    dialogId: Long
+    ---
+    <<response 200>>
+    newMessageId: Long
+}
+
+class "POST /messages/clients/send" {
+    <<query>>
+    text: String
+    dialogId: Long
+    ---
+    <<response 200>>
+    newMessageId: Long
+}
+
+@enduml

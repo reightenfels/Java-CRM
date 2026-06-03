@@ -21,9 +21,9 @@ public class OpenTaskController {
     }
 
     @GetMapping("/{id}")
-    public ApiResponse<OpenTaskResponse> get(@PathVariable("id") Long dialogId) {
+    public ApiResponse<OpenTaskResponse> get(@PathVariable("id") Long taskId) {
         Long currentAuthUserId = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
-        OpenTaskResponse useCaseResult = useCase.handle(dialogId, currentAuthUserId);
+        OpenTaskResponse useCaseResult = useCase.handle(taskId, currentAuthUserId);
 
         return ApiResponse.ok(useCaseResult);
     }
