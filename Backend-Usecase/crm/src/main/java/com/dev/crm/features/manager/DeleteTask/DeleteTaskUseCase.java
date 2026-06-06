@@ -3,12 +3,12 @@ package com.dev.crm.features.manager.DeleteTask;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.dev.crm.entities.Task;
 import com.dev.crm.features.manager.DeleteTask.contracts.DeleteTaskContract;
 import com.dev.crm.features.manager.DeleteTask.dto.DeleteTaskRequest;
 import com.dev.crm.features.manager.DeleteTask.dto.DeleteTaskResponse;
 import com.dev.crm.features.manager.DeleteTask.services.DeleteTaskNotificationService;
 import com.dev.crm.resterrorconfig.exceptions.DeleteEditingEntityException;
-import com.dev.crm.resterrorconfig.exceptions.OldEntityVersionException;
 
 @Service
 public class DeleteTaskUseCase {
@@ -24,24 +24,20 @@ public class DeleteTaskUseCase {
     }
 
     @Transactional
-    public DeleteTaskResponse handle(DeleteTaskRequest request, Long currentUserId) {
-        if (deleteTaskService.existsTaskEditors(request.getTaskId())) {
+    public DeleteTaskResponse handle(
+        Long taskId,
+        DeleteTaskRequest request, 
+        Long currentUserId) {
+        if (deleteTaskService.existsTaskEditors(taskId, currentUserId)) {
             throw new DeleteEditingEntityException("В данный момент задача редактируется другим пользователем");
         }
 
-        Long countDeletes = deleteTaskService.deleteTask(request.getTaskId(), request.getVersion());
+        Task deletedTask = deleteTaskService.deleteTask(taskId, request.getVersion());
 
-        if (countDeletes == 0) {
-            throw new OldEntityVersionException("Есть более новая версия данной задачи");
-        }
-
-        deleteTaskService.deleteTaskDialogMessages(request.getTaskId());
-        Long deletedDialogId = deleteTaskService.deleteTaskDialog(request.getTaskId());
-
-        notificationService.send(request.getTaskId(), deletedDialogId);
+        notificationService.send(taskId, deletedTask.getTaskDialog().getId());
 
         return new DeleteTaskResponse(
-            request.getTaskId()
+            taskId
         );
     }
 }

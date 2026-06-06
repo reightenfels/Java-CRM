@@ -8,5 +8,5 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor(access = lombok.AccessLevel.PROTECTED)
 public class ChangeTaskStatus extends BaseNotification {
     @NotBlank protected Long taskId;
-    @NotBlank protected Long newStatusId;
+    @NotBlank protected String newStatusSystemName;
 }

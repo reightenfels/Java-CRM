@@ -23,10 +23,13 @@ public class ChangeTaskStatusUseCase {
     }
 
     @Transactional
-    public ChangeTaskStatusResponse handle(ChangeTaskStatusRequest request) {
+    public ChangeTaskStatusResponse handle(
+        Long taskId,
+        ChangeTaskStatusRequest request
+    ) {
         Long countUpdates = changeTaskStatusService.updateTaskStatus(
-            request.getTaksId(),
-            request.getStatusId(),
+            taskId,
+            request.getStatusSystemName(),
             request.getVersion()
         );
 
@@ -34,10 +37,10 @@ public class ChangeTaskStatusUseCase {
             throw new OldEntityVersionException("Есть более новая версия данной задачи");
         }
 
-        notificationService.send(request.getTaksId(), request.getStatusId());
+        notificationService.send(taskId, request.getStatusSystemName());
 
         return new ChangeTaskStatusResponse(
-            request.getTaksId()
+            taskId
         );
     }
 }

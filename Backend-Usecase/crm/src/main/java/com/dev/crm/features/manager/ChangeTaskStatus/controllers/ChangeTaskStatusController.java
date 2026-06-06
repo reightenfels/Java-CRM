@@ -1,5 +1,6 @@
 package com.dev.crm.features.manager.ChangeTaskStatus.controllers;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import com.dev.crm.features.manager.ChangeTaskStatus.dto.ChangeTaskStatusRespons
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/tasks/change-status")
+@RequestMapping("/api/tasks")
 public class ChangeTaskStatusController {
     private final ChangeTaskStatusUseCase useCase;
 
@@ -21,9 +22,12 @@ public class ChangeTaskStatusController {
         this.useCase = useCase;
     }
 
-    @PostMapping
-    public ApiResponse<ChangeTaskStatusResponse> changeStatus(@RequestBody @Valid ChangeTaskStatusRequest request) {
-        ChangeTaskStatusResponse useCaseResult = useCase.handle(request);
+    @PostMapping("/{id}/status")
+    public ApiResponse<ChangeTaskStatusResponse> changeStatus(
+        @PathVariable("id") Long taskId,
+        @RequestBody @Valid ChangeTaskStatusRequest request
+    ) {
+        ChangeTaskStatusResponse useCaseResult = useCase.handle(taskId, request);
 
         return ApiResponse.ok(useCaseResult);
     }

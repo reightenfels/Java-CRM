@@ -18,7 +18,7 @@ public class TokenManager {
             .build();
     private final String baseUrl = "http://127.0.0.1:8080";
     
-    private volatile String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJpYXQiOjE3ODA0Mjg2OTAsImV4cCI6MTc4MDQ2NDY5MH0.6NguVmCTRMx0WBwMUW0ZF9iJRQ8KT6RlP9xQLbaDRlg";
+    private volatile String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbXBsb3llZTEiLCJpYXQiOjE3ODA2NzYxMzAsImV4cCI6MTc4MDcxMjEzMH0.IEs3ZHOUCbj4ckxPGvQARyKVKe5YWsTe3mSVPNC8ckQ";
     private volatile String refreshToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMiIsImlhdCI6MTc3OTc3Mzg2MCwiZXhwIjoxNzgwMDI1ODYwfQ.YwYA4pmAdPJYfV5qyQkwwGqJYFWKW7V4UDuXnT-NMi0";
     
     private final ReentrantLock refreshLock = new ReentrantLock();

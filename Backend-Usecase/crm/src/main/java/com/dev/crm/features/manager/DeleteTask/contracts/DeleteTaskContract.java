@@ -1,12 +1,15 @@
 package com.dev.crm.features.manager.DeleteTask.contracts;
 
+import com.dev.crm.entities.Task;
+
 public interface DeleteTaskContract {
     /**
      * Проверяет есть ли редакторы у задачи
-     * @param Long taskId - ID задачи
+     * @param taskId - ID задачи
+     * @param currentUserId - ID текущего пользователя
      * @return Есть\нет
      */
-    public Boolean existsTaskEditors(Long taskId);
+    public Boolean existsTaskEditors(Long taskId, Long currentUserId);
 
     /**
      * Удаляет задачу
@@ -14,19 +17,5 @@ public interface DeleteTaskContract {
      * @param int version - Версия задачи
      * @return - Кол-во удаленных строк
      */
-    public Long deleteTask(Long taskId, int version);
-
-    /**
-     * Удаляет диалог по задаче
-     * @param Long taskId - ID задачи
-     * @return ID удаленного диалога
-     */
-    public Long deleteTaskDialog(Long taskId);
-
-    /**
-     * Удаляет сообщения диалога по задаче
-     * @param Long taskId - ID задачи
-     * @return Long
-     */
-    public Long deleteTaskDialogMessages(Long taskId);
+    public Task deleteTask(Long taskId, int version);
 }

@@ -10,9 +10,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DataFormat;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.util.Callback;
 
 public class TaskCardCellFactory implements Callback<ListView<TaskCardModel>, ListCell<TaskCardModel>> {
+    private static final DataFormat TASK_CARD_FORMAT = new DataFormat("application/task-card");
+
     @Override
     public ListCell<TaskCardModel> call(ListView<TaskCardModel> param) {
         return new ListCell<>() {
@@ -48,8 +54,38 @@ public class TaskCardCellFactory implements Callback<ListView<TaskCardModel>, Li
                     item.getEmployeeDialogId()
                 );
 
+                setOnDragDetected(event -> {                  
+                    Dragboard db = startDragAndDrop(TransferMode.MOVE);
+                    ClipboardContent content = new ClipboardContent();
+                    
+                    content.put(TASK_CARD_FORMAT, item.getId());
+
+                    db.setContent(content);
+                    
+                    setOpacity(0.5);
+                    event.consume();
+                });
+
+                setOnDragDone(event -> {
+                    setOpacity(1.0);
+
+                    // if (event.getTransferMode() == TransferMode.MOVE) {
+                    //     ListView<TaskCardModel> sourceList = getListView();
+
+                    //     if (sourceList != null) {
+                    //         sourceList.getItems().remove(item);
+                    //     }
+                    // }
+                    
+                    event.consume();
+                });
+
                 setGraphic(cellTemplate);
             }
         };
+    }
+
+    public static DataFormat getTaskCardFormat() {
+        return TASK_CARD_FORMAT;
     }
 }

@@ -11,12 +11,15 @@ import com.dev.factories.MessageCellFactory;
 import com.dev.features.employee.OpenTaskDialog.OpenTaskDialogUseCase;
 import com.dev.features.employee.OpenTasksDialogsList.OpenTasksDialogsListUseCase;
 import com.dev.features.employee.SendMessageToTask.SendMessageToTaskUseCase;
+import com.dev.features.manager.ChangeTaskStatus.ChangeTaskStatusUseCase;
 import com.dev.services.Navigation;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -36,6 +39,12 @@ public class EmployeeChatsController {
 
     @FXML
     private HBox sendMessagePanel;
+
+    @FXML
+    private Button makeTaskOverdueBtn;
+
+    @FXML
+    private Button makeTaskCompletedBtn;
 
     public final ObservableList<DialogModel> dialogsObsList = FXCollections.observableArrayList();
     private final ObservableList<ChatItem> messagesObsList = FXCollections.observableArrayList();
@@ -58,6 +67,13 @@ public class EmployeeChatsController {
     }
 
     /**
+     * Возвращает модель выбранного диалога
+     */
+    private DialogModel getSelectedDialog() {
+        return dialogsListView.getSelectionModel().getSelectedItem();
+    }
+
+    /**
      * Скрывает все нужные элементы если не выбран диалог
      */
     private void hideIfDialogNotSelected() {
@@ -69,17 +85,32 @@ public class EmployeeChatsController {
      * Показывает все нужные элементы если выбран диалог
      */
     private void showIfDialogSelected() {
+        DialogModel selectedDialog = getSelectedDialog();
+
+        if (selectedDialog == null) {
+            return;
+        }
+
+        if (selectedDialog.getTaskSystemName().equals("OVERDUE")) {
+            makeTaskOverdueBtn.setVisible(false);
+            makeTaskOverdueBtn.setManaged(false);
+        }
+        else {
+            makeTaskOverdueBtn.setVisible(true);
+            makeTaskOverdueBtn.setManaged(true);
+        }
+
+        if (selectedDialog.getTaskSystemName().equals("COMPLETED")) {
+            makeTaskCompletedBtn.setVisible(false);
+            makeTaskCompletedBtn.setManaged(false);
+        }
+        else {
+            makeTaskCompletedBtn.setVisible(true);
+            makeTaskCompletedBtn.setManaged(true);
+        }
+
         taskButtons.setVisible(true);
         sendMessagePanel.setVisible(true);
-    }
-
-    /**
-     * Возвращает ID текущего диалога
-     */
-    private Long getSelectedDialogId() {
-        return dialogsListView.getSelectionModel().getSelectedItem() != null ?
-            dialogsListView.getSelectionModel().getSelectedItem().getDialogId() :
-            null;
     }
 
     /**
@@ -117,7 +148,7 @@ public class EmployeeChatsController {
      * Обрабатывает клик на кнопку отправки сообщения
      */
     public void sendMessageClick() {
-        if (getSelectedDialogId() == null) {
+        if (getSelectedDialog() == null) {
             return;
         }
 
@@ -144,7 +175,7 @@ public class EmployeeChatsController {
         SendMessageToTaskUseCase.execute(
             new SendMessageToTaskRequest(
                 newMessageText,
-                getSelectedDialogId()
+                getSelectedDialog().getDialogId()
             )
         );
 
@@ -152,23 +183,81 @@ public class EmployeeChatsController {
     }
 
     /**
-     * Обрабатывает клик на кнопку перехода к задаче
+     * Обрабатывает клик на кнопку перехода к редактированию задачи
      */
     public void handleGoToTaskBtnClick() {
-        Navigation.getInstance().loadAndShowForward("/views/pages/task-edit.fxml");
+        DialogModel selectedDialog = getSelectedDialog();
+
+        if (selectedDialog == null) {
+            return;
+        }
+
+        Navigation.getInstance().loadAndShowForwardTyped(
+            "/views/pages/task-edit.fxml",
+            TaskEditController.class,
+            controller -> controller.setData(selectedDialog.getTaskId(), selectedDialog.getDialogId())
+        );
     }
 
     /**
      * Выбирает диалог по ID
      */
     public void selectDefaultDialogById() {
-        DialogModel targetDialog = dialogsObsList.stream()
-            .filter(dialog -> dialog.getDialogId().equals(this.defaultSelectedDialogId))
-            .findFirst()
-            .orElse(null);
+        Platform.runLater(() -> {
+            DialogModel targetDialog = dialogsObsList.stream()
+                .filter(dialog -> dialog.getDialogId().equals(this.defaultSelectedDialogId))
+                .findFirst()
+                .orElse(null);
 
-        if (targetDialog != null) {
-            dialogsListView.getSelectionModel().select(targetDialog);
+            if (targetDialog != null) {
+                dialogsListView.getSelectionModel().select(targetDialog);
+            }
+        });
+    }
+
+    /**
+     * Обрабатывает клик на кнопку изменения статуса задачи на "Просрочено"
+     */
+    public void setStatusToOverdueHandleClick () {
+        makeTaskOverdueBtn.setVisible(false);
+
+        DialogModel selectedDialog = getSelectedDialog();
+
+        if (selectedDialog == null) {
+            return;
+        }
+
+        try {
+            ChangeTaskStatusUseCase.execute(
+                "OVERDUE", 
+                selectedDialog.getTaskId(), 
+                selectedDialog.getTaskVersion()
+            );
+        } catch (JsonProcessingException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Обрабатывает клик на кнопку изменения статуса задачи на "Выполнено"
+     */
+    public void setStatusToCompletedHandleClick () {
+        makeTaskCompletedBtn.setVisible(false);
+
+        DialogModel selectedDialog = getSelectedDialog();
+
+        if (selectedDialog == null) {
+            return;
+        }
+
+        try {
+            ChangeTaskStatusUseCase.execute(
+                "COMPLETED", 
+                selectedDialog.getTaskId(), 
+                selectedDialog.getTaskVersion()
+            );
+        } catch (JsonProcessingException e) {
+            System.out.println(e.getMessage());
         }
     }
 

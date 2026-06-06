@@ -11,6 +11,7 @@ public class TaskCardModel {
     private String clientLogin;
     private Long statusId;
     private Long employeeDialogId;
+    private int version;
 
     public TaskCardModel() {}
 
@@ -22,7 +23,8 @@ public class TaskCardModel {
         String managerLogin, 
         String clientLogin,
         Long statusId,
-        Long employeeDialogId
+        Long employeeDialogId,
+        int version
     ) {
         this.id = id;
         this.title = title;
@@ -32,6 +34,7 @@ public class TaskCardModel {
         this.clientLogin = clientLogin;
         this.statusId = statusId;
         this.employeeDialogId = employeeDialogId;
+        this.version = version;
     }
 
     public Long getId() { return id; }
@@ -44,5 +47,9 @@ public class TaskCardModel {
 
     public Long getEmployeeDialogId() {
         return employeeDialogId;
+    }
+
+    public int getVersion() {
+        return version;
     }
 }

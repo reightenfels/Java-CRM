@@ -53,6 +53,12 @@ public class Http {
         return this;
     }
 
+    public Http delete(String json) {
+        this.httpMethod = "DELETE";
+        this.requestBody = json;
+        return this;
+    }
+
     public Http queryParam(String name, String value) {
         this.queryParams.add(Map.entry(name, value));
         return this;
@@ -146,7 +152,11 @@ public class Http {
                 builder.PUT(HttpRequest.BodyPublishers.ofString(requestBody));
                 break;
             case "DELETE":
-                builder.DELETE();
+                 if (requestBody != null && !requestBody.isEmpty()) {
+                    builder.method("DELETE", HttpRequest.BodyPublishers.ofString(requestBody));
+                } else {
+                    builder.DELETE();
+                }
                 break;
             case "GET":
             default:

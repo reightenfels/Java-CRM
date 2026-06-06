@@ -13,4 +13,7 @@ public class EmployeeDialogDTO {
     private final String message;
     private final LocalDateTime lastMessageDatetime;
     private final String lastSenderName;
+    private final Long taskId;
+    private final int taskVersion;
+    private final String taskSystemName;
 }

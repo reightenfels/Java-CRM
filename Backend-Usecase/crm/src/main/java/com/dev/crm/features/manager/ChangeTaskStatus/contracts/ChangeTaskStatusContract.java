@@ -4,13 +4,13 @@ public interface ChangeTaskStatusContract {
     /**
      * Обновляет статуст задачи
      * @param taskId - ID задачи
-     * @param statusId - ID статуса
+     * @param statusSystemName - Название статуса
      * @param version - Версия
      * @return - Количество обновленных строк
      */
     public Long updateTaskStatus(
         Long taskId,
-        Long statusId,
+        String statusSystemName,
         int version
     );
 }

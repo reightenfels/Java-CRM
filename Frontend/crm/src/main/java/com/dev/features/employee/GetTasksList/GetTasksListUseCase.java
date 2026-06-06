@@ -1,22 +1,17 @@
 package com.dev.features.employee.GetTasksList;
 
-import java.util.Map;
-
-import com.dev.controllers.parts.TaskColumnController;
+import com.dev.controllers.TasksListController;
 import com.dev.features.employee.GetTasksList.requests.GetTasksListRequest;
 import com.dev.features.employee.GetTasksList.requests.GetTasksListStatusesRequest;
 
-import javafx.scene.layout.HBox;
-
 public class GetTasksListUseCase {
     public static void execute(
-        Map<Long, TaskColumnController> columnsMap,
-        HBox statusesColumnsHBox
+        TasksListController controller
     ) {
         GetTasksListStatusesRequest.getInstance().requestAndDisplay(
-            columnsMap,
-            statusesColumnsHBox,
-            () -> GetTasksListRequest.getInstance().requestAndDisplay(columnsMap)
+            controller.columnsMap,
+            controller.statusesColumnsHBox,
+            () -> GetTasksListRequest.getInstance().requestAndDisplay(controller)
         );
     }
 }

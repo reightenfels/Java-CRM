@@ -40,7 +40,10 @@ public class OpenTasksDialogsListService implements OpenTasksDialogsListContract
                     task.getTitle(),
                     lastMessage != null ? lastMessage.getText() : "",
                     lastMessage != null ? lastMessage.getCreatedAt() : task.getCreatedAt(),
-                    lastMessage != null ? lastMessage.getSender().getLogin() : null
+                    lastMessage != null ? lastMessage.getSender().getLogin() : null,
+                    task.getId(),
+                    task.getVersion(),
+                    task.getStatus().getSystemName()
                 );
             })
             .collect(Collectors.toList());

@@ -1,5 +1,6 @@
 package com.dev.controllers;
 
+import com.dev.features.manager.DeleteTask.DeleteTaskUseCase;
 import com.dev.features.manager.OpenTaskCard.OpenTaskCardUseCase;
 import com.dev.features.manager.UpdateTask.UpdateTaskUseCase;
 import com.dev.services.Navigation;
@@ -11,12 +12,17 @@ import javafx.util.Duration;
 public class TaskEditController extends AbstractTaskController {
     private Long taskId;
     private int version;
+    private Long taskDialogId;
 
     /**
      * Обрабатывает нажатие на кнопку открытия чата с сотрудниками
      */
     public void handleOpenEmployeeDialogBtnClick() {
-        Navigation.getInstance().loadAndShowForward("/views/pages/employee-chats.fxml");
+        Navigation.getInstance().loadAndShowForwardTyped(
+            "/views/pages/employee-chats.fxml",
+            EmployeeChatsController.class,
+            controller -> controller.setDefaultSelectedDialogId(taskDialogId)
+        );
     }
 
     /**
@@ -26,12 +32,10 @@ public class TaskEditController extends AbstractTaskController {
         Navigation.getInstance().loadAndShowForward("/views/pages/client-chats.fxml");
     }
 
-
-
     /**
      * Обрабатывает клик на кнопку сохранения задачи
      */
-    public void handelSaveBtnClick() {
+    public void handleSaveBtnClick() {
         try {
             UpdateTaskUseCase.execute(this);
         }
@@ -61,9 +65,32 @@ public class TaskEditController extends AbstractTaskController {
         pause.play();        
     }
 
+    /**
+     * Обрабатывает клик на кнопку удаления задачи
+     */
+    public void handleDeleteBtnClick() {
+        try {
+            DeleteTaskUseCase.execute(this);
+        }
+        catch (JsonProcessingException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Задает все данные, необходимые для корректного отображения
+     */
+    public void setData(
+        Long taskId,
+        Long taskDialogId
+    ) {
+        this.taskId = taskId;
+        this.taskDialogId = taskDialogId;
+        loadData();
+    }
+
     public void setTaskId(Long taskId) {
         this.taskId = taskId;
-        loadData();
     }
 
     public Long getTaskId() {
@@ -82,5 +109,9 @@ public class TaskEditController extends AbstractTaskController {
         if (taskId != null) {
             OpenTaskCardUseCase.execute(this);
         }
+    }
+
+    public Long getTaskDialogId() {
+        return taskDialogId;
     }
 }

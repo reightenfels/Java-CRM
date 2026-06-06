@@ -1,8 +1,8 @@
 package com.dev.features.employee.GetTasksList.requests;
 
 import java.util.List;
-import java.util.Map;
 
+import com.dev.controllers.TasksListController;
 import com.dev.controllers.parts.TaskColumnController;
 import com.dev.dto.models.TaskCardModel;
 import com.dev.dto.responses.success.GetTasksListResponse;
@@ -25,15 +25,17 @@ public class GetTasksListRequest {
 
     public void addTasks(
         List<TaskCardModel> tasks,
-        Map<Long, TaskColumnController> columnsMap
+        TasksListController controller
     ) {
         Platform.runLater(() -> {
             for (TaskCardModel task: tasks) {
                 Long statusId = task.getStatusId();
-                TaskColumnController columnController = columnsMap.get(statusId);
+                TaskColumnController columnController = controller.columnsMap.get(statusId);
 
                 if (columnController != null) {
                     columnController.addTask(task);
+                    controller.tasksCardsMap.put(task.getId(), task);
+                    columnController.setTasksListController(controller);
                 } else {
                     System.err.println("Колонка для статуса " + task.getStatusId() + " не найдена");
                 }
@@ -42,7 +44,7 @@ public class GetTasksListRequest {
     }
 
     public void requestAndDisplay(
-        Map<Long, TaskColumnController> columnsMap
+        TasksListController controller
     ) {
         Http
         .request("/api/employee/tasks")
@@ -55,7 +57,7 @@ public class GetTasksListRequest {
             
             addTasks(
                 tasksResponse.tasks,
-                columnsMap
+                controller
             );
         })
         .send();

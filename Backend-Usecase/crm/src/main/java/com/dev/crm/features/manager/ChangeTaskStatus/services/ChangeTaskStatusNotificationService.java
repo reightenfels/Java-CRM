@@ -17,14 +17,14 @@ public class ChangeTaskStatusNotificationService {
 
     public void send(
         Long taskId,
-        Long newStatusId
+        String newStatusSystemName
     ) {
         notificationProducer.send(
             ChangeTaskStatus.builder()
             .type("ChangeTaskStatus")
             .timestamp(System.currentTimeMillis())
             .taskId(taskId)
-            .newStatusId(newStatusId)
+            .newStatusSystemName(newStatusSystemName)
             .build()
         );
     }

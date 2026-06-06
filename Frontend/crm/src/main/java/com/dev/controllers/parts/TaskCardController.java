@@ -56,7 +56,7 @@ public class TaskCardController {
         Navigation.getInstance().loadAndShowForwardTyped(
             "/views/pages/task-edit.fxml",
             TaskEditController.class,
-            controller -> controller.setTaskId(id)
+            controller -> controller.setData(id, taskDialogId)
         );
     }
 

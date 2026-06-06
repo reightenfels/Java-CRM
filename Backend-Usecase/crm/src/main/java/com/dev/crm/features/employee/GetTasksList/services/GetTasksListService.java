@@ -31,7 +31,8 @@ public class GetTasksListService implements GetTasksListContract {
                 task.getResponsible().getLogin(),
                 task.getClient() != null ? task.getClient().getLogin() : null,
                 task.getStatus().getId(),
-                task.getTaskDialog().getId()
+                task.getTaskDialog().getId(),
+                task.getVersion()
             ))
             .collect(Collectors.toList());
 

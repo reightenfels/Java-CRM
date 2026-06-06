@@ -176,7 +176,7 @@ public class GlobalRestExceptionHandler {
      * @return
      */
     @ExceptionHandler(DeleteEditingEntityException.class)
-    public ResponseEntity<ErrorResponse> handleSaveEntityError(DeleteEditingEntityException exception) {
+    public ResponseEntity<ErrorResponse> handleDeleteEntityError(DeleteEditingEntityException exception) {
         ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }

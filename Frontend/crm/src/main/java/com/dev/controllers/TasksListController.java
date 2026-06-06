@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.dev.controllers.parts.TaskColumnController;
+import com.dev.dto.models.TaskCardModel;
 import com.dev.features.employee.GetTasksList.GetTasksListUseCase;
 import com.dev.services.Navigation;
 
@@ -12,13 +13,15 @@ import javafx.scene.layout.HBox;
 
 public class TasksListController {
     @FXML
-    private HBox statusesColumnsHBox;
+    public HBox statusesColumnsHBox;
 
-    Map<Long, TaskColumnController> columnsMap = new HashMap<>();
+    public Map<Long, TaskColumnController> columnsMap = new HashMap<>();
+
+    public Map<Long, TaskCardModel> tasksCardsMap = new HashMap<>();
 
     @FXML
     public void initialize() {
-        GetTasksListUseCase.execute(columnsMap, statusesColumnsHBox);
+        GetTasksListUseCase.execute(this);
     }
 
     /**

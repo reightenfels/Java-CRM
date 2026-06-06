@@ -80,7 +80,7 @@ public class Task {
     @Column(name="description")
     private String description;
 
-    @OneToOne(mappedBy="task", fetch=FetchType.LAZY)
+    @OneToOne(mappedBy="task", fetch=FetchType.EAGER)
     private TaskDialog taskDialog;
 
     @PrePersist
